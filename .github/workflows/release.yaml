@@ -96,4 +96,4 @@ jobs:
           git config user.name "Arash Hatami"
           git config user.email "arash.hatami@arvancloud.ir"
           git remote set-url origin "https://oauth2:${{ secrets.GLPAT }}@git.arvancloud.ir/arvancloud/cdn-go.git"
-          git push --all origin main -f
+          git push --all origin -f
