@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**SslCertOrderRetry**](SSLTLSApi.md#SslCertOrderRetry) | **Post** /domains/{domain}/ssl/orders/action/retry | Retry a previously &#x60;killed&#x60; order
 [**SslCertStore**](SSLTLSApi.md#SslCertStore) | **Post** /domains/{domain}/ssl/certificates | Upload Certificate
 [**SslIndex**](SSLTLSApi.md#SslIndex) | **Get** /domains/{domain}/ssl | Get SSL settings
-[**SslUpdate**](SSLTLSApi.md#SslUpdate) | **Patch** /domains/{domain}/ssl | Update domain&#39;s SSL configuration
+[**SslUpdate**](SSLTLSApi.md#SslUpdate) | **Patch** /domains/{domain}/ssl | Update domain&#39;s SSL settings
 
 
 
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 > SslResponse SslUpdate(ctx, domain).SslUpdate(sslUpdate).Execute()
 
-Update domain's SSL configuration
+Update domain's SSL settings
 
 ### Example
 

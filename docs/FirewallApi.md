@@ -4,7 +4,6 @@ All URIs are relative to *https://napi.arvancloud.ir/cdn/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FirewallIndex**](FirewallApi.md#FirewallIndex) | **Get** /domains/{domain}/firewall | Get domain&#39;s firewall configuration
 [**FirewallReprioritize**](FirewallApi.md#FirewallReprioritize) | **Post** /domains/{domain}/firewall/actions/reprioritize | Change priority of firewall rules
 [**FirewallRulesDestroy**](FirewallApi.md#FirewallRulesDestroy) | **Delete** /domains/{domain}/firewall/rules/{id} | Delete firewall rule
 [**FirewallRulesIndex**](FirewallApi.md#FirewallRulesIndex) | **Get** /domains/{domain}/firewall/rules | Get domain&#39;s firewall rules
@@ -13,76 +12,7 @@ Method | HTTP request | Description
 [**FirewallRulesUpdate**](FirewallApi.md#FirewallRulesUpdate) | **Patch** /domains/{domain}/firewall/rules/{id} | Update the firewall rule
 [**FirewallSettingsIndex**](FirewallApi.md#FirewallSettingsIndex) | **Get** /domains/{domain}/firewall/settings | Get domain&#39;s firewall configuration
 [**FirewallSettingsUpdate**](FirewallApi.md#FirewallSettingsUpdate) | **Patch** /domains/{domain}/firewall/settings | Update domain&#39;s firewall configuration
-[**FirewallUpdate**](FirewallApi.md#FirewallUpdate) | **Patch** /domains/{domain}/firewall | Update domain&#39;s firewall configuration
 
-
-
-## FirewallIndex
-
-> FirewallIndex200Response FirewallIndex(ctx, domain).Execute()
-
-Get domain's firewall configuration
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/arvancloud/cdn-go"
-)
-
-func main() {
-    domain := "example.com" // string | Domain name
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FirewallApi.FirewallIndex(context.Background(), domain).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FirewallApi.FirewallIndex``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FirewallIndex`: FirewallIndex200Response
-    fmt.Fprintf(os.Stdout, "Response from `FirewallApi.FirewallIndex`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | Domain name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiFirewallIndexRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**FirewallIndex200Response**](FirewallIndex200Response.md)
-
-### Authorization
-
-[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
-[[Back to Model list]](HOW-TO.md#documentation-for-models)
-[[Back to README]](HOW-TO.md)
 
 
 ## FirewallReprioritize
@@ -637,76 +567,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **firewallSettings** | [**FirewallSettings**](FirewallSettings.md) |  | 
-
-### Return type
-
-[**MessageResponse**](MessageResponse.md)
-
-### Authorization
-
-[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
-[[Back to Model list]](HOW-TO.md#documentation-for-models)
-[[Back to README]](HOW-TO.md)
-
-
-## FirewallUpdate
-
-> MessageResponse FirewallUpdate(ctx, domain).Firewall(firewall).Execute()
-
-Update domain's firewall configuration
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/arvancloud/cdn-go"
-)
-
-func main() {
-    domain := "example.com" // string | Domain name
-    firewall := *openapiclient.NewFirewall() // Firewall |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FirewallApi.FirewallUpdate(context.Background(), domain).Firewall(firewall).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FirewallApi.FirewallUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FirewallUpdate`: MessageResponse
-    fmt.Fprintf(os.Stdout, "Response from `FirewallApi.FirewallUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | Domain name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiFirewallUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **firewall** | [**Firewall**](Firewall.md) |  | 
 
 ### Return type
 

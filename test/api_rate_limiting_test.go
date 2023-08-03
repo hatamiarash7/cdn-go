@@ -22,13 +22,13 @@ func Test_r1cdn_RateLimitingApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RateLimitingApiService RateLimitingIndex", func(t *testing.T) {
+	t.Run("Test RateLimitingApiService RateLimitingActionsReprioritize", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var domain string
 
-		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingIndex(context.Background(), domain).Execute()
+		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingActionsReprioritize(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_r1cdn_RateLimitingApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test RateLimitingApiService RateLimitingReprioritize", func(t *testing.T) {
+	t.Run("Test RateLimitingApiService RateLimitingRulesCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var domain string
 
-		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingReprioritize(context.Background(), domain).Execute()
+		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingRulesCreate(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,20 +94,6 @@ func Test_r1cdn_RateLimitingApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test RateLimitingApiService RateLimitingRulesStore", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingRulesStore(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test RateLimitingApiService RateLimitingRulesUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -144,20 +130,6 @@ func Test_r1cdn_RateLimitingApiService(t *testing.T) {
 		var domain string
 
 		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingSettingsUpdate(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RateLimitingApiService RateLimitingUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingUpdate(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

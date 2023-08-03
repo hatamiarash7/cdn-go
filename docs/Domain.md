@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **DnsCloud** | Pointer to **bool** |  | [optional] [default to false]
 **Restriction** | Pointer to **[]string** |  | [optional] 
 **Transfer** | Pointer to [**DomainTransferData**](DomainTransferData.md) |  | [optional] 
+**FingerprintStatus** | Pointer to **bool** |  | [optional] [readonly] [default to false]
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 
@@ -409,6 +410,31 @@ SetTransfer sets Transfer field to given value.
 `func (o *Domain) HasTransfer() bool`
 
 HasTransfer returns a boolean if a field has been set.
+
+### GetFingerprintStatus
+
+`func (o *Domain) GetFingerprintStatus() bool`
+
+GetFingerprintStatus returns the FingerprintStatus field if non-nil, zero value otherwise.
+
+### GetFingerprintStatusOk
+
+`func (o *Domain) GetFingerprintStatusOk() (*bool, bool)`
+
+GetFingerprintStatusOk returns a tuple with the FingerprintStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFingerprintStatus
+
+`func (o *Domain) SetFingerprintStatus(v bool)`
+
+SetFingerprintStatus sets FingerprintStatus field to given value.
+
+### HasFingerprintStatus
+
+`func (o *Domain) HasFingerprintStatus() bool`
+
+HasFingerprintStatus returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

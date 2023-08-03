@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**ReportsTrafficsMap**](ReportsApi.md#ReportsTrafficsMap) | **Get** /domains/{domain}/reports/traffics/map | Get traffic as geo-map
 [**ReportsTrafficsSaved**](ReportsApi.md#ReportsTrafficsSaved) | **Get** /domains/{domain}/reports/traffics/saved | Get traffic saved to total pie chart
 [**ReportsTrafficsTotal**](ReportsApi.md#ReportsTrafficsTotal) | **Get** /domains/{domain}/reports/traffics | Get traffic report for domain
+[**ReportsTransportLayerProxiesTraffics**](ReportsApi.md#ReportsTransportLayerProxiesTraffics) | **Get** /domains/{domain}/reports/transport-layer-proxies/{transportLayerProxyId}/traffics | Get traffic report for transport layer proxy
 [**ReportsVisitorsHighRequestIps**](ReportsApi.md#ReportsVisitorsHighRequestIps) | **Get** /domains/{domain}/reports/high-request-ips | Get report of IPs with highest number of requests
 [**ReportsVisitorsIndex**](ReportsApi.md#ReportsVisitorsIndex) | **Get** /domains/{domain}/reports/visitors | Get report of visitors for domain
 
@@ -1343,6 +1344,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TrafficsData**](TrafficsData.md)
+
+### Authorization
+
+[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
+[[Back to Model list]](HOW-TO.md#documentation-for-models)
+[[Back to README]](HOW-TO.md)
+
+
+## ReportsTransportLayerProxiesTraffics
+
+> TransportLayerProxyTrafficsData ReportsTransportLayerProxiesTraffics(ctx, domain, transportLayerProxyId).Period(period).Since(since).Until(until).Execute()
+
+Get traffic report for transport layer proxy
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "github.com/arvancloud/cdn-go"
+)
+
+func main() {
+    domain := "example.com" // string | Domain name
+    transportLayerProxyId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Transport layer proxy id
+    period := "period_example" // string | Select period -ending now- for report (optional)
+    since := time.Now() // time.Time |  (optional)
+    until := time.Now() // time.Time |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ReportsApi.ReportsTransportLayerProxiesTraffics(context.Background(), domain, transportLayerProxyId).Period(period).Since(since).Until(until).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReportsApi.ReportsTransportLayerProxiesTraffics``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReportsTransportLayerProxiesTraffics`: TransportLayerProxyTrafficsData
+    fmt.Fprintf(os.Stdout, "Response from `ReportsApi.ReportsTransportLayerProxiesTraffics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domain** | **string** | Domain name | 
+**transportLayerProxyId** | **string** | Transport layer proxy id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReportsTransportLayerProxiesTrafficsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **period** | **string** | Select period -ending now- for report | 
+ **since** | **time.Time** |  | 
+ **until** | **time.Time** |  | 
+
+### Return type
+
+[**TransportLayerProxyTrafficsData**](TransportLayerProxyTrafficsData.md)
 
 ### Authorization
 

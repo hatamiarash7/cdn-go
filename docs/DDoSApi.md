@@ -4,7 +4,6 @@ All URIs are relative to *https://napi.arvancloud.ir/cdn/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DdosIndex**](DDoSApi.md#DdosIndex) | **Get** /domains/{domain}/ddos | Get DDoS protection settings
 [**DdosReprioritize**](DDoSApi.md#DdosReprioritize) | **Post** /domains/{domain}/ddos/actions/reprioritize | Change priority of ddos rules
 [**DdosRulesDestroy**](DDoSApi.md#DdosRulesDestroy) | **Delete** /domains/{domain}/ddos/rules/{id} | Delete DDoS protection rule
 [**DdosRulesIndex**](DDoSApi.md#DdosRulesIndex) | **Get** /domains/{domain}/ddos/rules | Get DDoS Protection Rules
@@ -13,76 +12,7 @@ Method | HTTP request | Description
 [**DdosRulesUpdate**](DDoSApi.md#DdosRulesUpdate) | **Patch** /domains/{domain}/ddos/rules/{id} | Update the DDoS protection rule
 [**DdosSettingsIndex**](DDoSApi.md#DdosSettingsIndex) | **Get** /domains/{domain}/ddos/settings | Get DDoS protection settings
 [**DdosSettingsUpdate**](DDoSApi.md#DdosSettingsUpdate) | **Patch** /domains/{domain}/ddos/settings | Update domain&#39;s DDoS protection configuration
-[**DdosUpdate**](DDoSApi.md#DdosUpdate) | **Patch** /domains/{domain}/ddos | Update domain&#39;s DDoS protection configuration
 
-
-
-## DdosIndex
-
-> DdosData DdosIndex(ctx, domain).Execute()
-
-Get DDoS protection settings
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/arvancloud/cdn-go"
-)
-
-func main() {
-    domain := "example.com" // string | Domain name
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DDoSApi.DdosIndex(context.Background(), domain).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DDoSApi.DdosIndex``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DdosIndex`: DdosData
-    fmt.Fprintf(os.Stdout, "Response from `DDoSApi.DdosIndex`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | Domain name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDdosIndexRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**DdosData**](DdosData.md)
-
-### Authorization
-
-[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
-[[Back to Model list]](HOW-TO.md#documentation-for-models)
-[[Back to README]](HOW-TO.md)
 
 
 ## DdosReprioritize
@@ -641,76 +571,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DdosSettingsUpdate200Response**](DdosSettingsUpdate200Response.md)
-
-### Authorization
-
-[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
-[[Back to Model list]](HOW-TO.md#documentation-for-models)
-[[Back to README]](HOW-TO.md)
-
-
-## DdosUpdate
-
-> DdosUpdate200Response DdosUpdate(ctx, domain).Ddos(ddos).Execute()
-
-Update domain's DDoS protection configuration
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/arvancloud/cdn-go"
-)
-
-func main() {
-    domain := "example.com" // string | Domain name
-    ddos := *openapiclient.NewDdos() // Ddos |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DDoSApi.DdosUpdate(context.Background(), domain).Ddos(ddos).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DDoSApi.DdosUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DdosUpdate`: DdosUpdate200Response
-    fmt.Fprintf(os.Stdout, "Response from `DDoSApi.DdosUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | Domain name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDdosUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **ddos** | [**Ddos**](Ddos.md) |  | 
-
-### Return type
-
-[**DdosUpdate200Response**](DdosUpdate200Response.md)
 
 ### Authorization
 

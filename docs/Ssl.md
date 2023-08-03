@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FingerprintStatus** | Pointer to **bool** | Whether Domain is using fingerprint or not | [optional] 
 **SslStatus** | Pointer to **bool** | Whether Domain is using ssl module or not | [optional] 
 **CertificateMode** | Pointer to **string** | Indicates certificate is managed by arvan, or its up to the user | [optional] [readonly] 
 **TlsVersion** | Pointer to **string** | Minimum version of TLS. Empty (&#39;&#39;) means default. | [optional] 
@@ -34,6 +35,31 @@ will change when the set of required properties is changed
 NewSslWithDefaults instantiates a new Ssl object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetFingerprintStatus
+
+`func (o *Ssl) GetFingerprintStatus() bool`
+
+GetFingerprintStatus returns the FingerprintStatus field if non-nil, zero value otherwise.
+
+### GetFingerprintStatusOk
+
+`func (o *Ssl) GetFingerprintStatusOk() (*bool, bool)`
+
+GetFingerprintStatusOk returns a tuple with the FingerprintStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFingerprintStatus
+
+`func (o *Ssl) SetFingerprintStatus(v bool)`
+
+SetFingerprintStatus sets FingerprintStatus field to given value.
+
+### HasFingerprintStatus
+
+`func (o *Ssl) HasFingerprintStatus() bool`
+
+HasFingerprintStatus returns a boolean if a field has been set.
 
 ### GetSslStatus
 

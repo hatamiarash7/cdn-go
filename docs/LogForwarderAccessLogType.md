@@ -16,12 +16,14 @@ Name | Type | Description | Notes
 **Asn** | Pointer to **bool** |  | [optional] 
 **ContentType** | Pointer to **bool** |  | [optional] 
 **Status** | Pointer to **bool** |  | [optional] 
+**TlsFingerprint** | Pointer to **bool** |  | [optional] 
 **ServerPort** | Pointer to **bool** |  | [optional] 
 **BytesSent** | Pointer to **bool** |  | [optional] 
 **BytesReceived** | Pointer to **bool** |  | [optional] 
 **UpstreamTime** | Pointer to **bool** |  | [optional] 
 **Cache** | Pointer to **bool** |  | [optional] 
 **RequestId** | Pointer to **bool** |  | [optional] 
+**Timestamp** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -342,6 +344,31 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### GetTlsFingerprint
+
+`func (o *LogForwarderAccessLogType) GetTlsFingerprint() bool`
+
+GetTlsFingerprint returns the TlsFingerprint field if non-nil, zero value otherwise.
+
+### GetTlsFingerprintOk
+
+`func (o *LogForwarderAccessLogType) GetTlsFingerprintOk() (*bool, bool)`
+
+GetTlsFingerprintOk returns a tuple with the TlsFingerprint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTlsFingerprint
+
+`func (o *LogForwarderAccessLogType) SetTlsFingerprint(v bool)`
+
+SetTlsFingerprint sets TlsFingerprint field to given value.
+
+### HasTlsFingerprint
+
+`func (o *LogForwarderAccessLogType) HasTlsFingerprint() bool`
+
+HasTlsFingerprint returns a boolean if a field has been set.
+
 ### GetServerPort
 
 `func (o *LogForwarderAccessLogType) GetServerPort() bool`
@@ -491,6 +518,31 @@ SetRequestId sets RequestId field to given value.
 `func (o *LogForwarderAccessLogType) HasRequestId() bool`
 
 HasRequestId returns a boolean if a field has been set.
+
+### GetTimestamp
+
+`func (o *LogForwarderAccessLogType) GetTimestamp() bool`
+
+GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
+
+### GetTimestampOk
+
+`func (o *LogForwarderAccessLogType) GetTimestampOk() (*bool, bool)`
+
+GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimestamp
+
+`func (o *LogForwarderAccessLogType) SetTimestamp(v bool)`
+
+SetTimestamp sets Timestamp field to given value.
+
+### HasTimestamp
+
+`func (o *LogForwarderAccessLogType) HasTimestamp() bool`
+
+HasTimestamp returns a boolean if a field has been set.
 
 
 [[Back to Model list]](HOW-TO.md#documentation-for-models) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints) [[Back to README]](HOW-TO.md)
