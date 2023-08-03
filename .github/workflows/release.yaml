@@ -96,4 +96,4 @@ jobs:
           git config user.name "Arash Hatami"
           git config user.email "arash.hatami@arvancloud.ir"
           git remote add gitlab "https://oauth2:${{ secrets.GLPAT }}@git.arvancloud.ir/arvancloud/cdn-go.git"
-          git push gitlab main
+          git push gitlab main -f
