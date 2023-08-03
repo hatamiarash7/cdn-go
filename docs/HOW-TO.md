@@ -2,7 +2,7 @@
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
-**API version**: 4.99.2
+**API version**: 4.103.1
 
 ## Dependencies
 
@@ -104,7 +104,6 @@ Class | Method | HTTP request | Description
 *CachingApi* | [**PurgeTagsIndex**](CachingApi.md#purgetagsindex) | **Get** /domains/{domain}/purge-tags | Get domain&#39;s Purge tags
 *CustomPagesApi* | [**CustomPagesGet**](CustomPagesApi.md#custompagesget) | **Get** /domains/{domain}/custom-pages | Get list of custom pages
 *CustomPagesApi* | [**CustomPagesUpdate**](CustomPagesApi.md#custompagesupdate) | **Post** /domains/{domain}/custom-pages | Update custom page
-*DDoSApi* | [**DdosIndex**](DDoSApi.md#ddosindex) | **Get** /domains/{domain}/ddos | Get DDoS protection settings
 *DDoSApi* | [**DdosReprioritize**](DDoSApi.md#ddosreprioritize) | **Post** /domains/{domain}/ddos/actions/reprioritize | Change priority of ddos rules
 *DDoSApi* | [**DdosRulesDestroy**](DDoSApi.md#ddosrulesdestroy) | **Delete** /domains/{domain}/ddos/rules/{id} | Delete DDoS protection rule
 *DDoSApi* | [**DdosRulesIndex**](DDoSApi.md#ddosrulesindex) | **Get** /domains/{domain}/ddos/rules | Get DDoS Protection Rules
@@ -113,7 +112,6 @@ Class | Method | HTTP request | Description
 *DDoSApi* | [**DdosRulesUpdate**](DDoSApi.md#ddosrulesupdate) | **Patch** /domains/{domain}/ddos/rules/{id} | Update the DDoS protection rule
 *DDoSApi* | [**DdosSettingsIndex**](DDoSApi.md#ddossettingsindex) | **Get** /domains/{domain}/ddos/settings | Get DDoS protection settings
 *DDoSApi* | [**DdosSettingsUpdate**](DDoSApi.md#ddossettingsupdate) | **Patch** /domains/{domain}/ddos/settings | Update domain&#39;s DDoS protection configuration
-*DDoSApi* | [**DdosUpdate**](DDoSApi.md#ddosupdate) | **Patch** /domains/{domain}/ddos | Update domain&#39;s DDoS protection configuration
 *DNSManagementApi* | [**DnsRecordsCloud**](DNSManagementApi.md#dnsrecordscloud) | **Put** /domains/{domain}/dns-records/{id}/cloud | Toggle cloud status (To proxy or not proxy, that&#39;s the question!)
 *DNSManagementApi* | [**DnsRecordsDestroy**](DNSManagementApi.md#dnsrecordsdestroy) | **Delete** /domains/{domain}/dns-records/{id} | Remove a DNS record
 *DNSManagementApi* | [**DnsRecordsDnsSecShow**](DNSManagementApi.md#dnsrecordsdnssecshow) | **Get** /domains/{domain}/dns-records/dnssec | Get status of DNSSEC
@@ -157,7 +155,6 @@ Class | Method | HTTP request | Description
 *EmailForwardingApi* | [**EmailForwardingsRecipientsStore**](EmailForwardingApi.md#emailforwardingsrecipientsstore) | **Post** /domains/{domain}/email-forwardings/{emailForwardingId}/recipients | Create new recipient
 *EmailForwardingApi* | [**EmailForwardingsRecipientsVerify**](EmailForwardingApi.md#emailforwardingsrecipientsverify) | **Post** /domains/{domain}/email-forwardings/{emailForwardingId}/recipients/{emailForwardingRecipientId}/verify | Verify recipient
 *EmailForwardingApi* | [**EmailForwardingsStats**](EmailForwardingApi.md#emailforwardingsstats) | **Get** /domains/{domain}/email-forwardings/stats | Show stats of domain&#39;s email forwarding
-*FirewallApi* | [**FirewallIndex**](FirewallApi.md#firewallindex) | **Get** /domains/{domain}/firewall | Get domain&#39;s firewall configuration
 *FirewallApi* | [**FirewallReprioritize**](FirewallApi.md#firewallreprioritize) | **Post** /domains/{domain}/firewall/actions/reprioritize | Change priority of firewall rules
 *FirewallApi* | [**FirewallRulesDestroy**](FirewallApi.md#firewallrulesdestroy) | **Delete** /domains/{domain}/firewall/rules/{id} | Delete firewall rule
 *FirewallApi* | [**FirewallRulesIndex**](FirewallApi.md#firewallrulesindex) | **Get** /domains/{domain}/firewall/rules | Get domain&#39;s firewall rules
@@ -166,7 +163,6 @@ Class | Method | HTTP request | Description
 *FirewallApi* | [**FirewallRulesUpdate**](FirewallApi.md#firewallrulesupdate) | **Patch** /domains/{domain}/firewall/rules/{id} | Update the firewall rule
 *FirewallApi* | [**FirewallSettingsIndex**](FirewallApi.md#firewallsettingsindex) | **Get** /domains/{domain}/firewall/settings | Get domain&#39;s firewall configuration
 *FirewallApi* | [**FirewallSettingsUpdate**](FirewallApi.md#firewallsettingsupdate) | **Patch** /domains/{domain}/firewall/settings | Update domain&#39;s firewall configuration
-*FirewallApi* | [**FirewallUpdate**](FirewallApi.md#firewallupdate) | **Patch** /domains/{domain}/firewall | Update domain&#39;s firewall configuration
 *ListApi* | [**ListsDestroy**](ListApi.md#listsdestroy) | **Delete** /dynamic-fields/{id} | Delete List
 *ListApi* | [**ListsIndex**](ListApi.md#listsindex) | **Get** /dynamic-fields | Get the list of Lists
 *ListApi* | [**ListsShow**](ListApi.md#listsshow) | **Get** /dynamic-fields/{id} | Get an existing List
@@ -212,16 +208,14 @@ Class | Method | HTTP request | Description
 *PlanApi* | [**DomainsPlansUsages**](PlanApi.md#domainsplansusages) | **Get** /domains/{domain}/plan/usages | Get usages based on features and an estimated cost
 *PlanApi* | [**DomainsPlansViolations**](PlanApi.md#domainsplansviolations) | **Get** /domains/{domain}/plan/violations | Get violations based on plans
 *PlanApi* | [**PlansIndex**](PlanApi.md#plansindex) | **Get** /plans | Get the list of feature defintions for plans based on different sets
-*RateLimitingApi* | [**RateLimitingIndex**](RateLimitingApi.md#ratelimitingindex) | **Get** /domains/{domain}/rate-limit | Get Rate-Limit settings
-*RateLimitingApi* | [**RateLimitingReprioritize**](RateLimitingApi.md#ratelimitingreprioritize) | **Post** /domains/{domain}/rate-limit/actions/reprioritize | Change priority of Rate limiting&#39;s rules
+*RateLimitingApi* | [**RateLimitingActionsReprioritize**](RateLimitingApi.md#ratelimitingactionsreprioritize) | **Post** /domains/{domain}/rate-limit/actions/reprioritize | Change priority of Rate limiting&#39;s rules
+*RateLimitingApi* | [**RateLimitingRulesCreate**](RateLimitingApi.md#ratelimitingrulescreate) | **Post** /domains/{domain}/rate-limit/rules | Store new Rate limiting rule
 *RateLimitingApi* | [**RateLimitingRulesDestroy**](RateLimitingApi.md#ratelimitingrulesdestroy) | **Delete** /domains/{domain}/rate-limit/rules/{id} | Delete Rate limiting&#39;s rule
 *RateLimitingApi* | [**RateLimitingRulesIndex**](RateLimitingApi.md#ratelimitingrulesindex) | **Get** /domains/{domain}/rate-limit/rules | Get Rate limiting rules
 *RateLimitingApi* | [**RateLimitingRulesShow**](RateLimitingApi.md#ratelimitingrulesshow) | **Get** /domains/{domain}/rate-limit/rules/{id} | Get Rate limiting&#39;s rule information
-*RateLimitingApi* | [**RateLimitingRulesStore**](RateLimitingApi.md#ratelimitingrulesstore) | **Post** /domains/{domain}/rate-limit/rules | Store new Rate limiting rule
 *RateLimitingApi* | [**RateLimitingRulesUpdate**](RateLimitingApi.md#ratelimitingrulesupdate) | **Patch** /domains/{domain}/rate-limit/rules/{id} | Update the Rate limiting&#39;s rule
 *RateLimitingApi* | [**RateLimitingSettingsIndex**](RateLimitingApi.md#ratelimitingsettingsindex) | **Get** /domains/{domain}/rate-limit/settings | Get Rate limiting settings
 *RateLimitingApi* | [**RateLimitingSettingsUpdate**](RateLimitingApi.md#ratelimitingsettingsupdate) | **Patch** /domains/{domain}/rate-limit/settings | Update domain&#39;s Rate limiting configuration
-*RateLimitingApi* | [**RateLimitingUpdate**](RateLimitingApi.md#ratelimitingupdate) | **Patch** /domains/{domain}/rate-limit | Update domain&#39;s Rate limiting configuration
 *RedirectApi* | [**RedirectShow**](RedirectApi.md#redirectshow) | **Get** /domains/{domain}/settings/www-redirect | Get redirect settings
 *RedirectApi* | [**RedirectUpdate**](RedirectApi.md#redirectupdate) | **Put** /domains/{domain}/settings/www-redirect | Update redirect settings
 *ReportsApi* | [**BulkReportsTrafficsTotal**](ReportsApi.md#bulkreportstrafficstotal) | **Post** /bulk/reports/traffics | Get traffic report for multiple domains
@@ -242,6 +236,7 @@ Class | Method | HTTP request | Description
 *ReportsApi* | [**ReportsTrafficsMap**](ReportsApi.md#reportstrafficsmap) | **Get** /domains/{domain}/reports/traffics/map | Get traffic as geo-map
 *ReportsApi* | [**ReportsTrafficsSaved**](ReportsApi.md#reportstrafficssaved) | **Get** /domains/{domain}/reports/traffics/saved | Get traffic saved to total pie chart
 *ReportsApi* | [**ReportsTrafficsTotal**](ReportsApi.md#reportstrafficstotal) | **Get** /domains/{domain}/reports/traffics | Get traffic report for domain
+*ReportsApi* | [**ReportsTransportLayerProxiesTraffics**](ReportsApi.md#reportstransportlayerproxiestraffics) | **Get** /domains/{domain}/reports/transport-layer-proxies/{transportLayerProxyId}/traffics | Get traffic report for transport layer proxy
 *ReportsApi* | [**ReportsVisitorsHighRequestIps**](ReportsApi.md#reportsvisitorshighrequestips) | **Get** /domains/{domain}/reports/high-request-ips | Get report of IPs with highest number of requests
 *ReportsApi* | [**ReportsVisitorsIndex**](ReportsApi.md#reportsvisitorsindex) | **Get** /domains/{domain}/reports/visitors | Get report of visitors for domain
 *SSLTLSApi* | [**SslCertDestroy**](SSLTLSApi.md#sslcertdestroy) | **Delete** /domains/{domain}/ssl/certificates/{id} | Delete an unused customer certificate
@@ -249,7 +244,7 @@ Class | Method | HTTP request | Description
 *SSLTLSApi* | [**SslCertOrderRetry**](SSLTLSApi.md#sslcertorderretry) | **Post** /domains/{domain}/ssl/orders/action/retry | Retry a previously &#x60;killed&#x60; order
 *SSLTLSApi* | [**SslCertStore**](SSLTLSApi.md#sslcertstore) | **Post** /domains/{domain}/ssl/certificates | Upload Certificate
 *SSLTLSApi* | [**SslIndex**](SSLTLSApi.md#sslindex) | **Get** /domains/{domain}/ssl | Get SSL settings
-*SSLTLSApi* | [**SslUpdate**](SSLTLSApi.md#sslupdate) | **Patch** /domains/{domain}/ssl | Update domain&#39;s SSL configuration
+*SSLTLSApi* | [**SslUpdate**](SSLTLSApi.md#sslupdate) | **Patch** /domains/{domain}/ssl | Update domain&#39;s SSL settings
 *TransportLayerProxyApi* | [**TransportLayerProxiesDestroy**](TransportLayerProxyApi.md#transportlayerproxiesdestroy) | **Delete** /domains/{domain}/transport-layer-proxies/{transportLayerProxyId} | delete a transport layer proxy
 *TransportLayerProxyApi* | [**TransportLayerProxiesIndex**](TransportLayerProxyApi.md#transportlayerproxiesindex) | **Get** /domains/{domain}/transport-layer-proxies | Show list of transport layer proxies for given domain
 *TransportLayerProxyApi* | [**TransportLayerProxiesShow**](TransportLayerProxyApi.md#transportlayerproxiesshow) | **Get** /domains/{domain}/transport-layer-proxies/{transportLayerProxyId} | Show a transport layer proxy&#39;s details based on given id
@@ -356,8 +351,6 @@ Class | Method | HTTP request | Description
  - [DKIMRecord](DKIMRecord.md)
  - [DataResponse](DataResponse.md)
  - [DataWithMessageResponse](DataWithMessageResponse.md)
- - [Ddos](Ddos.md)
- - [DdosData](DdosData.md)
  - [DdosPreflight](DdosPreflight.md)
  - [DdosRule](DdosRule.md)
  - [DdosRuleData](DdosRuleData.md)
@@ -366,7 +359,6 @@ Class | Method | HTTP request | Description
  - [DdosSettings](DdosSettings.md)
  - [DdosSettingsData](DdosSettingsData.md)
  - [DdosSettingsUpdate200Response](DdosSettingsUpdate200Response.md)
- - [DdosUpdate200Response](DdosUpdate200Response.md)
  - [DeprecatedNs](DeprecatedNs.md)
  - [DeprecatedWafSettings](DeprecatedWafSettings.md)
  - [DnsGeoReport](DnsGeoReport.md)
@@ -456,9 +448,7 @@ Class | Method | HTTP request | Description
  - [FeatureSet](FeatureSet.md)
  - [FeatureSets](FeatureSets.md)
  - [FeatureUsage](FeatureUsage.md)
- - [Firewall](Firewall.md)
  - [FirewallActionDetails](FirewallActionDetails.md)
- - [FirewallIndex200Response](FirewallIndex200Response.md)
  - [FirewallRule](FirewallRule.md)
  - [FirewallRuleResponse](FirewallRuleResponse.md)
  - [FirewallRuleView](FirewallRuleView.md)
@@ -553,8 +543,6 @@ Class | Method | HTTP request | Description
  - [PrioritizePoolAfter](PrioritizePoolAfter.md)
  - [PrioritizePoolBefore](PrioritizePoolBefore.md)
  - [PurgeTagsIndex200Response](PurgeTagsIndex200Response.md)
- - [RateLimit](RateLimit.md)
- - [RateLimitData](RateLimitData.md)
  - [RateLimitRule](RateLimitRule.md)
  - [RateLimitRuleData](RateLimitRuleData.md)
  - [RateLimitRuleView](RateLimitRuleView.md)
@@ -563,7 +551,6 @@ Class | Method | HTTP request | Description
  - [RateLimitingRulesIndex200Response](RateLimitingRulesIndex200Response.md)
  - [RateLimitingRulesUpdate200Response](RateLimitingRulesUpdate200Response.md)
  - [RateLimitingSettingsUpdate200Response](RateLimitingSettingsUpdate200Response.md)
- - [RateLimitingUpdate200Response](RateLimitingUpdate200Response.md)
  - [Redirect](Redirect.md)
  - [RedirectData](RedirectData.md)
  - [ReportsAttacksAttackers200Response](ReportsAttacksAttackers200Response.md)
@@ -627,6 +614,10 @@ Class | Method | HTTP request | Description
  - [TransportLayerProxyServer](TransportLayerProxyServer.md)
  - [TransportLayerProxyServersInner](TransportLayerProxyServersInner.md)
  - [TransportLayerProxyStore](TransportLayerProxyStore.md)
+ - [TransportLayerProxyTrafficCharts](TransportLayerProxyTrafficCharts.md)
+ - [TransportLayerProxyTrafficChartsTraffics](TransportLayerProxyTrafficChartsTraffics.md)
+ - [TransportLayerProxyTrafficChartsTrafficsSeriesInner](TransportLayerProxyTrafficChartsTrafficsSeriesInner.md)
+ - [TransportLayerProxyTrafficsData](TransportLayerProxyTrafficsData.md)
  - [TransportLayerProxyUpdate](TransportLayerProxyUpdate.md)
  - [Troubleshoot](Troubleshoot.md)
  - [TroubleshootDetailsInner](TroubleshootDetailsInner.md)

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | Pointer to **string** | a user uploaded certificate&#39;s uuid or &#x60;managed&#x60; | [optional] 
 **CertificateKeyType** | Pointer to **string** |  | [optional] 
+**FingerprintStatus** | Pointer to **bool** | Whether Domain is using fingerprint or not | [optional] 
 **SslStatus** | Pointer to **bool** | Whether Domain is using ssl module or not | [optional] 
 **CertificateMode** | Pointer to **string** | Indicates certificate is managed by arvan, or its up to the user | [optional] [readonly] 
 **TlsVersion** | Pointer to **string** | Minimum version of TLS. Empty (&#39;&#39;) means default. | [optional] 
@@ -86,6 +87,31 @@ SetCertificateKeyType sets CertificateKeyType field to given value.
 `func (o *SslUpdate) HasCertificateKeyType() bool`
 
 HasCertificateKeyType returns a boolean if a field has been set.
+
+### GetFingerprintStatus
+
+`func (o *SslUpdate) GetFingerprintStatus() bool`
+
+GetFingerprintStatus returns the FingerprintStatus field if non-nil, zero value otherwise.
+
+### GetFingerprintStatusOk
+
+`func (o *SslUpdate) GetFingerprintStatusOk() (*bool, bool)`
+
+GetFingerprintStatusOk returns a tuple with the FingerprintStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFingerprintStatus
+
+`func (o *SslUpdate) SetFingerprintStatus(v bool)`
+
+SetFingerprintStatus sets FingerprintStatus field to given value.
+
+### HasFingerprintStatus
+
+`func (o *SslUpdate) HasFingerprintStatus() bool`
+
+HasFingerprintStatus returns a boolean if a field has been set.
 
 ### GetSslStatus
 

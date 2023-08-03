@@ -270,6 +270,21 @@ func Test_r1cdn_ReportsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test ReportsApiService ReportsTransportLayerProxiesTraffics", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var domain string
+		var transportLayerProxyId string
+
+		resp, httpRes, err := apiClient.ReportsApi.ReportsTransportLayerProxiesTraffics(context.Background(), domain, transportLayerProxyId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ReportsApiService ReportsVisitorsHighRequestIps", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

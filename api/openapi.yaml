@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ArvanCloud CDN Services
-  version: 4.99.2
+  version: 4.103.1
   x-logo:
     url: /images/other/arvan-api-docs-logo.svg
     backgroundColor: white
@@ -6102,6 +6102,89 @@ paths:
       summary: Get list of URLs under attack
       tags:
       - Reports
+  /domains/{domain}/reports/transport-layer-proxies/{transportLayerProxyId}/traffics:
+    get:
+      operationId: reports.transport_layer_proxies.traffics
+      parameters:
+      - description: Domain name
+        example: example.com
+        explode: false
+        in: path
+        name: domain
+        required: true
+        schema:
+          format: hostname
+          type: string
+        style: simple
+      - description: Transport layer proxy id
+        explode: false
+        in: path
+        name: transportLayerProxyId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Select period -ending now- for report
+        explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - 1h
+          - 3h
+          - 6h
+          - 12h
+          - 24h
+          - 7d
+          - 30d
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: since
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: until
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransportLayerProxyTrafficsData'
+          description: Success
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+          description: Access token is missing or invalid
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domains_store_422_response'
+          description: The given data was invalid
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domains_show_404_response'
+          description: Resource not found
+      summary: Get traffic report for transport layer proxy
+      tags:
+      - Reports
   /bulk/reports/traffics:
     post:
       operationId: bulk-reports.traffics.total
@@ -6230,84 +6313,6 @@ paths:
       summary: Get visitor report for multiple domains
       tags:
       - Reports
-  /domains/{domain}/firewall:
-    get:
-      deprecated: true
-      operationId: firewall.index
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/firewall_index_200_response'
-          description: Successful
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-      summary: Get domain's firewall configuration
-      tags:
-      - Firewall
-    patch:
-      deprecated: true
-      operationId: firewall.update
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Firewall'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Successful
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-      summary: Update domain's firewall configuration
-      tags:
-      - Firewall
   /domains/{domain}/firewall/settings:
     get:
       operationId: firewall.settings.index
@@ -7470,84 +7475,6 @@ paths:
       summary: Update the WAF package
       tags:
       - WAF
-  /domains/{domain}/ddos:
-    get:
-      deprecated: true
-      operationId: ddos.index
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DdosData'
-          description: Successfully retrieved DDoS settings
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-      summary: Get DDoS protection settings
-      tags:
-      - DDoS
-    patch:
-      deprecated: true
-      operationId: ddos.update
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Ddos'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ddos_update_200_response'
-          description: Successful
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-      summary: Update domain's DDoS protection configuration
-      tags:
-      - DDoS
   /domains/{domain}/ddos/settings:
     get:
       operationId: ddos.settings.index
@@ -7914,84 +7841,6 @@ paths:
       summary: Change priority of ddos rules
       tags:
       - DDoS
-  /domains/{domain}/rate-limit:
-    get:
-      deprecated: true
-      operationId: rate-limiting.index
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RateLimitData'
-          description: Successfully retrieved Rate-Limit settings
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-      summary: Get Rate-Limit settings
-      tags:
-      - Rate Limiting
-    patch:
-      deprecated: true
-      operationId: rate-limiting.update
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RateLimit'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rate_limiting_update_200_response'
-          description: Successful
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-      summary: Update domain's Rate limiting configuration
-      tags:
-      - Rate Limiting
   /domains/{domain}/rate-limit/settings:
     get:
       operationId: rate-limiting.settings.index
@@ -8128,7 +7977,7 @@ paths:
       tags:
       - Rate Limiting
     post:
-      operationId: rate-limiting.rules.store
+      operationId: rate-limiting.rules.create
       parameters:
       - description: Domain name
         example: example.com
@@ -8307,7 +8156,7 @@ paths:
       description: |
         You can choose a rule and request to put it after or before another rule.
         You should only provide either after_rule_id or before_rule_id (and not both of them).
-      operationId: rate-limiting.reprioritize
+      operationId: rate-limiting.actions.reprioritize
       parameters:
       - description: Domain name
         example: example.com
@@ -8850,7 +8699,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/domains_show_404_response'
           description: Resource not found
-      summary: Update domain's SSL configuration
+      summary: Update domain's SSL settings
       tags:
       - SSL/TLS
   /domains/{domain}/ssl/certificates:
@@ -10113,6 +9962,11 @@ components:
             charts:
               $ref: '#/components/schemas/SavedTrafficsCharts'
           type: object
+    TransportLayerProxyTrafficCharts:
+      properties:
+        traffics:
+          $ref: '#/components/schemas/TransportLayerProxyTrafficCharts_traffics'
+      type: object
     TrafficCharts:
       properties:
         requests:
@@ -10127,6 +9981,17 @@ components:
         requests:
           $ref: '#/components/schemas/TrafficStatistics_traffics'
       type: object
+    TransportLayerProxyTrafficsData:
+      allOf:
+      - $ref: '#/components/schemas/DataResponse'
+      example:
+        data: "{}"
+      properties:
+        data:
+          properties:
+            charts:
+              $ref: '#/components/schemas/TransportLayerProxyTrafficCharts'
+          type: object
     TrafficsData:
       allOf:
       - $ref: '#/components/schemas/DataResponse'
@@ -11281,6 +11146,7 @@ components:
         ns_keys:
         - ns_keys
         - ns_keys
+        fingerprint_status: false
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         current_ns:
         - current_ns
@@ -11366,6 +11232,10 @@ components:
           type: array
         transfer:
           $ref: '#/components/schemas/DomainTransferData'
+        fingerprint_status:
+          default: false
+          readOnly: true
+          type: boolean
         created_at:
           format: date-time
           readOnly: true
@@ -11435,6 +11305,7 @@ components:
           ns_keys:
           - ns_keys
           - ns_keys
+          fingerprint_status: false
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           current_ns:
           - current_ns
@@ -14313,6 +14184,8 @@ components:
           type: boolean
         status:
           type: boolean
+        tls_fingerprint:
+          type: boolean
         server_port:
           type: boolean
         bytes_sent:
@@ -14324,6 +14197,8 @@ components:
         cache:
           type: boolean
         request_id:
+          type: boolean
+        timestamp:
           type: boolean
       type: object
     LogForwarderWAFType:
@@ -14541,6 +14416,7 @@ components:
           enum:
           - allow
           - deny
+          - drop
           - bypass
           - challenge
           type: string
@@ -14556,40 +14432,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/BypassAction'
       - $ref: '#/components/schemas/ChallengeAction'
-    Firewall:
-      deprecated: true
-      example:
-        is_enabled: true
-        default_action_details: "{}"
-        verify_sni: false
-        rules:
-        - action_details: "{}"
-        - action_details: "{}"
-        default_action: allow
-      properties:
-        is_enabled:
-          readOnly: true
-          type: boolean
-        default_action:
-          enum:
-          - allow
-          - deny
-          - bypass
-          - challenge
-          type: string
-        default_action_details:
-          nullable: true
-          type: object
-        verify_sni:
-          default: false
-          description: True to verify that SNI and hostname are equal
-          type: boolean
-        rules:
-          items:
-            $ref: '#/components/schemas/FirewallRuleView'
-          readOnly: true
-          type: array
-      type: object
     FirewallRule:
       allOf:
       - $ref: '#/components/schemas/BaseFirewallRule'
@@ -15189,120 +15031,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/DdosSettings'
-    Ddos:
-      deprecated: true
-      example:
-        is_enabled: true
-        https_only: true
-        rules:
-        - is_enabled: true
-          url_pattern: url_pattern
-          sources:
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          description: description
-          action: passthrough
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - is_enabled: true
-          url_pattern: url_pattern
-          sources:
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          description: description
-          action: passthrough
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        captcha_service: recaptcha
-        ttl: 0
-        preflight:
-          access_credentials: access_credentials
-          access_methods:
-          - GET
-          - GET
-          access_expose_headers: access_expose_headers
-          access_origin: access_origin
-          access_headers: access_headers
-        protection_mode: "false"
-      properties:
-        is_enabled:
-          readOnly: true
-          type: boolean
-        protection_mode:
-          enum:
-          - "false"
-          - cookie
-          - javascript
-          - captcha
-          type: string
-        captcha_service:
-          enum:
-          - recaptcha
-          - arcaptcha
-          - hcaptcha
-          type: string
-        ttl:
-          description: Time in seconds for cookie max-age
-          type: integer
-        https_only:
-          description: Adds "SameSite=None; Secure" to set-cookie header
-          type: boolean
-        preflight:
-          $ref: '#/components/schemas/DdosPreflight'
-        rules:
-          items:
-            $ref: '#/components/schemas/DdosRule'
-          readOnly: true
-          type: array
-      type: object
-    DdosData:
-      allOf:
-      - $ref: '#/components/schemas/DataWithMessageResponse'
-      example:
-        data:
-          is_enabled: true
-          https_only: true
-          rules:
-          - is_enabled: true
-            url_pattern: url_pattern
-            sources:
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            description: description
-            action: passthrough
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - is_enabled: true
-            url_pattern: url_pattern
-            sources:
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            description: description
-            action: passthrough
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          captcha_service: recaptcha
-          ttl: 0
-          preflight:
-            access_credentials: access_credentials
-            access_methods:
-            - GET
-            - GET
-            access_expose_headers: access_expose_headers
-            access_origin: access_origin
-            access_headers: access_headers
-          protection_mode: "false"
-      properties:
-        data:
-          $ref: '#/components/schemas/Ddos'
     DdosPreflight:
       example:
         access_credentials: access_credentials
@@ -15443,43 +15171,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/RateLimitSettings'
-    RateLimit:
-      example:
-        exclude_sources:
-        - 1.2.3.4/32
-        - 1.2.3.4/32
-        ddos_detection: true
-        rules:
-        - action_details: "{}"
-        - action_details: "{}"
-      properties:
-        ddos_detection:
-          type: boolean
-        exclude_sources:
-          items:
-            $ref: '#/components/schemas/CIDR'
-          type: array
-        rules:
-          items:
-            $ref: '#/components/schemas/RateLimitRuleView'
-          readOnly: true
-          type: array
-      type: object
-    RateLimitData:
-      allOf:
-      - $ref: '#/components/schemas/DataResponse'
-      example:
-        data:
-          exclude_sources:
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          ddos_detection: true
-          rules:
-          - action_details: "{}"
-          - action_details: "{}"
-      properties:
-        data:
-          $ref: '#/components/schemas/RateLimit'
     RateLimitRule:
       allOf:
       - $ref: '#/components/schemas/BaseRateLimitRule'
@@ -16126,6 +15817,7 @@ components:
           - domain_names
         https_redirect: true
         replace_http: true
+        fingerprint_status: true
         hsts_status: true
         orders:
         - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -16156,6 +15848,9 @@ components:
         ssl_status: true
         hsts_max_age: 1mo
       properties:
+        fingerprint_status:
+          description: Whether Domain is using fingerprint or not
+          type: boolean
         ssl_status:
           description: Whether Domain is using ssl module or not
           type: boolean
@@ -16245,6 +15940,7 @@ components:
             - domain_names
           https_redirect: true
           replace_http: true
+          fingerprint_status: true
           hsts_status: true
           orders:
           - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18708,6 +18404,7 @@ components:
           ns_keys:
           - ns_keys
           - ns_keys
+          fingerprint_status: false
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           current_ns:
           - current_ns
@@ -18737,6 +18434,7 @@ components:
           ns_keys:
           - ns_keys
           - ns_keys
+          fingerprint_status: false
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           current_ns:
           - current_ns
@@ -19661,21 +19359,6 @@ components:
         excludeSubdomains:
           description: Whether to include sub-domains or report only root domain traffic
       type: object
-    firewall_index_200_response:
-      allOf:
-      - $ref: '#/components/schemas/DataWithMessageResponse'
-      example:
-        data:
-          is_enabled: true
-          default_action_details: "{}"
-          verify_sni: false
-          rules:
-          - action_details: "{}"
-          - action_details: "{}"
-          default_action: allow
-      properties:
-        data:
-          $ref: '#/components/schemas/Firewall'
     firewall_settings_index_200_response:
       allOf:
       - $ref: '#/components/schemas/DataWithMessageResponse'
@@ -19747,50 +19430,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/DomainWafPackageDetails'
-    ddos_update_200_response:
-      allOf:
-      - $ref: '#/components/schemas/DataWithMessageResponse'
-      example:
-        data:
-          is_enabled: true
-          https_only: true
-          rules:
-          - is_enabled: true
-            url_pattern: url_pattern
-            sources:
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            description: description
-            action: passthrough
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - is_enabled: true
-            url_pattern: url_pattern
-            sources:
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            - 1.2.3.4/32
-            description: description
-            action: passthrough
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          captcha_service: recaptcha
-          ttl: 0
-          preflight:
-            access_credentials: access_credentials
-            access_methods:
-            - GET
-            - GET
-            access_expose_headers: access_expose_headers
-            access_origin: access_origin
-            access_headers: access_headers
-          protection_mode: "false"
-      properties:
-        data:
-          $ref: '#/components/schemas/Ddos'
     ddos_settings_update_200_response:
       allOf:
       - $ref: '#/components/schemas/DataWithMessageResponse'
@@ -19844,21 +19483,6 @@ components:
           items:
             $ref: '#/components/schemas/DdosRule'
           type: array
-    rate_limiting_update_200_response:
-      allOf:
-      - $ref: '#/components/schemas/DataWithMessageResponse'
-      example:
-        data:
-          exclude_sources:
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          ddos_detection: true
-          rules:
-          - action_details: "{}"
-          - action_details: "{}"
-      properties:
-        data:
-          $ref: '#/components/schemas/RateLimit'
     rate_limiting_settings_update_200_response:
       allOf:
       - $ref: '#/components/schemas/DataWithMessageResponse'
@@ -20396,6 +20020,35 @@ components:
           type: integer
         total:
           type: integer
+      type: object
+    TransportLayerProxyTrafficCharts_traffics_series_inner:
+      properties:
+        name:
+          enum:
+          - reports.traffics.bytes_out
+          - reports.traffics.bytes_in
+          - reports.traffics.connections
+          type: string
+        data:
+          items:
+            type: integer
+          type: array
+      type: object
+    TransportLayerProxyTrafficCharts_traffics:
+      properties:
+        title:
+          enum:
+          - reports.traffics
+          type: string
+        categories:
+          items:
+            format: date-time
+            type: string
+          type: array
+        series:
+          items:
+            $ref: '#/components/schemas/TransportLayerProxyTrafficCharts_traffics_series_inner'
+          type: array
       type: object
     TrafficCharts_requests_series_inner:
       properties:

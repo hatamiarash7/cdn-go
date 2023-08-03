@@ -22,20 +22,6 @@ func Test_r1cdn_FirewallApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test FirewallApiService FirewallIndex", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.FirewallApi.FirewallIndex(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test FirewallApiService FirewallReprioritize", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -144,20 +130,6 @@ func Test_r1cdn_FirewallApiService(t *testing.T) {
 		var domain string
 
 		resp, httpRes, err := apiClient.FirewallApi.FirewallSettingsUpdate(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FirewallApiService FirewallUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.FirewallApi.FirewallUpdate(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

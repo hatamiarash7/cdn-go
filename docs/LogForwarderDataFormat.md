@@ -16,14 +16,15 @@ Name | Type | Description | Notes
 **Asn** | Pointer to **bool** |  | [optional] 
 **ContentType** | Pointer to **bool** |  | [optional] 
 **Status** | Pointer to **bool** |  | [optional] 
+**TlsFingerprint** | Pointer to **bool** |  | [optional] 
 **ServerPort** | Pointer to **bool** |  | [optional] 
 **BytesSent** | Pointer to **bool** |  | [optional] 
 **BytesReceived** | Pointer to **bool** |  | [optional] 
 **UpstreamTime** | Pointer to **bool** |  | [optional] 
 **Cache** | Pointer to **bool** |  | [optional] 
 **RequestId** | Pointer to **bool** |  | [optional] 
-**Product** | Pointer to **bool** |  | [optional] 
 **Timestamp** | Pointer to **bool** |  | [optional] 
+**Product** | Pointer to **bool** |  | [optional] 
 **RemoteAddress** | Pointer to **bool** |  | [optional] 
 **Data** | Pointer to **bool** |  | [optional] 
 **Uuid** | Pointer to **bool** |  | [optional] 
@@ -363,6 +364,31 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### GetTlsFingerprint
+
+`func (o *LogForwarderDataFormat) GetTlsFingerprint() bool`
+
+GetTlsFingerprint returns the TlsFingerprint field if non-nil, zero value otherwise.
+
+### GetTlsFingerprintOk
+
+`func (o *LogForwarderDataFormat) GetTlsFingerprintOk() (*bool, bool)`
+
+GetTlsFingerprintOk returns a tuple with the TlsFingerprint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTlsFingerprint
+
+`func (o *LogForwarderDataFormat) SetTlsFingerprint(v bool)`
+
+SetTlsFingerprint sets TlsFingerprint field to given value.
+
+### HasTlsFingerprint
+
+`func (o *LogForwarderDataFormat) HasTlsFingerprint() bool`
+
+HasTlsFingerprint returns a boolean if a field has been set.
+
 ### GetServerPort
 
 `func (o *LogForwarderDataFormat) GetServerPort() bool`
@@ -513,31 +539,6 @@ SetRequestId sets RequestId field to given value.
 
 HasRequestId returns a boolean if a field has been set.
 
-### GetProduct
-
-`func (o *LogForwarderDataFormat) GetProduct() bool`
-
-GetProduct returns the Product field if non-nil, zero value otherwise.
-
-### GetProductOk
-
-`func (o *LogForwarderDataFormat) GetProductOk() (*bool, bool)`
-
-GetProductOk returns a tuple with the Product field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProduct
-
-`func (o *LogForwarderDataFormat) SetProduct(v bool)`
-
-SetProduct sets Product field to given value.
-
-### HasProduct
-
-`func (o *LogForwarderDataFormat) HasProduct() bool`
-
-HasProduct returns a boolean if a field has been set.
-
 ### GetTimestamp
 
 `func (o *LogForwarderDataFormat) GetTimestamp() bool`
@@ -562,6 +563,31 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *LogForwarderDataFormat) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### GetProduct
+
+`func (o *LogForwarderDataFormat) GetProduct() bool`
+
+GetProduct returns the Product field if non-nil, zero value otherwise.
+
+### GetProductOk
+
+`func (o *LogForwarderDataFormat) GetProductOk() (*bool, bool)`
+
+GetProductOk returns a tuple with the Product field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProduct
+
+`func (o *LogForwarderDataFormat) SetProduct(v bool)`
+
+SetProduct sets Product field to given value.
+
+### HasProduct
+
+`func (o *LogForwarderDataFormat) HasProduct() bool`
+
+HasProduct returns a boolean if a field has been set.
 
 ### GetRemoteAddress
 

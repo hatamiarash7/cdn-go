@@ -22,20 +22,6 @@ func Test_r1cdn_DDoSApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test DDoSApiService DdosIndex", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.DDoSApi.DdosIndex(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DDoSApiService DdosReprioritize", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -144,20 +130,6 @@ func Test_r1cdn_DDoSApiService(t *testing.T) {
 		var domain string
 
 		resp, httpRes, err := apiClient.DDoSApi.DdosSettingsUpdate(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DDoSApiService DdosUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.DDoSApi.DdosUpdate(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
