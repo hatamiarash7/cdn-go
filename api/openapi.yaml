@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ArvanCloud CDN Services
-  version: 4.103.1
+  version: 4.104.0
   x-logo:
     url: /images/other/arvan-api-docs-logo.svg
     backgroundColor: white
@@ -6723,90 +6723,6 @@ paths:
                 $ref: '#/components/schemas/domains_show_404_response'
           description: Resource not found
       summary: Get WAF package details
-      tags:
-      - WAF
-  /domains/{domain}/waf:
-    get:
-      deprecated: true
-      operationId: waf.index
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DomainWafData'
-          description: Successfully retrieved list of WAF settings
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-      summary: Get WAF configuration
-      tags:
-      - WAF
-    patch:
-      deprecated: true
-      operationId: waf.update
-      parameters:
-      - description: Domain name
-        example: example.com
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          format: hostname
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Waf'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DomainWafData'
-          description: Successfully retrieved list of WAF settings
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Access token is missing or invalid
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_show_404_response'
-          description: Resource not found
-        "422":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/domains_store_422_response'
-          description: The given data was invalid
-      summary: Configure WAF module of the domain
       tags:
       - WAF
   /domains/{domain}/waf/settings:
@@ -14633,23 +14549,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/WafPresets'
-    DeprecatedWafSettings:
-      deprecated: true
-      properties:
-        f_waf_status:
-          enum:
-          - "false"
-          - detection
-          - "true"
-          type: string
-        f_threshold:
-          pattern: "^\\d{1,2}$"
-          type: string
-        f_provider:
-          enum:
-          - LUA
-          type: string
-      type: object
     WafSettings:
       example:
         is_enabled: true
@@ -14674,61 +14573,6 @@ components:
             WAF.
           items:
             $ref: '#/components/schemas/DomainWafPackage'
-          readOnly: true
-          type: array
-      type: object
-    Waf:
-      example:
-        is_enabled: true
-        mode: "false"
-        rules:
-        - is_enabled: true
-          url_pattern: url_pattern
-          sources:
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          action: protect
-          description: description
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - is_enabled: true
-          url_pattern: url_pattern
-          sources:
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          - 1.2.3.4/32
-          action: protect
-          description: description
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        packages:
-        - is_enabled: true
-          params: "{}"
-        - is_enabled: true
-          params: "{}"
-      properties:
-        is_enabled:
-          readOnly: true
-          type: boolean
-        mode:
-          enum:
-          - "false"
-          - detect
-          - protect
-          type: string
-        packages:
-          description: Pacakges and their configurations that are used to configure
-            WAF.
-          items:
-            $ref: '#/components/schemas/DomainWafPackage'
-          readOnly: true
-          type: array
-        rules:
-          items:
-            $ref: '#/components/schemas/WafRule'
           readOnly: true
           type: array
       type: object
@@ -14858,19 +14702,6 @@ components:
         is_enabled:
           default: true
           type: boolean
-    DomainWaf:
-      anyOf:
-      - $ref: '#/components/schemas/Waf'
-      - $ref: '#/components/schemas/DeprecatedWafSettings'
-      type: object
-    DomainWafData:
-      allOf:
-      - $ref: '#/components/schemas/DataResponse'
-      example:
-        data: null
-      properties:
-        data:
-          $ref: '#/components/schemas/DomainWaf'
     DomainWafPackageStore:
       example:
         id: id

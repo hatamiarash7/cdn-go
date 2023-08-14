@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GlobalWafIndex**](WAFApi.md#GlobalWafIndex) | **Get** /waf | Get WAF presets
 [**GlobalWafShowPackage**](WAFApi.md#GlobalWafShowPackage) | **Get** /waf/packages/{packageId} | Get WAF package details
-[**WafIndex**](WAFApi.md#WafIndex) | **Get** /domains/{domain}/waf | Get WAF configuration
 [**WafPackageReprioritize**](WAFApi.md#WafPackageReprioritize) | **Post** /domains/{domain}/waf/actions/reprioritize-package | Change priority of WAF packages
 [**WafPackagesDestroy**](WAFApi.md#WafPackagesDestroy) | **Delete** /domains/{domain}/waf/packages/{id} | Delete WAF package from domain
 [**WafPackagesIndex**](WAFApi.md#WafPackagesIndex) | **Get** /domains/{domain}/waf/packages | Get WAF packages
@@ -22,7 +21,6 @@ Method | HTTP request | Description
 [**WafRulesUpdate**](WAFApi.md#WafRulesUpdate) | **Patch** /domains/{domain}/waf/rules/{id} | Update the WAF rule
 [**WafSettingsIndex**](WAFApi.md#WafSettingsIndex) | **Get** /domains/{domain}/waf/settings | Get WAF configuration
 [**WafSettingsUpdate**](WAFApi.md#WafSettingsUpdate) | **Patch** /domains/{domain}/waf/settings | Configure WAF module of the domain
-[**WafUpdate**](WAFApi.md#WafUpdate) | **Patch** /domains/{domain}/waf | Configure WAF module of the domain
 
 
 
@@ -138,74 +136,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WafPackageDetailsData**](WafPackageDetailsData.md)
-
-### Authorization
-
-[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
-[[Back to Model list]](HOW-TO.md#documentation-for-models)
-[[Back to README]](HOW-TO.md)
-
-
-## WafIndex
-
-> DomainWafData WafIndex(ctx, domain).Execute()
-
-Get WAF configuration
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/arvancloud/cdn-go"
-)
-
-func main() {
-    domain := "example.com" // string | Domain name
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WAFApi.WafIndex(context.Background(), domain).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WAFApi.WafIndex``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `WafIndex`: DomainWafData
-    fmt.Fprintf(os.Stdout, "Response from `WAFApi.WafIndex`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | Domain name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiWafIndexRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**DomainWafData**](DomainWafData.md)
 
 ### Authorization
 
@@ -1278,76 +1208,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WafSettingsData**](WafSettingsData.md)
-
-### Authorization
-
-[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
-[[Back to Model list]](HOW-TO.md#documentation-for-models)
-[[Back to README]](HOW-TO.md)
-
-
-## WafUpdate
-
-> DomainWafData WafUpdate(ctx, domain).Waf(waf).Execute()
-
-Configure WAF module of the domain
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/arvancloud/cdn-go"
-)
-
-func main() {
-    domain := "example.com" // string | Domain name
-    waf := *openapiclient.NewWaf() // Waf |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WAFApi.WafUpdate(context.Background(), domain).Waf(waf).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WAFApi.WafUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `WafUpdate`: DomainWafData
-    fmt.Fprintf(os.Stdout, "Response from `WAFApi.WafUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | Domain name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiWafUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **waf** | [**Waf**](Waf.md) |  | 
-
-### Return type
-
-[**DomainWafData**](DomainWafData.md)
 
 ### Authorization
 

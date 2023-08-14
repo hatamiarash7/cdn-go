@@ -2,7 +2,7 @@
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
-**API version**: 4.103.1
+**API version**: 4.104.0
 
 ## Dependencies
 
@@ -255,7 +255,6 @@ Class | Method | HTTP request | Description
 *TroubleshootApi* | [**TroubleshootsStore**](TroubleshootApi.md#troubleshootsstore) | **Post** /domains/{domain}/troubleshoots | Create new troubleshoot
 *WAFApi* | [**GlobalWafIndex**](WAFApi.md#globalwafindex) | **Get** /waf | Get WAF presets
 *WAFApi* | [**GlobalWafShowPackage**](WAFApi.md#globalwafshowpackage) | **Get** /waf/packages/{packageId} | Get WAF package details
-*WAFApi* | [**WafIndex**](WAFApi.md#wafindex) | **Get** /domains/{domain}/waf | Get WAF configuration
 *WAFApi* | [**WafPackageReprioritize**](WAFApi.md#wafpackagereprioritize) | **Post** /domains/{domain}/waf/actions/reprioritize-package | Change priority of WAF packages
 *WAFApi* | [**WafPackagesDestroy**](WAFApi.md#wafpackagesdestroy) | **Delete** /domains/{domain}/waf/packages/{id} | Delete WAF package from domain
 *WAFApi* | [**WafPackagesIndex**](WAFApi.md#wafpackagesindex) | **Get** /domains/{domain}/waf/packages | Get WAF packages
@@ -271,7 +270,6 @@ Class | Method | HTTP request | Description
 *WAFApi* | [**WafRulesUpdate**](WAFApi.md#wafrulesupdate) | **Patch** /domains/{domain}/waf/rules/{id} | Update the WAF rule
 *WAFApi* | [**WafSettingsIndex**](WAFApi.md#wafsettingsindex) | **Get** /domains/{domain}/waf/settings | Get WAF configuration
 *WAFApi* | [**WafSettingsUpdate**](WAFApi.md#wafsettingsupdate) | **Patch** /domains/{domain}/waf/settings | Configure WAF module of the domain
-*WAFApi* | [**WafUpdate**](WAFApi.md#wafupdate) | **Patch** /domains/{domain}/waf | Configure WAF module of the domain
 
 
 ## Documentation For Models
@@ -360,7 +358,6 @@ Class | Method | HTTP request | Description
  - [DdosSettingsData](DdosSettingsData.md)
  - [DdosSettingsUpdate200Response](DdosSettingsUpdate200Response.md)
  - [DeprecatedNs](DeprecatedNs.md)
- - [DeprecatedWafSettings](DeprecatedWafSettings.md)
  - [DnsGeoReport](DnsGeoReport.md)
  - [DnsGeoReportCharts](DnsGeoReportCharts.md)
  - [DnsGeoReportChartsRequestsValue](DnsGeoReportChartsRequestsValue.md)
@@ -390,8 +387,6 @@ Class | Method | HTTP request | Description
  - [DomainResponse](DomainResponse.md)
  - [DomainStore](DomainStore.md)
  - [DomainTransferData](DomainTransferData.md)
- - [DomainWaf](DomainWaf.md)
- - [DomainWafData](DomainWafData.md)
  - [DomainWafPackage](DomainWafPackage.md)
  - [DomainWafPackageDetails](DomainWafPackageDetails.md)
  - [DomainWafPackageDetailsData](DomainWafPackageDetailsData.md)
@@ -636,7 +631,6 @@ Class | Method | HTTP request | Description
  - [VisitorsData](VisitorsData.md)
  - [VisitorsStatistics](VisitorsStatistics.md)
  - [VisitorsStatisticsVisitors](VisitorsStatisticsVisitors.md)
- - [Waf](Waf.md)
  - [WafPackage](WafPackage.md)
  - [WafPackageDetails](WafPackageDetails.md)
  - [WafPackageDetailsData](WafPackageDetailsData.md)

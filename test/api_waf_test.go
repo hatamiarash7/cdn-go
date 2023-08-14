@@ -48,20 +48,6 @@ func Test_r1cdn_WAFApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WAFApiService WafIndex", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.WAFApi.WafIndex(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test WAFApiService WafPackageReprioritize", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -271,20 +257,6 @@ func Test_r1cdn_WAFApiService(t *testing.T) {
 		var domain string
 
 		resp, httpRes, err := apiClient.WAFApi.WafSettingsUpdate(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WAFApiService WafUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.WAFApi.WafUpdate(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
