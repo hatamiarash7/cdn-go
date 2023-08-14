@@ -97,5 +97,4 @@ jobs:
           git config user.email "arash.hatami@arvancloud.ir"
           git remote add gitlab "https://oauth2:${{ secrets.GLPAT }}@git.arvancloud.ir/arvancloud/cdn/go-sdk.git"
           git commit --allow-empty -a -m "SDK ${{ env.APP_VERSION }} - API v${{ steps.version.outputs.data }}"
-          git push --set-upstream gitlab --all
-          git push --set-upstream gitlab --tags
+          git push --set-upstream gitlab main
