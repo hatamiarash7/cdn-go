@@ -26,6 +26,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.PAT }}
+          fetch-depth: 0
 
       - name: Get version
         run: echo "APP_VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
