@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ArvanCloud CDN Services
-  version: 4.104.0
+  version: 4.105.0
   x-logo:
     url: /images/other/arvan-api-docs-logo.svg
     backgroundColor: white
@@ -13986,6 +13986,7 @@ components:
           - waf
           - dns
           - error
+          - event
           type: string
         connection_type:
           enum:
@@ -14073,6 +14074,7 @@ components:
       - $ref: '#/components/schemas/LogForwarderWAFType'
       - $ref: '#/components/schemas/LogForwarderDNSType'
       - $ref: '#/components/schemas/LogForwarderErrorType'
+      - $ref: '#/components/schemas/LogForwarderEventType'
     LogForwarderAccessLogType:
       description: Access log type
       properties:
@@ -14151,6 +14153,46 @@ components:
         response_code:
           type: boolean
         process_time:
+          type: boolean
+      type: object
+    LogForwarderEventType:
+      description: Event log type
+      properties:
+        domain:
+          type: boolean
+        uuid:
+          type: boolean
+        timestamp:
+          type: boolean
+        method:
+          type: boolean
+        scheme:
+          type: boolean
+        ip:
+          type: boolean
+        country:
+          type: boolean
+        status:
+          type: boolean
+        server_ip:
+          type: boolean
+        server_port:
+          type: boolean
+        uri:
+          type: boolean
+        query_string:
+          type: boolean
+        firewall:
+          type: boolean
+        proxy:
+          type: boolean
+        dns_resolver:
+          type: boolean
+        ddos:
+          type: boolean
+        ratelimit:
+          type: boolean
+        waf:
           type: boolean
       type: object
     LogForwarderErrorType:
@@ -16552,7 +16594,11 @@ components:
         needed_balance: 1.4658129805029452
         name: name
         discount: 6.027456183070403
+        key: enterprise
       properties:
+        key:
+          example: enterprise
+          type: string
         name:
           type: string
         monthly_cost:
@@ -17046,10 +17092,12 @@ components:
           needed_balance: 1.4658129805029452
           name: name
           discount: 6.027456183070403
+          key: enterprise
         - monthly_cost: 0.8008281904610115
           needed_balance: 1.4658129805029452
           name: name
           discount: 6.027456183070403
+          key: enterprise
         feature_sets:
         - features:
           - plans:
@@ -17482,10 +17530,12 @@ components:
             needed_balance: 1.4658129805029452
             name: name
             discount: 6.027456183070403
+            key: enterprise
           - monthly_cost: 0.8008281904610115
             needed_balance: 1.4658129805029452
             name: name
             discount: 6.027456183070403
+            key: enterprise
           feature_sets:
           - features:
             - plans:

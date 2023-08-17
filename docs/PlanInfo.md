@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Key** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **MonthlyCost** | Pointer to **float32** |  | [optional] 
 **Discount** | Pointer to **float32** | between 0 to 100 is the percentage of the discount | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewPlanInfoWithDefaults instantiates a new PlanInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKey
+
+`func (o *PlanInfo) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *PlanInfo) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *PlanInfo) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+### HasKey
+
+`func (o *PlanInfo) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
 
 ### GetName
 

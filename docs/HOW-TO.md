@@ -2,7 +2,7 @@
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
-**API version**: 4.104.0
+**API version**: 4.105.0
 
 ## Dependencies
 
@@ -493,6 +493,7 @@ Class | Method | HTTP request | Description
  - [LogForwarderDataFormat](LogForwarderDataFormat.md)
  - [LogForwarderDatadogConnectionType](LogForwarderDatadogConnectionType.md)
  - [LogForwarderErrorType](LogForwarderErrorType.md)
+ - [LogForwarderEventType](LogForwarderEventType.md)
  - [LogForwarderGeneric](LogForwarderGeneric.md)
  - [LogForwarderKafkaConnectionType](LogForwarderKafkaConnectionType.md)
  - [LogForwarderLogglyConnectionType](LogForwarderLogglyConnectionType.md)

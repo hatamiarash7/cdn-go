@@ -44,6 +44,13 @@ Name | Type | Description | Notes
 **RealTimestamp** | Pointer to **bool** |  | [optional] 
 **ErrorMessage** | Pointer to **bool** |  | [optional] 
 **PopSite** | Pointer to **bool** |  | [optional] 
+**ServerIp** | Pointer to **bool** |  | [optional] 
+**Firewall** | Pointer to **bool** |  | [optional] 
+**Proxy** | Pointer to **bool** |  | [optional] 
+**DnsResolver** | Pointer to **bool** |  | [optional] 
+**Ddos** | Pointer to **bool** |  | [optional] 
+**Ratelimit** | Pointer to **bool** |  | [optional] 
+**Waf** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -1063,6 +1070,181 @@ SetPopSite sets PopSite field to given value.
 `func (o *LogForwarderDataFormat) HasPopSite() bool`
 
 HasPopSite returns a boolean if a field has been set.
+
+### GetServerIp
+
+`func (o *LogForwarderDataFormat) GetServerIp() bool`
+
+GetServerIp returns the ServerIp field if non-nil, zero value otherwise.
+
+### GetServerIpOk
+
+`func (o *LogForwarderDataFormat) GetServerIpOk() (*bool, bool)`
+
+GetServerIpOk returns a tuple with the ServerIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerIp
+
+`func (o *LogForwarderDataFormat) SetServerIp(v bool)`
+
+SetServerIp sets ServerIp field to given value.
+
+### HasServerIp
+
+`func (o *LogForwarderDataFormat) HasServerIp() bool`
+
+HasServerIp returns a boolean if a field has been set.
+
+### GetFirewall
+
+`func (o *LogForwarderDataFormat) GetFirewall() bool`
+
+GetFirewall returns the Firewall field if non-nil, zero value otherwise.
+
+### GetFirewallOk
+
+`func (o *LogForwarderDataFormat) GetFirewallOk() (*bool, bool)`
+
+GetFirewallOk returns a tuple with the Firewall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirewall
+
+`func (o *LogForwarderDataFormat) SetFirewall(v bool)`
+
+SetFirewall sets Firewall field to given value.
+
+### HasFirewall
+
+`func (o *LogForwarderDataFormat) HasFirewall() bool`
+
+HasFirewall returns a boolean if a field has been set.
+
+### GetProxy
+
+`func (o *LogForwarderDataFormat) GetProxy() bool`
+
+GetProxy returns the Proxy field if non-nil, zero value otherwise.
+
+### GetProxyOk
+
+`func (o *LogForwarderDataFormat) GetProxyOk() (*bool, bool)`
+
+GetProxyOk returns a tuple with the Proxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProxy
+
+`func (o *LogForwarderDataFormat) SetProxy(v bool)`
+
+SetProxy sets Proxy field to given value.
+
+### HasProxy
+
+`func (o *LogForwarderDataFormat) HasProxy() bool`
+
+HasProxy returns a boolean if a field has been set.
+
+### GetDnsResolver
+
+`func (o *LogForwarderDataFormat) GetDnsResolver() bool`
+
+GetDnsResolver returns the DnsResolver field if non-nil, zero value otherwise.
+
+### GetDnsResolverOk
+
+`func (o *LogForwarderDataFormat) GetDnsResolverOk() (*bool, bool)`
+
+GetDnsResolverOk returns a tuple with the DnsResolver field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsResolver
+
+`func (o *LogForwarderDataFormat) SetDnsResolver(v bool)`
+
+SetDnsResolver sets DnsResolver field to given value.
+
+### HasDnsResolver
+
+`func (o *LogForwarderDataFormat) HasDnsResolver() bool`
+
+HasDnsResolver returns a boolean if a field has been set.
+
+### GetDdos
+
+`func (o *LogForwarderDataFormat) GetDdos() bool`
+
+GetDdos returns the Ddos field if non-nil, zero value otherwise.
+
+### GetDdosOk
+
+`func (o *LogForwarderDataFormat) GetDdosOk() (*bool, bool)`
+
+GetDdosOk returns a tuple with the Ddos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDdos
+
+`func (o *LogForwarderDataFormat) SetDdos(v bool)`
+
+SetDdos sets Ddos field to given value.
+
+### HasDdos
+
+`func (o *LogForwarderDataFormat) HasDdos() bool`
+
+HasDdos returns a boolean if a field has been set.
+
+### GetRatelimit
+
+`func (o *LogForwarderDataFormat) GetRatelimit() bool`
+
+GetRatelimit returns the Ratelimit field if non-nil, zero value otherwise.
+
+### GetRatelimitOk
+
+`func (o *LogForwarderDataFormat) GetRatelimitOk() (*bool, bool)`
+
+GetRatelimitOk returns a tuple with the Ratelimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRatelimit
+
+`func (o *LogForwarderDataFormat) SetRatelimit(v bool)`
+
+SetRatelimit sets Ratelimit field to given value.
+
+### HasRatelimit
+
+`func (o *LogForwarderDataFormat) HasRatelimit() bool`
+
+HasRatelimit returns a boolean if a field has been set.
+
+### GetWaf
+
+`func (o *LogForwarderDataFormat) GetWaf() bool`
+
+GetWaf returns the Waf field if non-nil, zero value otherwise.
+
+### GetWafOk
+
+`func (o *LogForwarderDataFormat) GetWafOk() (*bool, bool)`
+
+GetWafOk returns a tuple with the Waf field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWaf
+
+`func (o *LogForwarderDataFormat) SetWaf(v bool)`
+
+SetWaf sets Waf field to given value.
+
+### HasWaf
+
+`func (o *LogForwarderDataFormat) HasWaf() bool`
+
+HasWaf returns a boolean if a field has been set.
 
 
 [[Back to Model list]](HOW-TO.md#documentation-for-models) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints) [[Back to README]](HOW-TO.md)
