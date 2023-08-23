@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/arvancloud/cdn-go"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
 )
 
 func main() {
@@ -94,7 +94,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/arvancloud/cdn-go"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
 )
 
 func main() {
@@ -164,7 +164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/arvancloud/cdn-go"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
 )
 
 func main() {
@@ -232,7 +232,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/arvancloud/cdn-go"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-# Go API client for r1cdn
+# Go API client for arvancloud
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
@@ -18,13 +18,13 @@ go get golang.org/x/net/context
 Get the package:
 
 ```bash
-go get github.com/arvancloud/cdn-go
+go get git.arvancloud.ir/arvancloud/cdn-go
 ```
 
 Put the package under your project folder and add the following in import:
 
 ```golang
-import r1cdn "github.com/arvancloud/cdn-go"
+import arvancloud "git.arvancloud.ir/arvancloud/cdn-go"
 ```
 
 ## Configuration of Server URL
@@ -36,7 +36,7 @@ Default configuration comes with `Servers` field that contains server objects as
 For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), r1cdn.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), arvancloud.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
@@ -44,7 +44,7 @@ ctx := context.WithValue(context.Background(), r1cdn.ContextServerIndex, 1)
 Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), r1cdn.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), arvancloud.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -58,10 +58,10 @@ An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```golang
-ctx := context.WithValue(context.Background(), r1cdn.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), arvancloud.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), r1cdn.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), arvancloud.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
