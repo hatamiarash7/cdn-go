@@ -99,4 +99,4 @@ jobs:
           git remote add gitlab "https://oauth2:${{ secrets.GLPAT }}@git.arvancloud.ir/arvancloud/cdn/cdn-go-sdk.git"
           git commit --allow-empty -a -m "SDK ${{ env.APP_VERSION }} - API v${{ steps.version.outputs.data }}"
           git checkout main
-          git push --set-upstream gitlab main -f --all
+          git push --set-upstream gitlab main -f --tag
