@@ -100,5 +100,15 @@ jobs:
           git commit --allow-empty -a -m "SDK ${{ env.APP_VERSION }} - API v${{ steps.version.outputs.data }}"
           git checkout main
           git push --set-upstream gitlab main -f --tag
-          curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: ${{ secrets.GLPAT }}" --data '{"name": "${{ github.event.release.name }}", "tag_name": "${{ env.APP_VERSION }}", "description": "${{ github.event.release.body }}"}' --request POST "https://git.arvancloud.ir/api/v4/projects/117/releases"
-          
+
+      - name: Gitlab - Create release
+        uses: indiesdev/curl@v1.1
+        with:
+          url: https://git.arvancloud.ir/api/v4/projects/117/releases
+          method: "POST"
+          accept: 200
+          headers: '{"PRIVATE-TOKEN": "${{ secrets.GLPAT }}"}'
+          body: '{"name": "${{ github.event.release.name }}", "tag_name": "${{ env.APP_VERSION }}", "description": "${{ github.event.release.body }}"}'
+          timeout: 2000
+          log-response: true
+          retries: 2
