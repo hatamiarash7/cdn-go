@@ -1,4 +1,4 @@
-module git.arvancloud.ir/arvancloud/cdn/go-sdk
+module git.arvancloud.ir/arvancloud/cdn-go-sdk
 
 go 1.18
 

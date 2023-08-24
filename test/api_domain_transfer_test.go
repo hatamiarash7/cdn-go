@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+	openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func Test_arvancloud_DomainTransferApiService(t *testing.T) {

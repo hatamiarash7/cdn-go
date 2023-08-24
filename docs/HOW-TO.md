@@ -24,7 +24,7 @@ go get git.arvancloud.ir/arvancloud/cdn-go
 Put the package under your project folder and add the following in import:
 
 ```golang
-import arvancloud "git.arvancloud.ir/arvancloud/cdn-go"
+import arvancloud "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 ```
 
 ## Configuration of Server URL

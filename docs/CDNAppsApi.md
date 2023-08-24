@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -164,7 +164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -238,7 +238,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -308,7 +308,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -376,7 +376,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -447,7 +447,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -515,7 +515,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -586,7 +586,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
@@ -659,7 +659,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "git.arvancloud.ir/arvancloud/cdn/go-sdk"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 )
 
 func main() {
