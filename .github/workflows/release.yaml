@@ -106,7 +106,7 @@ jobs:
         with:
           url: https://git.arvancloud.ir/api/v4/projects/117/releases
           method: "POST"
-          accept: 200
+          accept: 201
           headers: '{"PRIVATE-TOKEN": "${{ secrets.GLPAT }}"}'
           body: '{"name": "${{ github.event.release.name }}", "tag_name": "${{ env.APP_VERSION }}", "description": "${{ github.event.release.body }}"}'
           timeout: 2000
