@@ -2,7 +2,7 @@
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
-**API version**: 4.105.0
+**API version**: 4.106.0
 
 ## Dependencies
 

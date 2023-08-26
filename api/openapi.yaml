@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ArvanCloud CDN Services
-  version: 4.105.0
+  version: 4.106.0
   x-logo:
     url: /images/other/arvan-api-docs-logo.svg
     backgroundColor: white
