@@ -4,16 +4,16 @@ All URIs are relative to *https://napi.arvancloud.ir/cdn/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AccelerationIndex**](AccelerationApi.md#AccelerationIndex) | **Get** /domains/{domain}/acceleration | Get the content of acceleration settings
+[**AccelerationShow**](AccelerationApi.md#AccelerationShow) | **Get** /domains/{domain}/acceleration | Get the content of acceleration settings
 [**AccelerationUpdate**](AccelerationApi.md#AccelerationUpdate) | **Patch** /domains/{domain}/acceleration | Update the content of acceleration settings
-[**ImageResizeGet**](AccelerationApi.md#ImageResizeGet) | **Get** /domains/{domain}/image-resize | Get the content of image resize settings
+[**ImageResizeShow**](AccelerationApi.md#ImageResizeShow) | **Get** /domains/{domain}/image-resize | Get the content of image resize settings
 [**ImageResizeUpdate**](AccelerationApi.md#ImageResizeUpdate) | **Patch** /domains/{domain}/image-resize | Update the content of image resize settings
 
 
 
-## AccelerationIndex
+## AccelerationShow
 
-> AccelerationResponse AccelerationIndex(ctx, domain).Execute()
+> AccelerationResponse AccelerationShow(ctx, domain).Execute()
 
 Get the content of acceleration settings
 
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccelerationApi.AccelerationIndex(context.Background(), domain).Execute()
+    resp, r, err := apiClient.AccelerationApi.AccelerationShow(context.Background(), domain).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccelerationApi.AccelerationIndex``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccelerationApi.AccelerationShow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AccelerationIndex`: AccelerationResponse
-    fmt.Fprintf(os.Stdout, "Response from `AccelerationApi.AccelerationIndex`: %v\n", resp)
+    // response from `AccelerationShow`: AccelerationResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccelerationApi.AccelerationShow`: %v\n", resp)
 }
 ```
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccelerationIndexRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAccelerationShowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -149,9 +149,9 @@ Name | Type | Description  | Notes
 [[Back to README]](HOW-TO.md)
 
 
-## ImageResizeGet
+## ImageResizeShow
 
-> ImageResizeResponse ImageResizeGet(ctx, domain).Execute()
+> ImageResizeResponse ImageResizeShow(ctx, domain).Execute()
 
 Get the content of image resize settings
 
@@ -172,13 +172,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccelerationApi.ImageResizeGet(context.Background(), domain).Execute()
+    resp, r, err := apiClient.AccelerationApi.ImageResizeShow(context.Background(), domain).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccelerationApi.ImageResizeGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccelerationApi.ImageResizeShow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImageResizeGet`: ImageResizeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AccelerationApi.ImageResizeGet`: %v\n", resp)
+    // response from `ImageResizeShow`: ImageResizeResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccelerationApi.ImageResizeShow`: %v\n", resp)
 }
 ```
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiImageResizeGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiImageResizeShowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

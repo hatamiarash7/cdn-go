@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Labels** | Pointer to [**[]FeaturePlanDefinitionMetaLabelsInner**](FeaturePlanDefinitionMetaLabelsInner.md) |  | [optional] 
 **Tip** | Pointer to **string** |  | [optional] 
+**AvailableParams** | Pointer to **[]map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetTip sets Tip field to given value.
 `func (o *FeaturePlanDefinitionMeta) HasTip() bool`
 
 HasTip returns a boolean if a field has been set.
+
+### GetAvailableParams
+
+`func (o *FeaturePlanDefinitionMeta) GetAvailableParams() []map[string]interface{}`
+
+GetAvailableParams returns the AvailableParams field if non-nil, zero value otherwise.
+
+### GetAvailableParamsOk
+
+`func (o *FeaturePlanDefinitionMeta) GetAvailableParamsOk() (*[]map[string]interface{}, bool)`
+
+GetAvailableParamsOk returns a tuple with the AvailableParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAvailableParams
+
+`func (o *FeaturePlanDefinitionMeta) SetAvailableParams(v []map[string]interface{})`
+
+SetAvailableParams sets AvailableParams field to given value.
+
+### HasAvailableParams
+
+`func (o *FeaturePlanDefinitionMeta) HasAvailableParams() bool`
+
+HasAvailableParams returns a boolean if a field has been set.
 
 
 [[Back to Model list]](HOW-TO.md#documentation-for-models) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints) [[Back to README]](HOW-TO.md)

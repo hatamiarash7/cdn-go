@@ -4,14 +4,14 @@ All URIs are relative to *https://napi.arvancloud.ir/cdn/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CustomPagesGet**](CustomPagesApi.md#CustomPagesGet) | **Get** /domains/{domain}/custom-pages | Get list of custom pages
+[**CustomPagesShow**](CustomPagesApi.md#CustomPagesShow) | **Get** /domains/{domain}/custom-pages | Get list of custom pages
 [**CustomPagesUpdate**](CustomPagesApi.md#CustomPagesUpdate) | **Post** /domains/{domain}/custom-pages | Update custom page
 
 
 
-## CustomPagesGet
+## CustomPagesShow
 
-> CustomPagesData CustomPagesGet(ctx, domain).Execute()
+> CustomPagesData CustomPagesShow(ctx, domain).Execute()
 
 Get list of custom pages
 
@@ -32,13 +32,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomPagesApi.CustomPagesGet(context.Background(), domain).Execute()
+    resp, r, err := apiClient.CustomPagesApi.CustomPagesShow(context.Background(), domain).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomPagesApi.CustomPagesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomPagesApi.CustomPagesShow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CustomPagesGet`: CustomPagesData
-    fmt.Fprintf(os.Stdout, "Response from `CustomPagesApi.CustomPagesGet`: %v\n", resp)
+    // response from `CustomPagesShow`: CustomPagesData
+    fmt.Fprintf(os.Stdout, "Response from `CustomPagesApi.CustomPagesShow`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCustomPagesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCustomPagesShowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

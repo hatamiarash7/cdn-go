@@ -22,13 +22,13 @@ func Test_arvancloud_CustomPagesApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CustomPagesApiService CustomPagesGet", func(t *testing.T) {
+	t.Run("Test CustomPagesApiService CustomPagesShow", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var domain string
 
-		resp, httpRes, err := apiClient.CustomPagesApi.CustomPagesGet(context.Background(), domain).Execute()
+		resp, httpRes, err := apiClient.CustomPagesApi.CustomPagesShow(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

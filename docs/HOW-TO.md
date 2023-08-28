@@ -2,7 +2,7 @@
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
-**API version**: 4.106.0
+**API version**: 4.107.1
 
 ## Dependencies
 
@@ -74,9 +74,9 @@ All URIs are relative to *https://napi.arvancloud.ir/cdn/4.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccelerationApi* | [**AccelerationIndex**](AccelerationApi.md#accelerationindex) | **Get** /domains/{domain}/acceleration | Get the content of acceleration settings
+*AccelerationApi* | [**AccelerationShow**](AccelerationApi.md#accelerationshow) | **Get** /domains/{domain}/acceleration | Get the content of acceleration settings
 *AccelerationApi* | [**AccelerationUpdate**](AccelerationApi.md#accelerationupdate) | **Patch** /domains/{domain}/acceleration | Update the content of acceleration settings
-*AccelerationApi* | [**ImageResizeGet**](AccelerationApi.md#imageresizeget) | **Get** /domains/{domain}/image-resize | Get the content of image resize settings
+*AccelerationApi* | [**ImageResizeShow**](AccelerationApi.md#imageresizeshow) | **Get** /domains/{domain}/image-resize | Get the content of image resize settings
 *AccelerationApi* | [**ImageResizeUpdate**](AccelerationApi.md#imageresizeupdate) | **Patch** /domains/{domain}/image-resize | Update the content of image resize settings
 *ActiveHealthCheckApi* | [**ActiveHealthCheckDestroy**](ActiveHealthCheckApi.md#activehealthcheckdestroy) | **Delete** /domains/{domain}/health-checks/{healthcheck} | Delete healthcheck
 *ActiveHealthCheckApi* | [**ActiveHealthCheckIndex**](ActiveHealthCheckApi.md#activehealthcheckindex) | **Get** /domains/{domain}/health-checks | Get Defined HealthCheck
@@ -102,7 +102,7 @@ Class | Method | HTTP request | Description
 *CachingApi* | [**CachingUpdate**](CachingApi.md#cachingupdate) | **Patch** /domains/{domain}/caching | Update caching settings
 *CachingApi* | [**PurgeTagsDestroy**](CachingApi.md#purgetagsdestroy) | **Delete** /domains/{domain}/purge-tags | Delete a Domain&#39;s Purge tag
 *CachingApi* | [**PurgeTagsIndex**](CachingApi.md#purgetagsindex) | **Get** /domains/{domain}/purge-tags | Get domain&#39;s Purge tags
-*CustomPagesApi* | [**CustomPagesGet**](CustomPagesApi.md#custompagesget) | **Get** /domains/{domain}/custom-pages | Get list of custom pages
+*CustomPagesApi* | [**CustomPagesShow**](CustomPagesApi.md#custompagesshow) | **Get** /domains/{domain}/custom-pages | Get list of custom pages
 *CustomPagesApi* | [**CustomPagesUpdate**](CustomPagesApi.md#custompagesupdate) | **Post** /domains/{domain}/custom-pages | Update custom page
 *DDoSApi* | [**DdosReprioritize**](DDoSApi.md#ddosreprioritize) | **Post** /domains/{domain}/ddos/actions/reprioritize | Change priority of ddos rules
 *DDoSApi* | [**DdosRulesDestroy**](DDoSApi.md#ddosrulesdestroy) | **Delete** /domains/{domain}/ddos/rules/{id} | Delete DDoS protection rule
@@ -209,10 +209,10 @@ Class | Method | HTTP request | Description
 *PlanApi* | [**DomainsPlansViolations**](PlanApi.md#domainsplansviolations) | **Get** /domains/{domain}/plan/violations | Get violations based on plans
 *PlanApi* | [**PlansIndex**](PlanApi.md#plansindex) | **Get** /plans | Get the list of feature defintions for plans based on different sets
 *RateLimitingApi* | [**RateLimitingActionsReprioritize**](RateLimitingApi.md#ratelimitingactionsreprioritize) | **Post** /domains/{domain}/rate-limit/actions/reprioritize | Change priority of Rate limiting&#39;s rules
-*RateLimitingApi* | [**RateLimitingRulesCreate**](RateLimitingApi.md#ratelimitingrulescreate) | **Post** /domains/{domain}/rate-limit/rules | Store new Rate limiting rule
 *RateLimitingApi* | [**RateLimitingRulesDestroy**](RateLimitingApi.md#ratelimitingrulesdestroy) | **Delete** /domains/{domain}/rate-limit/rules/{id} | Delete Rate limiting&#39;s rule
 *RateLimitingApi* | [**RateLimitingRulesIndex**](RateLimitingApi.md#ratelimitingrulesindex) | **Get** /domains/{domain}/rate-limit/rules | Get Rate limiting rules
 *RateLimitingApi* | [**RateLimitingRulesShow**](RateLimitingApi.md#ratelimitingrulesshow) | **Get** /domains/{domain}/rate-limit/rules/{id} | Get Rate limiting&#39;s rule information
+*RateLimitingApi* | [**RateLimitingRulesStore**](RateLimitingApi.md#ratelimitingrulesstore) | **Post** /domains/{domain}/rate-limit/rules | Store new Rate limiting rule
 *RateLimitingApi* | [**RateLimitingRulesUpdate**](RateLimitingApi.md#ratelimitingrulesupdate) | **Patch** /domains/{domain}/rate-limit/rules/{id} | Update the Rate limiting&#39;s rule
 *RateLimitingApi* | [**RateLimitingSettingsIndex**](RateLimitingApi.md#ratelimitingsettingsindex) | **Get** /domains/{domain}/rate-limit/settings | Get Rate limiting settings
 *RateLimitingApi* | [**RateLimitingSettingsUpdate**](RateLimitingApi.md#ratelimitingsettingsupdate) | **Patch** /domains/{domain}/rate-limit/settings | Update domain&#39;s Rate limiting configuration

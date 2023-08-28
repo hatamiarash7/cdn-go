@@ -36,20 +36,6 @@ func Test_arvancloud_RateLimitingApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test RateLimitingApiService RateLimitingRulesCreate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var domain string
-
-		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingRulesCreate(context.Background(), domain).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test RateLimitingApiService RateLimitingRulesDestroy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -87,6 +73,20 @@ func Test_arvancloud_RateLimitingApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingRulesShow(context.Background(), domain, id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RateLimitingApiService RateLimitingRulesStore", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var domain string
+
+		resp, httpRes, err := apiClient.RateLimitingApi.RateLimitingRulesStore(context.Background(), domain).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

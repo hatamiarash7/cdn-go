@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ArvanCloud CDN Services
-  version: 4.106.0
+  version: 4.107.1
   x-logo:
     url: /images/other/arvan-api-docs-logo.svg
     backgroundColor: white
@@ -3126,7 +3126,7 @@ paths:
       - Page Rule
   /domains/{domain}/image-resize:
     get:
-      operationId: image-resize.get
+      operationId: image-resize.show
       parameters:
       - description: Domain name
         example: example.com
@@ -3208,7 +3208,7 @@ paths:
       - Acceleration
   /domains/{domain}/acceleration:
     get:
-      operationId: acceleration.index
+      operationId: acceleration.show
       parameters:
       - description: Domain name
         example: example.com
@@ -3290,7 +3290,7 @@ paths:
       - Acceleration
   /domains/{domain}/custom-pages:
     get:
-      operationId: custom-pages.get
+      operationId: custom-pages.show
       parameters:
       - description: Domain name
         example: example.com
@@ -7893,7 +7893,7 @@ paths:
       tags:
       - Rate Limiting
     post:
-      operationId: rate-limiting.rules.create
+      operationId: rate-limiting.rules.store
       parameters:
       - description: Domain name
         example: example.com
@@ -16621,6 +16621,9 @@ components:
           max: 5
         meta:
           tip: tip
+          available_params:
+          - "{}"
+          - "{}"
           labels:
           - null
           - null
@@ -16652,6 +16655,9 @@ components:
               max: 5
             meta:
               tip: tip
+              available_params:
+              - "{}"
+              - "{}"
               labels:
               - null
               - null
@@ -16671,6 +16677,9 @@ components:
               max: 5
             meta:
               tip: tip
+              available_params:
+              - "{}"
+              - "{}"
               labels:
               - null
               - null
@@ -16690,6 +16699,9 @@ components:
               max: 5
             meta:
               tip: tip
+              available_params:
+              - "{}"
+              - "{}"
               labels:
               - null
               - null
@@ -16709,6 +16721,9 @@ components:
               max: 5
             meta:
               tip: tip
+              available_params:
+              - "{}"
+              - "{}"
               labels:
               - null
               - null
@@ -16728,6 +16743,9 @@ components:
               max: 5
             meta:
               tip: tip
+              available_params:
+              - "{}"
+              - "{}"
               labels:
               - null
               - null
@@ -16763,6 +16781,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16782,6 +16803,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16801,6 +16825,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16820,6 +16847,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16839,6 +16869,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16863,6 +16896,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16882,6 +16918,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16901,6 +16940,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16920,6 +16962,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -16939,6 +16984,9 @@ components:
                 max: 5
               meta:
                 tip: tip
+                available_params:
+                - "{}"
+                - "{}"
                 labels:
                 - null
                 - null
@@ -17107,6 +17155,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17126,6 +17177,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17145,6 +17199,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17164,6 +17221,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17183,6 +17243,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17207,6 +17270,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17226,6 +17292,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17245,6 +17314,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17264,6 +17336,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17283,6 +17358,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17310,6 +17388,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17329,6 +17410,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17348,6 +17432,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17367,6 +17454,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17386,6 +17476,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17410,6 +17503,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17429,6 +17525,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17448,6 +17547,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17467,6 +17569,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17486,6 +17591,9 @@ components:
                   max: 5
                 meta:
                   tip: tip
+                  available_params:
+                  - "{}"
+                  - "{}"
                   labels:
                   - null
                   - null
@@ -17545,6 +17653,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17564,6 +17675,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17583,6 +17697,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17602,6 +17719,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17621,6 +17741,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17645,6 +17768,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17664,6 +17790,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17683,6 +17812,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17702,6 +17834,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17721,6 +17856,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17748,6 +17886,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17767,6 +17908,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17786,6 +17930,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17805,6 +17952,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17824,6 +17974,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17848,6 +18001,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17867,6 +18023,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17886,6 +18045,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17905,6 +18067,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -17924,6 +18089,9 @@ components:
                     max: 5
                   meta:
                     tip: tip
+                    available_params:
+                    - "{}"
+                    - "{}"
                     labels:
                     - null
                     - null
@@ -20841,6 +21009,9 @@ components:
     FeaturePlanDefinition_meta:
       example:
         tip: tip
+        available_params:
+        - "{}"
+        - "{}"
         labels:
         - null
         - null
@@ -20851,6 +21022,10 @@ components:
           type: array
         tip:
           type: string
+        available_params:
+          items:
+            type: object
+          type: array
       type: object
     FeatureDefinition_plans:
       example:
@@ -20860,6 +21035,9 @@ components:
             max: 5
           meta:
             tip: tip
+            available_params:
+            - "{}"
+            - "{}"
             labels:
             - null
             - null
@@ -20879,6 +21057,9 @@ components:
             max: 5
           meta:
             tip: tip
+            available_params:
+            - "{}"
+            - "{}"
             labels:
             - null
             - null
@@ -20898,6 +21079,9 @@ components:
             max: 5
           meta:
             tip: tip
+            available_params:
+            - "{}"
+            - "{}"
             labels:
             - null
             - null
@@ -20917,6 +21101,9 @@ components:
             max: 5
           meta:
             tip: tip
+            available_params:
+            - "{}"
+            - "{}"
             labels:
             - null
             - null
@@ -20936,6 +21123,9 @@ components:
             max: 5
           meta:
             tip: tip
+            available_params:
+            - "{}"
+            - "{}"
             labels:
             - null
             - null
