@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | Pointer to **bool** |  | [optional] [default to false]
 **Message** | Pointer to **string** |  | [optional] 
-**Errors** | Pointer to **map[string]interface{}** | List of parameters and related errors | [optional] 
+**Errors** | Pointer to [**DomainsStore422ResponseErrors**](DomainsStore422ResponseErrors.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasMessage returns a boolean if a field has been set.
 
 ### GetErrors
 
-`func (o *DomainsStore422Response) GetErrors() map[string]interface{}`
+`func (o *DomainsStore422Response) GetErrors() DomainsStore422ResponseErrors`
 
 GetErrors returns the Errors field if non-nil, zero value otherwise.
 
 ### GetErrorsOk
 
-`func (o *DomainsStore422Response) GetErrorsOk() (*map[string]interface{}, bool)`
+`func (o *DomainsStore422Response) GetErrorsOk() (*DomainsStore422ResponseErrors, bool)`
 
 GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrors
 
-`func (o *DomainsStore422Response) SetErrors(v map[string]interface{})`
+`func (o *DomainsStore422Response) SetErrors(v DomainsStore422ResponseErrors)`
 
 SetErrors sets Errors field to given value.
 
@@ -102,16 +102,6 @@ SetErrors sets Errors field to given value.
 
 HasErrors returns a boolean if a field has been set.
 
-### SetErrorsNil
-
-`func (o *DomainsStore422Response) SetErrorsNil(b bool)`
-
- SetErrorsNil sets the value for Errors to be an explicit nil
-
-### UnsetErrors
-`func (o *DomainsStore422Response) UnsetErrors()`
-
-UnsetErrors ensures that no value is present for Errors, not even an explicit nil
 
 [[Back to Model list]](HOW-TO.md#documentation-for-models) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints) [[Back to README]](HOW-TO.md)
 

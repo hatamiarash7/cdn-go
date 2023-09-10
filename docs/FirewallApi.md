@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 ## FirewallSettingsUpdate
 
-> MessageResponse FirewallSettingsUpdate(ctx, domain).FirewallSettings(firewallSettings).Execute()
+> FirewallSettingsIndex200Response FirewallSettingsUpdate(ctx, domain).FirewallSettings(firewallSettings).Execute()
 
 Update domain's firewall configuration
 
@@ -545,7 +545,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `FirewallApi.FirewallSettingsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `FirewallSettingsUpdate`: MessageResponse
+    // response from `FirewallSettingsUpdate`: FirewallSettingsIndex200Response
     fmt.Fprintf(os.Stdout, "Response from `FirewallApi.FirewallSettingsUpdate`: %v\n", resp)
 }
 ```
@@ -570,7 +570,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MessageResponse**](MessageResponse.md)
+[**FirewallSettingsIndex200Response**](FirewallSettingsIndex200Response.md)
 
 ### Authorization
 

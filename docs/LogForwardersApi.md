@@ -4,7 +4,7 @@ All URIs are relative to *https://napi.arvancloud.ir/cdn/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**LogForwardersDestroy**](LogForwardersApi.md#LogForwardersDestroy) | **Delete** /domains/{domain}/log-forwarders/{logForwarderId} | delete a log forwarder
+[**LogForwardersDestroy**](LogForwardersApi.md#LogForwardersDestroy) | **Delete** /domains/{domain}/log-forwarders/{logForwarderId} | Delete a log forwarder
 [**LogForwardersIndex**](LogForwardersApi.md#LogForwardersIndex) | **Get** /domains/{domain}/log-forwarders | Show list of log forwarders for given domain
 [**LogForwardersShow**](LogForwardersApi.md#LogForwardersShow) | **Get** /domains/{domain}/log-forwarders/{logForwarderId} | Show a log forwarder&#39;s details based on given id
 [**LogForwardersStore**](LogForwardersApi.md#LogForwardersStore) | **Post** /domains/{domain}/log-forwarders | Create new log forwarder
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > MessageResponse LogForwardersDestroy(ctx, domain, logForwarderId).Execute()
 
-delete a log forwarder
+Delete a log forwarder
 
 ### Example
 

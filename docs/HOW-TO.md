@@ -2,7 +2,7 @@
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
-**API version**: 4.107.1
+**API version**: 4.108.0
 
 ## Dependencies
 
@@ -188,7 +188,7 @@ Class | Method | HTTP request | Description
 *LoadBalancingApi* | [**LoadBalancersShow**](LoadBalancingApi.md#loadbalancersshow) | **Get** /domains/{domain}/load-balancers/{loadBalancerId} | Get load balancer information
 *LoadBalancingApi* | [**LoadBalancersStore**](LoadBalancingApi.md#loadbalancersstore) | **Post** /domains/{domain}/load-balancers | Create a new load balancer
 *LoadBalancingApi* | [**LoadBalancersUpdate**](LoadBalancingApi.md#loadbalancersupdate) | **Patch** /domains/{domain}/load-balancers/{loadBalancerId} | Update a load balancer
-*LogForwardersApi* | [**LogForwardersDestroy**](LogForwardersApi.md#logforwardersdestroy) | **Delete** /domains/{domain}/log-forwarders/{logForwarderId} | delete a log forwarder
+*LogForwardersApi* | [**LogForwardersDestroy**](LogForwardersApi.md#logforwardersdestroy) | **Delete** /domains/{domain}/log-forwarders/{logForwarderId} | Delete a log forwarder
 *LogForwardersApi* | [**LogForwardersIndex**](LogForwardersApi.md#logforwardersindex) | **Get** /domains/{domain}/log-forwarders | Show list of log forwarders for given domain
 *LogForwardersApi* | [**LogForwardersShow**](LogForwardersApi.md#logforwardersshow) | **Get** /domains/{domain}/log-forwarders/{logForwarderId} | Show a log forwarder&#39;s details based on given id
 *LogForwardersApi* | [**LogForwardersStore**](LogForwardersApi.md#logforwardersstore) | **Post** /domains/{domain}/log-forwarders | Create new log forwarder
@@ -400,6 +400,7 @@ Class | Method | HTTP request | Description
  - [DomainsPlansViolations200Response](DomainsPlansViolations200Response.md)
  - [DomainsShow404Response](DomainsShow404Response.md)
  - [DomainsStore422Response](DomainsStore422Response.md)
+ - [DomainsStore422ResponseErrors](DomainsStore422ResponseErrors.md)
  - [DomainsTransferIndex200Response](DomainsTransferIndex200Response.md)
  - [DynamicField](DynamicField.md)
  - [DynamicFieldData](DynamicFieldData.md)

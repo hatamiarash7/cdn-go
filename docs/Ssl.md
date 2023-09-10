@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **HstsPreload** | Pointer to **bool** |  | [optional] 
 **HttpsRedirect** | Pointer to **bool** |  | [optional] 
 **ReplaceHttp** | Pointer to **bool** | Replace HTTP with HTTPs in HTML and JS sources | [optional] 
+**CertificateKeyType** | Pointer to **string** |  | [optional] 
 **Certificates** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] [readonly] 
 **Orders** | Pointer to [**[]CertificateOrder**](CertificateOrder.md) | returns all \&quot;certificate orders\&quot; since the last invalid or canceled order | [optional] [readonly] 
 
@@ -285,6 +286,31 @@ SetReplaceHttp sets ReplaceHttp field to given value.
 `func (o *Ssl) HasReplaceHttp() bool`
 
 HasReplaceHttp returns a boolean if a field has been set.
+
+### GetCertificateKeyType
+
+`func (o *Ssl) GetCertificateKeyType() string`
+
+GetCertificateKeyType returns the CertificateKeyType field if non-nil, zero value otherwise.
+
+### GetCertificateKeyTypeOk
+
+`func (o *Ssl) GetCertificateKeyTypeOk() (*string, bool)`
+
+GetCertificateKeyTypeOk returns a tuple with the CertificateKeyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateKeyType
+
+`func (o *Ssl) SetCertificateKeyType(v string)`
+
+SetCertificateKeyType sets CertificateKeyType field to given value.
+
+### HasCertificateKeyType
+
+`func (o *Ssl) HasCertificateKeyType() bool`
+
+HasCertificateKeyType returns a boolean if a field has been set.
 
 ### GetCertificates
 

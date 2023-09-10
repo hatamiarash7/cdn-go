@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ArvanCloud CDN Services
-  version: 4.107.1
+  version: 4.108.0
   x-logo:
     url: /images/other/arvan-api-docs-logo.svg
     backgroundColor: white
@@ -3581,7 +3581,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/MessageResponse'
           description: Access denied
-      summary: delete a log forwarder
+      summary: Delete a log forwarder
       tags:
       - Log Forwarders
     get:
@@ -6372,8 +6372,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MessageResponse'
-          description: Successful
+                $ref: '#/components/schemas/firewall_settings_index_200_response'
+          description: Updated Successfully
         "401":
           content:
             application/json:
@@ -15664,8 +15664,12 @@ components:
       type: object
     Ssl:
       example:
-        certificate_mode: managed
         hsts_subdomain: true
+        replace_http: true
+        hsts_status: true
+        tls_version: ""
+        certificate_key_type: rsa
+        certificate_mode: managed
         hsts_preload: true
         certificates:
         - key_type: ec
@@ -15689,9 +15693,7 @@ components:
           - domain_names
           - domain_names
         https_redirect: true
-        replace_http: true
         fingerprint_status: true
-        hsts_status: true
         orders:
         - updated_at: 2000-01-23T04:56:07.000+00:00
           expiry_date: 2000-01-23T04:56:07.000+00:00
@@ -15717,7 +15719,6 @@ components:
           domain_names:
           - domain_names
           - domain_names
-        tls_version: ""
         ssl_status: true
         hsts_max_age: 1mo
       properties:
@@ -15768,6 +15769,11 @@ components:
         replace_http:
           description: Replace HTTP with HTTPs in HTML and JS sources
           type: boolean
+        certificate_key_type:
+          enum:
+          - rsa
+          - ec
+          type: string
         certificates:
           items:
             $ref: '#/components/schemas/Certificate'
@@ -15787,8 +15793,12 @@ components:
       - $ref: '#/components/schemas/DataWithMessageResponse'
       example:
         data:
-          certificate_mode: managed
           hsts_subdomain: true
+          replace_http: true
+          hsts_status: true
+          tls_version: ""
+          certificate_key_type: rsa
+          certificate_mode: managed
           hsts_preload: true
           certificates:
           - key_type: ec
@@ -15812,9 +15822,7 @@ components:
             - domain_names
             - domain_names
           https_redirect: true
-          replace_http: true
           fingerprint_status: true
-          hsts_status: true
           orders:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             expiry_date: 2000-01-23T04:56:07.000+00:00
@@ -15840,7 +15848,6 @@ components:
             domain_names:
             - domain_names
             - domain_names
-          tls_version: ""
           ssl_status: true
           hsts_max_age: 1mo
       properties:
@@ -18406,6 +18413,18 @@ components:
       - $ref: '#/components/schemas/DynamicFieldIpType'
       - $ref: '#/components/schemas/DynamicFieldByteType'
       - $ref: '#/components/schemas/DynamicFieldNumberType'
+    UnprocessableEntityErrorObject:
+      additionalProperties:
+        type: string
+      description: List of parameters and related errors
+      nullable: true
+      type: object
+    UnprocessableEntityErrorArray:
+      description: List of error messages
+      items:
+        type: string
+      nullable: true
+      type: array
     DynamicFieldIpType:
       description: IPv4 or IPv6
       title: IP
@@ -18494,6 +18513,10 @@ components:
           items:
             $ref: '#/components/schemas/Domain'
           type: array
+    domains_store_422_response_errors:
+      oneOf:
+      - $ref: '#/components/schemas/UnprocessableEntityErrorArray'
+      - $ref: '#/components/schemas/UnprocessableEntityErrorObject'
     domains_store_422_response:
       properties:
         status:
@@ -18502,10 +18525,7 @@ components:
         message:
           type: string
         errors:
-          additionalProperties: true
-          description: List of parameters and related errors
-          nullable: true
-          type: object
+          $ref: '#/components/schemas/domains_store_422_response_errors'
       type: object
     domains_show_404_response:
       allOf:
