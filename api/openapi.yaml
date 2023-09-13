@@ -18422,9 +18422,22 @@ components:
     UnprocessableEntityErrorArray:
       description: List of error messages
       items:
-        type: string
-      nullable: true
+        items:
+          type: string
+        type: array
       type: array
+    UnprocessableEntityErrorStringArray:
+      description: List of error messages
+      items:
+        type: string
+      type: array
+    UnprocessableEntityErrorArrays:
+      additionalProperties:
+        items:
+          type: string
+        type: array
+      description: List of error messages
+      type: object
     DynamicFieldIpType:
       description: IPv4 or IPv6
       title: IP
@@ -18515,7 +18528,9 @@ components:
           type: array
     domains_store_422_response_errors:
       oneOf:
+      - $ref: '#/components/schemas/UnprocessableEntityErrorStringArray'
       - $ref: '#/components/schemas/UnprocessableEntityErrorArray'
+      - $ref: '#/components/schemas/UnprocessableEntityErrorArrays'
       - $ref: '#/components/schemas/UnprocessableEntityErrorObject'
     domains_store_422_response:
       properties:

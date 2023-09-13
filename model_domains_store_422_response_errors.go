@@ -17,14 +17,30 @@ import (
 
 // DomainsStore422ResponseErrors - struct for DomainsStore422ResponseErrors
 type DomainsStore422ResponseErrors struct {
+	ArrayOfArrayOfString *[][]string
 	ArrayOfString *[]string
+	MapmapOfStringarrayOfString *map[string][]string
 	MapmapOfStringstring *map[string]string
+}
+
+// [][]stringAsDomainsStore422ResponseErrors is a convenience function that returns [][]string wrapped in DomainsStore422ResponseErrors
+func ArrayOfArrayOfStringAsDomainsStore422ResponseErrors(v *[][]string) DomainsStore422ResponseErrors {
+	return DomainsStore422ResponseErrors{
+		ArrayOfArrayOfString: v,
+	}
 }
 
 // []stringAsDomainsStore422ResponseErrors is a convenience function that returns []string wrapped in DomainsStore422ResponseErrors
 func ArrayOfStringAsDomainsStore422ResponseErrors(v *[]string) DomainsStore422ResponseErrors {
 	return DomainsStore422ResponseErrors{
 		ArrayOfString: v,
+	}
+}
+
+// map[string][]stringAsDomainsStore422ResponseErrors is a convenience function that returns map[string][]string wrapped in DomainsStore422ResponseErrors
+func MapmapOfStringarrayOfStringAsDomainsStore422ResponseErrors(v *map[string][]string) DomainsStore422ResponseErrors {
+	return DomainsStore422ResponseErrors{
+		MapmapOfStringarrayOfString: v,
 	}
 }
 
@@ -40,6 +56,19 @@ func MapmapOfStringstringAsDomainsStore422ResponseErrors(v *map[string]string) D
 func (dst *DomainsStore422ResponseErrors) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into ArrayOfArrayOfString
+	err = newStrictDecoder(data).Decode(&dst.ArrayOfArrayOfString)
+	if err == nil {
+		jsonArrayOfArrayOfString, _ := json.Marshal(dst.ArrayOfArrayOfString)
+		if string(jsonArrayOfArrayOfString) == "{}" { // empty struct
+			dst.ArrayOfArrayOfString = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.ArrayOfArrayOfString = nil
+	}
+
 	// try to unmarshal data into ArrayOfString
 	err = newStrictDecoder(data).Decode(&dst.ArrayOfString)
 	if err == nil {
@@ -51,6 +80,19 @@ func (dst *DomainsStore422ResponseErrors) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.ArrayOfString = nil
+	}
+
+	// try to unmarshal data into MapmapOfStringarrayOfString
+	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringarrayOfString)
+	if err == nil {
+		jsonMapmapOfStringarrayOfString, _ := json.Marshal(dst.MapmapOfStringarrayOfString)
+		if string(jsonMapmapOfStringarrayOfString) == "{}" { // empty struct
+			dst.MapmapOfStringarrayOfString = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.MapmapOfStringarrayOfString = nil
 	}
 
 	// try to unmarshal data into MapmapOfStringstring
@@ -68,7 +110,9 @@ func (dst *DomainsStore422ResponseErrors) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.ArrayOfArrayOfString = nil
 		dst.ArrayOfString = nil
+		dst.MapmapOfStringarrayOfString = nil
 		dst.MapmapOfStringstring = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(DomainsStore422ResponseErrors)")
@@ -81,8 +125,16 @@ func (dst *DomainsStore422ResponseErrors) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src DomainsStore422ResponseErrors) MarshalJSON() ([]byte, error) {
+	if src.ArrayOfArrayOfString != nil {
+		return json.Marshal(&src.ArrayOfArrayOfString)
+	}
+
 	if src.ArrayOfString != nil {
 		return json.Marshal(&src.ArrayOfString)
+	}
+
+	if src.MapmapOfStringarrayOfString != nil {
+		return json.Marshal(&src.MapmapOfStringarrayOfString)
 	}
 
 	if src.MapmapOfStringstring != nil {
@@ -97,8 +149,16 @@ func (obj *DomainsStore422ResponseErrors) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.ArrayOfArrayOfString != nil {
+		return obj.ArrayOfArrayOfString
+	}
+
 	if obj.ArrayOfString != nil {
 		return obj.ArrayOfString
+	}
+
+	if obj.MapmapOfStringarrayOfString != nil {
+		return obj.MapmapOfStringarrayOfString
 	}
 
 	if obj.MapmapOfStringstring != nil {
