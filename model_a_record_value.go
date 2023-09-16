@@ -19,7 +19,7 @@ var _ MappedNullable = &ARecordValue{}
 
 // ARecordValue struct for ARecordValue
 type ARecordValue struct {
-	Ip *string `json:"ip,omitempty"`
+	Ip string `json:"ip"`
 	Port NullableInt32 `json:"port,omitempty"`
 	Weight NullableInt32 `json:"weight,omitempty"`
 	// This key shows itself here if the weight have been changed by Health Check.
@@ -32,8 +32,9 @@ type ARecordValue struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewARecordValue() *ARecordValue {
+func NewARecordValue(ip string) *ARecordValue {
 	this := ARecordValue{}
+	this.Ip = ip
 	return &this
 }
 
@@ -45,36 +46,28 @@ func NewARecordValueWithDefaults() *ARecordValue {
 	return &this
 }
 
-// GetIp returns the Ip field value if set, zero value otherwise.
+// GetIp returns the Ip field value
 func (o *ARecordValue) GetIp() string {
-	if o == nil || IsNil(o.Ip) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Ip
+
+	return o.Ip
 }
 
-// GetIpOk returns a tuple with the Ip field value if set, nil otherwise
+// GetIpOk returns a tuple with the Ip field value
 // and a boolean to check if the value has been set.
 func (o *ARecordValue) GetIpOk() (*string, bool) {
-	if o == nil || IsNil(o.Ip) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ip, true
+	return &o.Ip, true
 }
 
-// HasIp returns a boolean if a field has been set.
-func (o *ARecordValue) HasIp() bool {
-	if o != nil && !IsNil(o.Ip) {
-		return true
-	}
-
-	return false
-}
-
-// SetIp gets a reference to the given string and assigns it to the Ip field.
+// SetIp sets field value
 func (o *ARecordValue) SetIp(v string) {
-	o.Ip = &v
+	o.Ip = v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -245,9 +238,7 @@ func (o ARecordValue) MarshalJSON() ([]byte, error) {
 
 func (o ARecordValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ip) {
-		toSerialize["ip"] = o.Ip
-	}
+	toSerialize["ip"] = o.Ip
 	if o.Port.IsSet() {
 		toSerialize["port"] = o.Port.Get()
 	}

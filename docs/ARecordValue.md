@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ip** | Pointer to **string** |  | [optional] 
+**Ip** | **string** |  | 
 **Port** | Pointer to **NullableInt32** |  | [optional] 
 **Weight** | Pointer to **NullableInt32** |  | [optional] 
 **OriginalWeight** | Pointer to **int32** | This key shows itself here if the weight have been changed by Health Check. | [optional] [readonly] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewARecordValue
 
-`func NewARecordValue() *ARecordValue`
+`func NewARecordValue(ip string, ) *ARecordValue`
 
 NewARecordValue instantiates a new ARecordValue object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetIp sets Ip field to given value.
 
-### HasIp
-
-`func (o *ARecordValue) HasIp() bool`
-
-HasIp returns a boolean if a field has been set.
 
 ### GetPort
 

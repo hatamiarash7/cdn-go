@@ -11390,6 +11390,8 @@ components:
           example: US
           nullable: true
           type: string
+      required:
+      - ip
       type: object
     A-RecordValues:
       items:
