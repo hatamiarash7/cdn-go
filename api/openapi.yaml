@@ -13975,9 +13975,13 @@ components:
         connection_type: arvan_s3
         name: name
         description: description
+        id: id
         type: access
         status: true
       properties:
+        id:
+          readOnly: true
+          type: string
         name:
           type: string
         description:
@@ -14023,9 +14027,13 @@ components:
         connection_type: arvan_s3
         name: name
         description: description
+        id: id
         type: access
         status: true
       properties:
+        id:
+          readOnly: true
+          type: string
         name:
           type: string
         description:
@@ -14065,6 +14073,7 @@ components:
           connection_type: arvan_s3
           name: name
           description: description
+          id: id
           type: access
           status: true
       properties:
@@ -14384,6 +14393,18 @@ components:
           default: false
           description: True to verify that SNI and hostname are equal
           nullable: false
+          type: boolean
+        skip_global_whitelist:
+          default: false
+          description: Shows hether global whitelist should be skipped for the domain
+            or not
+          nullable: true
+          type: boolean
+        skip_global_firewall:
+          default: false
+          description: Shows whether global firewall should be skipped for the domain
+            or not
+          nullable: true
           type: boolean
       type: object
     FirewallActionDetails:

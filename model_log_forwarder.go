@@ -19,6 +19,7 @@ var _ MappedNullable = &LogForwarder{}
 
 // LogForwarder struct for LogForwarder
 type LogForwarder struct {
+	Id *string `json:"id,omitempty"`
 	Name string `json:"name"`
 	Description string `json:"description"`
 	Type string `json:"type"`
@@ -50,6 +51,38 @@ func NewLogForwarder(name string, description string, type_ string, connectionTy
 func NewLogForwarderWithDefaults() *LogForwarder {
 	this := LogForwarder{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *LogForwarder) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogForwarder) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *LogForwarder) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *LogForwarder) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value
@@ -230,6 +263,7 @@ func (o LogForwarder) MarshalJSON() ([]byte, error) {
 
 func (o LogForwarder) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
 	toSerialize["type"] = o.Type

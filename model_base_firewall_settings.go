@@ -23,6 +23,10 @@ type BaseFirewallSettings struct {
 	DefaultAction *string `json:"default_action,omitempty"`
 	// True to verify that SNI and hostname are equal
 	VerifySni *bool `json:"verify_sni,omitempty"`
+	// Shows hether global whitelist should be skipped for the domain or not
+	SkipGlobalWhitelist NullableBool `json:"skip_global_whitelist,omitempty"`
+	// Shows whether global firewall should be skipped for the domain or not
+	SkipGlobalFirewall NullableBool `json:"skip_global_firewall,omitempty"`
 }
 
 // NewBaseFirewallSettings instantiates a new BaseFirewallSettings object
@@ -33,6 +37,10 @@ func NewBaseFirewallSettings() *BaseFirewallSettings {
 	this := BaseFirewallSettings{}
 	var verifySni bool = false
 	this.VerifySni = &verifySni
+	var skipGlobalWhitelist bool = false
+	this.SkipGlobalWhitelist = *NewNullableBool(&skipGlobalWhitelist)
+	var skipGlobalFirewall bool = false
+	this.SkipGlobalFirewall = *NewNullableBool(&skipGlobalFirewall)
 	return &this
 }
 
@@ -43,6 +51,10 @@ func NewBaseFirewallSettingsWithDefaults() *BaseFirewallSettings {
 	this := BaseFirewallSettings{}
 	var verifySni bool = false
 	this.VerifySni = &verifySni
+	var skipGlobalWhitelist bool = false
+	this.SkipGlobalWhitelist = *NewNullableBool(&skipGlobalWhitelist)
+	var skipGlobalFirewall bool = false
+	this.SkipGlobalFirewall = *NewNullableBool(&skipGlobalFirewall)
 	return &this
 }
 
@@ -142,6 +154,90 @@ func (o *BaseFirewallSettings) SetVerifySni(v bool) {
 	o.VerifySni = &v
 }
 
+// GetSkipGlobalWhitelist returns the SkipGlobalWhitelist field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BaseFirewallSettings) GetSkipGlobalWhitelist() bool {
+	if o == nil || IsNil(o.SkipGlobalWhitelist.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipGlobalWhitelist.Get()
+}
+
+// GetSkipGlobalWhitelistOk returns a tuple with the SkipGlobalWhitelist field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BaseFirewallSettings) GetSkipGlobalWhitelistOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SkipGlobalWhitelist.Get(), o.SkipGlobalWhitelist.IsSet()
+}
+
+// HasSkipGlobalWhitelist returns a boolean if a field has been set.
+func (o *BaseFirewallSettings) HasSkipGlobalWhitelist() bool {
+	if o != nil && o.SkipGlobalWhitelist.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipGlobalWhitelist gets a reference to the given NullableBool and assigns it to the SkipGlobalWhitelist field.
+func (o *BaseFirewallSettings) SetSkipGlobalWhitelist(v bool) {
+	o.SkipGlobalWhitelist.Set(&v)
+}
+// SetSkipGlobalWhitelistNil sets the value for SkipGlobalWhitelist to be an explicit nil
+func (o *BaseFirewallSettings) SetSkipGlobalWhitelistNil() {
+	o.SkipGlobalWhitelist.Set(nil)
+}
+
+// UnsetSkipGlobalWhitelist ensures that no value is present for SkipGlobalWhitelist, not even an explicit nil
+func (o *BaseFirewallSettings) UnsetSkipGlobalWhitelist() {
+	o.SkipGlobalWhitelist.Unset()
+}
+
+// GetSkipGlobalFirewall returns the SkipGlobalFirewall field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BaseFirewallSettings) GetSkipGlobalFirewall() bool {
+	if o == nil || IsNil(o.SkipGlobalFirewall.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipGlobalFirewall.Get()
+}
+
+// GetSkipGlobalFirewallOk returns a tuple with the SkipGlobalFirewall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BaseFirewallSettings) GetSkipGlobalFirewallOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SkipGlobalFirewall.Get(), o.SkipGlobalFirewall.IsSet()
+}
+
+// HasSkipGlobalFirewall returns a boolean if a field has been set.
+func (o *BaseFirewallSettings) HasSkipGlobalFirewall() bool {
+	if o != nil && o.SkipGlobalFirewall.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipGlobalFirewall gets a reference to the given NullableBool and assigns it to the SkipGlobalFirewall field.
+func (o *BaseFirewallSettings) SetSkipGlobalFirewall(v bool) {
+	o.SkipGlobalFirewall.Set(&v)
+}
+// SetSkipGlobalFirewallNil sets the value for SkipGlobalFirewall to be an explicit nil
+func (o *BaseFirewallSettings) SetSkipGlobalFirewallNil() {
+	o.SkipGlobalFirewall.Set(nil)
+}
+
+// UnsetSkipGlobalFirewall ensures that no value is present for SkipGlobalFirewall, not even an explicit nil
+func (o *BaseFirewallSettings) UnsetSkipGlobalFirewall() {
+	o.SkipGlobalFirewall.Unset()
+}
+
 func (o BaseFirewallSettings) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -158,6 +254,12 @@ func (o BaseFirewallSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.VerifySni) {
 		toSerialize["verify_sni"] = o.VerifySni
+	}
+	if o.SkipGlobalWhitelist.IsSet() {
+		toSerialize["skip_global_whitelist"] = o.SkipGlobalWhitelist.Get()
+	}
+	if o.SkipGlobalFirewall.IsSet() {
+		toSerialize["skip_global_firewall"] = o.SkipGlobalFirewall.Get()
 	}
 	return toSerialize, nil
 }
