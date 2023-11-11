@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Data** | Pointer to **[]int32** |  | [optional] 
+**Data** | Pointer to **[]float32** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *ResponseTimeChartsIrSeriesInner) GetData() []int32`
+`func (o *ResponseTimeChartsIrSeriesInner) GetData() []float32`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ResponseTimeChartsIrSeriesInner) GetDataOk() (*[]int32, bool)`
+`func (o *ResponseTimeChartsIrSeriesInner) GetDataOk() (*[]float32, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ResponseTimeChartsIrSeriesInner) SetData(v []int32)`
+`func (o *ResponseTimeChartsIrSeriesInner) SetData(v []float32)`
 
 SetData sets Data field to given value.
 

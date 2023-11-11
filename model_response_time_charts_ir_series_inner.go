@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseTimeChartsIrSeriesInner{}
 // ResponseTimeChartsIrSeriesInner struct for ResponseTimeChartsIrSeriesInner
 type ResponseTimeChartsIrSeriesInner struct {
 	Name *string `json:"name,omitempty"`
-	Data []int32 `json:"data,omitempty"`
+	Data []float32 `json:"data,omitempty"`
 }
 
 // NewResponseTimeChartsIrSeriesInner instantiates a new ResponseTimeChartsIrSeriesInner object
@@ -73,9 +73,9 @@ func (o *ResponseTimeChartsIrSeriesInner) SetName(v string) {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ResponseTimeChartsIrSeriesInner) GetData() []int32 {
+func (o *ResponseTimeChartsIrSeriesInner) GetData() []float32 {
 	if o == nil || IsNil(o.Data) {
-		var ret []int32
+		var ret []float32
 		return ret
 	}
 	return o.Data
@@ -83,7 +83,7 @@ func (o *ResponseTimeChartsIrSeriesInner) GetData() []int32 {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseTimeChartsIrSeriesInner) GetDataOk() ([]int32, bool) {
+func (o *ResponseTimeChartsIrSeriesInner) GetDataOk() ([]float32, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *ResponseTimeChartsIrSeriesInner) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []int32 and assigns it to the Data field.
-func (o *ResponseTimeChartsIrSeriesInner) SetData(v []int32) {
+// SetData gets a reference to the given []float32 and assigns it to the Data field.
+func (o *ResponseTimeChartsIrSeriesInner) SetData(v []float32) {
 	o.Data = v
 }
 
