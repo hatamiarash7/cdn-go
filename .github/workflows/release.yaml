@@ -40,7 +40,7 @@ jobs:
           generator: go
           generator-tag: v6.6.0
           config-file: .github/generator/config.yml
-          openapi-url: https://cdn-api-docs.s3.ir-thr-at1.arvanstorage.ir/v4.openapi.yml
+          openapi-url: https://mehrdadep1.s3.ir-tbz-sh1.arvanstorage.ir/v4.openapi.yml
           command-args: "--http-user-agent r1c-cdn-sdk"
           output-dir: "/github/workspace"
           template-dir: .github/generator/template/
