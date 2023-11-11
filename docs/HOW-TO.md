@@ -515,7 +515,6 @@ Class | Method | HTTP request | Description
  - [MonitoringStatus](MonitoringStatus.md)
  - [NSRecord](NSRecord.md)
  - [NSRecordValue](NSRecordValue.md)
- - [NextUpstreamTcp](NextUpstreamTcp.md)
  - [NextUpstreamTcpCodes](NextUpstreamTcpCodes.md)
  - [NsDomain](NsDomain.md)
  - [NsKeys](NsKeys.md)

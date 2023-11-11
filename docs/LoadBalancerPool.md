@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Priority** | Pointer to **int32** | Zero means the default pool | [optional] 
 **Method** | Pointer to **string** |  | [optional] 
 **Keepalive** | Pointer to **string** |  | [optional] [default to "off"]
-**NextUpstreamTcp** | Pointer to [**NextUpstreamTcp**](NextUpstreamTcp.md) |  | [optional] [default to FALSE]
+**NextUpstreamTcp** | Pointer to **string** | Try another server when the first one failed if on | [optional] [default to "off"]
 **NextUpstreamTcpCodes** | Pointer to [**NextUpstreamTcpCodes**](NextUpstreamTcpCodes.md) |  | [optional] 
 **Regions** | Pointer to **[]string** |  | [optional] 
 **Origins** | Pointer to [**[]LoadBalancerOrigin**](LoadBalancerOrigin.md) |  | [optional] [readonly] 
@@ -215,20 +215,20 @@ HasKeepalive returns a boolean if a field has been set.
 
 ### GetNextUpstreamTcp
 
-`func (o *LoadBalancerPool) GetNextUpstreamTcp() NextUpstreamTcp`
+`func (o *LoadBalancerPool) GetNextUpstreamTcp() string`
 
 GetNextUpstreamTcp returns the NextUpstreamTcp field if non-nil, zero value otherwise.
 
 ### GetNextUpstreamTcpOk
 
-`func (o *LoadBalancerPool) GetNextUpstreamTcpOk() (*NextUpstreamTcp, bool)`
+`func (o *LoadBalancerPool) GetNextUpstreamTcpOk() (*string, bool)`
 
 GetNextUpstreamTcpOk returns a tuple with the NextUpstreamTcp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNextUpstreamTcp
 
-`func (o *LoadBalancerPool) SetNextUpstreamTcp(v NextUpstreamTcp)`
+`func (o *LoadBalancerPool) SetNextUpstreamTcp(v string)`
 
 SetNextUpstreamTcp sets NextUpstreamTcp field to given value.
 

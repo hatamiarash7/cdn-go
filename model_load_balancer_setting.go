@@ -20,7 +20,8 @@ var _ MappedNullable = &LoadBalancerSetting{}
 // LoadBalancerSetting struct for LoadBalancerSetting
 type LoadBalancerSetting struct {
 	Method *string `json:"method,omitempty"`
-	NextUpstreamTcp *NextUpstreamTcp `json:"next_upstream_tcp,omitempty"`
+	// Try another server when the first one failed if on
+	NextUpstreamTcp *string `json:"next_upstream_tcp,omitempty"`
 	NextUpstreamTcpCode *NextUpstreamTcpCodes `json:"next_upstream_tcp_code,omitempty"`
 	Protocol *string `json:"protocol,omitempty"`
 	Keepalive *string `json:"keepalive,omitempty"`
@@ -36,7 +37,7 @@ type LoadBalancerSetting struct {
 // will change when the set of required properties is changed
 func NewLoadBalancerSetting() *LoadBalancerSetting {
 	this := LoadBalancerSetting{}
-	var nextUpstreamTcp NextUpstreamTcp = FALSE
+	var nextUpstreamTcp string = "off"
 	this.NextUpstreamTcp = &nextUpstreamTcp
 	var keepalive string = "off"
 	this.Keepalive = &keepalive
@@ -52,7 +53,7 @@ func NewLoadBalancerSetting() *LoadBalancerSetting {
 // but it doesn't guarantee that properties required by API are set
 func NewLoadBalancerSettingWithDefaults() *LoadBalancerSetting {
 	this := LoadBalancerSetting{}
-	var nextUpstreamTcp NextUpstreamTcp = FALSE
+	var nextUpstreamTcp string = "off"
 	this.NextUpstreamTcp = &nextUpstreamTcp
 	var keepalive string = "off"
 	this.Keepalive = &keepalive
@@ -96,9 +97,9 @@ func (o *LoadBalancerSetting) SetMethod(v string) {
 }
 
 // GetNextUpstreamTcp returns the NextUpstreamTcp field value if set, zero value otherwise.
-func (o *LoadBalancerSetting) GetNextUpstreamTcp() NextUpstreamTcp {
+func (o *LoadBalancerSetting) GetNextUpstreamTcp() string {
 	if o == nil || IsNil(o.NextUpstreamTcp) {
-		var ret NextUpstreamTcp
+		var ret string
 		return ret
 	}
 	return *o.NextUpstreamTcp
@@ -106,7 +107,7 @@ func (o *LoadBalancerSetting) GetNextUpstreamTcp() NextUpstreamTcp {
 
 // GetNextUpstreamTcpOk returns a tuple with the NextUpstreamTcp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerSetting) GetNextUpstreamTcpOk() (*NextUpstreamTcp, bool) {
+func (o *LoadBalancerSetting) GetNextUpstreamTcpOk() (*string, bool) {
 	if o == nil || IsNil(o.NextUpstreamTcp) {
 		return nil, false
 	}
@@ -122,8 +123,8 @@ func (o *LoadBalancerSetting) HasNextUpstreamTcp() bool {
 	return false
 }
 
-// SetNextUpstreamTcp gets a reference to the given NextUpstreamTcp and assigns it to the NextUpstreamTcp field.
-func (o *LoadBalancerSetting) SetNextUpstreamTcp(v NextUpstreamTcp) {
+// SetNextUpstreamTcp gets a reference to the given string and assigns it to the NextUpstreamTcp field.
+func (o *LoadBalancerSetting) SetNextUpstreamTcp(v string) {
 	o.NextUpstreamTcp = &v
 }
 

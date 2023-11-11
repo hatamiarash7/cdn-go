@@ -790,7 +790,7 @@ import (
 func main() {
     domain := "example.com" // string | Domain name
     loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
-    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", openapiclient.NextUpstreamTcp("true")) // LoadBalancerPoolStore |  (optional)
+    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", "NextUpstreamTcp_example") // LoadBalancerPoolStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -864,7 +864,7 @@ func main() {
     domain := "example.com" // string | Domain name
     loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
     loadBalancerPoolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of a pool of the load balancer
-    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", openapiclient.NextUpstreamTcp("true")) // LoadBalancerPoolStore |  (optional)
+    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", "NextUpstreamTcp_example") // LoadBalancerPoolStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

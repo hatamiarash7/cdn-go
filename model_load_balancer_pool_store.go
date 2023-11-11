@@ -26,7 +26,8 @@ type LoadBalancerPoolStore struct {
 	Priority *int32 `json:"priority,omitempty"`
 	Method string `json:"method"`
 	Keepalive string `json:"keepalive"`
-	NextUpstreamTcp NextUpstreamTcp `json:"next_upstream_tcp"`
+	// Try another server when the first one failed if on
+	NextUpstreamTcp string `json:"next_upstream_tcp"`
 	NextUpstreamTcpCodes *NextUpstreamTcpCodes `json:"next_upstream_tcp_codes,omitempty"`
 	Regions []string `json:"regions,omitempty"`
 	Origins []LoadBalancerOriginStore `json:"origins,omitempty"`
@@ -36,7 +37,7 @@ type LoadBalancerPoolStore struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoadBalancerPoolStore(name string, status bool, method string, keepalive string, nextUpstreamTcp NextUpstreamTcp) *LoadBalancerPoolStore {
+func NewLoadBalancerPoolStore(name string, status bool, method string, keepalive string, nextUpstreamTcp string) *LoadBalancerPoolStore {
 	this := LoadBalancerPoolStore{}
 	this.Name = name
 	this.Status = status
@@ -53,7 +54,7 @@ func NewLoadBalancerPoolStoreWithDefaults() *LoadBalancerPoolStore {
 	this := LoadBalancerPoolStore{}
 	var keepalive string = "off"
 	this.Keepalive = keepalive
-	var nextUpstreamTcp NextUpstreamTcp = FALSE
+	var nextUpstreamTcp string = "off"
 	this.NextUpstreamTcp = nextUpstreamTcp
 	return &this
 }
@@ -219,9 +220,9 @@ func (o *LoadBalancerPoolStore) SetKeepalive(v string) {
 }
 
 // GetNextUpstreamTcp returns the NextUpstreamTcp field value
-func (o *LoadBalancerPoolStore) GetNextUpstreamTcp() NextUpstreamTcp {
+func (o *LoadBalancerPoolStore) GetNextUpstreamTcp() string {
 	if o == nil {
-		var ret NextUpstreamTcp
+		var ret string
 		return ret
 	}
 
@@ -230,7 +231,7 @@ func (o *LoadBalancerPoolStore) GetNextUpstreamTcp() NextUpstreamTcp {
 
 // GetNextUpstreamTcpOk returns a tuple with the NextUpstreamTcp field value
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerPoolStore) GetNextUpstreamTcpOk() (*NextUpstreamTcp, bool) {
+func (o *LoadBalancerPoolStore) GetNextUpstreamTcpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -238,7 +239,7 @@ func (o *LoadBalancerPoolStore) GetNextUpstreamTcpOk() (*NextUpstreamTcp, bool) 
 }
 
 // SetNextUpstreamTcp sets field value
-func (o *LoadBalancerPoolStore) SetNextUpstreamTcp(v NextUpstreamTcp) {
+func (o *LoadBalancerPoolStore) SetNextUpstreamTcp(v string) {
 	o.NextUpstreamTcp = v
 }
 

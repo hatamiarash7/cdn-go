@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Priority** | Pointer to **int32** | Zero means the default pool | [optional] 
 **Method** | **string** |  | 
 **Keepalive** | **string** |  | [default to "off"]
-**NextUpstreamTcp** | [**NextUpstreamTcp**](NextUpstreamTcp.md) |  | [default to FALSE]
+**NextUpstreamTcp** | **string** | Try another server when the first one failed if on | [default to "off"]
 **NextUpstreamTcpCodes** | Pointer to [**NextUpstreamTcpCodes**](NextUpstreamTcpCodes.md) |  | [optional] 
 **Regions** | Pointer to **[]string** |  | [optional] 
 **Origins** | Pointer to [**[]LoadBalancerOriginStore**](LoadBalancerOriginStore.md) |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewLoadBalancerPoolStore
 
-`func NewLoadBalancerPoolStore(name string, status bool, method string, keepalive string, nextUpstreamTcp NextUpstreamTcp, ) *LoadBalancerPoolStore`
+`func NewLoadBalancerPoolStore(name string, status bool, method string, keepalive string, nextUpstreamTcp string, ) *LoadBalancerPoolStore`
 
 NewLoadBalancerPoolStore instantiates a new LoadBalancerPoolStore object
 This constructor will assign default values to properties that have it defined,
@@ -166,20 +166,20 @@ SetKeepalive sets Keepalive field to given value.
 
 ### GetNextUpstreamTcp
 
-`func (o *LoadBalancerPoolStore) GetNextUpstreamTcp() NextUpstreamTcp`
+`func (o *LoadBalancerPoolStore) GetNextUpstreamTcp() string`
 
 GetNextUpstreamTcp returns the NextUpstreamTcp field if non-nil, zero value otherwise.
 
 ### GetNextUpstreamTcpOk
 
-`func (o *LoadBalancerPoolStore) GetNextUpstreamTcpOk() (*NextUpstreamTcp, bool)`
+`func (o *LoadBalancerPoolStore) GetNextUpstreamTcpOk() (*string, bool)`
 
 GetNextUpstreamTcpOk returns a tuple with the NextUpstreamTcp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNextUpstreamTcp
 
-`func (o *LoadBalancerPoolStore) SetNextUpstreamTcp(v NextUpstreamTcp)`
+`func (o *LoadBalancerPoolStore) SetNextUpstreamTcp(v string)`
 
 SetNextUpstreamTcp sets NextUpstreamTcp field to given value.
 

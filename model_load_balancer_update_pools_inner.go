@@ -29,7 +29,8 @@ type LoadBalancerUpdatePoolsInner struct {
 	Priority *int32 `json:"priority,omitempty"`
 	Method *string `json:"method,omitempty"`
 	Keepalive *string `json:"keepalive,omitempty"`
-	NextUpstreamTcp *NextUpstreamTcp `json:"next_upstream_tcp,omitempty"`
+	// Try another server when the first one failed if on
+	NextUpstreamTcp *string `json:"next_upstream_tcp,omitempty"`
 	NextUpstreamTcpCodes *NextUpstreamTcpCodes `json:"next_upstream_tcp_codes,omitempty"`
 	Regions []string `json:"regions,omitempty"`
 	MonitoringStatus NullableMonitoringStatus `json:"monitoring_status,omitempty"`
@@ -45,7 +46,7 @@ func NewLoadBalancerUpdatePoolsInner() *LoadBalancerUpdatePoolsInner {
 	this := LoadBalancerUpdatePoolsInner{}
 	var keepalive string = "off"
 	this.Keepalive = &keepalive
-	var nextUpstreamTcp NextUpstreamTcp = FALSE
+	var nextUpstreamTcp string = "off"
 	this.NextUpstreamTcp = &nextUpstreamTcp
 	return &this
 }
@@ -57,7 +58,7 @@ func NewLoadBalancerUpdatePoolsInnerWithDefaults() *LoadBalancerUpdatePoolsInner
 	this := LoadBalancerUpdatePoolsInner{}
 	var keepalive string = "off"
 	this.Keepalive = &keepalive
-	var nextUpstreamTcp NextUpstreamTcp = FALSE
+	var nextUpstreamTcp string = "off"
 	this.NextUpstreamTcp = &nextUpstreamTcp
 	return &this
 }
@@ -319,9 +320,9 @@ func (o *LoadBalancerUpdatePoolsInner) SetKeepalive(v string) {
 }
 
 // GetNextUpstreamTcp returns the NextUpstreamTcp field value if set, zero value otherwise.
-func (o *LoadBalancerUpdatePoolsInner) GetNextUpstreamTcp() NextUpstreamTcp {
+func (o *LoadBalancerUpdatePoolsInner) GetNextUpstreamTcp() string {
 	if o == nil || IsNil(o.NextUpstreamTcp) {
-		var ret NextUpstreamTcp
+		var ret string
 		return ret
 	}
 	return *o.NextUpstreamTcp
@@ -329,7 +330,7 @@ func (o *LoadBalancerUpdatePoolsInner) GetNextUpstreamTcp() NextUpstreamTcp {
 
 // GetNextUpstreamTcpOk returns a tuple with the NextUpstreamTcp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerUpdatePoolsInner) GetNextUpstreamTcpOk() (*NextUpstreamTcp, bool) {
+func (o *LoadBalancerUpdatePoolsInner) GetNextUpstreamTcpOk() (*string, bool) {
 	if o == nil || IsNil(o.NextUpstreamTcp) {
 		return nil, false
 	}
@@ -345,8 +346,8 @@ func (o *LoadBalancerUpdatePoolsInner) HasNextUpstreamTcp() bool {
 	return false
 }
 
-// SetNextUpstreamTcp gets a reference to the given NextUpstreamTcp and assigns it to the NextUpstreamTcp field.
-func (o *LoadBalancerUpdatePoolsInner) SetNextUpstreamTcp(v NextUpstreamTcp) {
+// SetNextUpstreamTcp gets a reference to the given string and assigns it to the NextUpstreamTcp field.
+func (o *LoadBalancerUpdatePoolsInner) SetNextUpstreamTcp(v string) {
 	o.NextUpstreamTcp = &v
 }
 
