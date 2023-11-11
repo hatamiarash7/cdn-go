@@ -327,4 +327,19 @@ func Test_arvancloud_LoadBalancingApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test LoadBalancingApiService LoadBalancersUpdateWithPools", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var domain string
+		var loadBalancerId string
+
+		resp, httpRes, err := apiClient.LoadBalancingApi.LoadBalancersUpdateWithPools(context.Background(), domain, loadBalancerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

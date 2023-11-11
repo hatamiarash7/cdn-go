@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **IsEnabled** | Pointer to **bool** |  | [optional] [readonly] 
 **ProtectionMode** | Pointer to **string** |  | [optional] 
 **CaptchaService** | Pointer to **string** |  | [optional] 
+**SiteKey** | Pointer to **string** | it can be configured when the captcha_service is set to arcaptcha | [optional] 
+**SecretKey** | Pointer to **string** | it can be configured when the captcha_service is set to arcaptcha | [optional] 
 **Ttl** | Pointer to **int32** | Time in seconds for cookie max-age | [optional] 
 **HttpsOnly** | Pointer to **bool** | Adds \&quot;SameSite&#x3D;None; Secure\&quot; to set-cookie header | [optional] 
 **Preflight** | Pointer to [**DdosPreflight**](DdosPreflight.md) |  | [optional] 
@@ -104,6 +106,56 @@ SetCaptchaService sets CaptchaService field to given value.
 `func (o *DdosSettings) HasCaptchaService() bool`
 
 HasCaptchaService returns a boolean if a field has been set.
+
+### GetSiteKey
+
+`func (o *DdosSettings) GetSiteKey() string`
+
+GetSiteKey returns the SiteKey field if non-nil, zero value otherwise.
+
+### GetSiteKeyOk
+
+`func (o *DdosSettings) GetSiteKeyOk() (*string, bool)`
+
+GetSiteKeyOk returns a tuple with the SiteKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiteKey
+
+`func (o *DdosSettings) SetSiteKey(v string)`
+
+SetSiteKey sets SiteKey field to given value.
+
+### HasSiteKey
+
+`func (o *DdosSettings) HasSiteKey() bool`
+
+HasSiteKey returns a boolean if a field has been set.
+
+### GetSecretKey
+
+`func (o *DdosSettings) GetSecretKey() string`
+
+GetSecretKey returns the SecretKey field if non-nil, zero value otherwise.
+
+### GetSecretKeyOk
+
+`func (o *DdosSettings) GetSecretKeyOk() (*string, bool)`
+
+GetSecretKeyOk returns a tuple with the SecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretKey
+
+`func (o *DdosSettings) SetSecretKey(v string)`
+
+SetSecretKey sets SecretKey field to given value.
+
+### HasSecretKey
+
+`func (o *DdosSettings) HasSecretKey() bool`
+
+HasSecretKey returns a boolean if a field has been set.
 
 ### GetTtl
 

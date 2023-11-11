@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **UserId** | Pointer to **string** |  | [optional] 
 **Domain** | Pointer to **string** | Deprecated in favor of name attribute | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**PlanLevel** | Pointer to **int32** | - &#x60;0&#x60; - Traffic - &#x60;1&#x60; - Basic - &#x60;2&#x60; - Growth - &#x60;3&#x60; - Professional - &#x60;4&#x60; - Enterprise  | [optional] 
+**PlanLevel** | Pointer to **int32** | - &#x60;0&#x60; - Traffic - &#x60;1&#x60; - Basic - &#x60;2&#x60; - Growth - &#x60;3&#x60; - Professional - &#x60;4&#x60; - Enterprise - Subdomains require to have Growth plan or higher  | [optional] 
 **NsKeys** | Pointer to **[]string** | Desired NS values for the domain | [optional] 
 **CurrentNs** | Pointer to **[]string** | Current NS values for the domain | [optional] 
 **TargetCname** | Pointer to **NullableString** | Current record for CNAME Setup of the domain | [optional] 

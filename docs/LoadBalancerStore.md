@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Status** | **bool** |  | 
 **Method** | **string** |  | 
+**Pools** | Pointer to [**[]LoadBalancerPoolStore**](LoadBalancerPoolStore.md) |  | [optional] 
 
 ## Methods
 
@@ -112,6 +113,31 @@ and a boolean to check if the value has been set.
 
 SetMethod sets Method field to given value.
 
+
+### GetPools
+
+`func (o *LoadBalancerStore) GetPools() []LoadBalancerPoolStore`
+
+GetPools returns the Pools field if non-nil, zero value otherwise.
+
+### GetPoolsOk
+
+`func (o *LoadBalancerStore) GetPoolsOk() (*[]LoadBalancerPoolStore, bool)`
+
+GetPoolsOk returns a tuple with the Pools field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPools
+
+`func (o *LoadBalancerStore) SetPools(v []LoadBalancerPoolStore)`
+
+SetPools sets Pools field to given value.
+
+### HasPools
+
+`func (o *LoadBalancerStore) HasPools() bool`
+
+HasPools returns a boolean if a field has been set.
 
 
 [[Back to Model list]](HOW-TO.md#documentation-for-models) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints) [[Back to README]](HOW-TO.md)

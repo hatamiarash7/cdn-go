@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**LoadBalancersShow**](LoadBalancingApi.md#LoadBalancersShow) | **Get** /domains/{domain}/load-balancers/{loadBalancerId} | Get load balancer information
 [**LoadBalancersStore**](LoadBalancingApi.md#LoadBalancersStore) | **Post** /domains/{domain}/load-balancers | Create a new load balancer
 [**LoadBalancersUpdate**](LoadBalancingApi.md#LoadBalancersUpdate) | **Patch** /domains/{domain}/load-balancers/{loadBalancerId} | Update a load balancer
+[**LoadBalancersUpdateWithPools**](LoadBalancingApi.md#LoadBalancersUpdateWithPools) | **Put** /domains/{domain}/load-balancers/{loadBalancerId} | Update a load balancer
 
 
 
@@ -789,7 +790,7 @@ import (
 func main() {
     domain := "example.com" // string | Domain name
     loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
-    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", "NextUpstreamTcp_example") // LoadBalancerPoolStore |  (optional)
+    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", openapiclient.NextUpstreamTcp("true")) // LoadBalancerPoolStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -863,7 +864,7 @@ func main() {
     domain := "example.com" // string | Domain name
     loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
     loadBalancerPoolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of a pool of the load balancer
-    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", "NextUpstreamTcp_example") // LoadBalancerPoolStore |  (optional)
+    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", openapiclient.NextUpstreamTcp("true")) // LoadBalancerPoolStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1458,6 +1459,79 @@ Name | Type | Description  | Notes
 
 
  **loadBalancer** | [**LoadBalancer**](LoadBalancer.md) |  | 
+
+### Return type
+
+[**LoadBalancerResponse**](LoadBalancerResponse.md)
+
+### Authorization
+
+[ApiKey](HOW-TO.md#ApiKey), [UserToken](HOW-TO.md#UserToken)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](HOW-TO.md#documentation-for-api-endpoints)
+[[Back to Model list]](HOW-TO.md#documentation-for-models)
+[[Back to README]](HOW-TO.md)
+
+
+## LoadBalancersUpdateWithPools
+
+> LoadBalancerResponse LoadBalancersUpdateWithPools(ctx, domain, loadBalancerId).LoadBalancerUpdate(loadBalancerUpdate).Execute()
+
+Update a load balancer
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "git.arvancloud.ir/arvancloud/cdn-go-sdk"
+)
+
+func main() {
+    domain := "example.com" // string | Domain name
+    loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
+    loadBalancerUpdate := *openapiclient.NewLoadBalancerUpdate() // LoadBalancerUpdate |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LoadBalancingApi.LoadBalancersUpdateWithPools(context.Background(), domain, loadBalancerId).LoadBalancerUpdate(loadBalancerUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LoadBalancingApi.LoadBalancersUpdateWithPools``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `LoadBalancersUpdateWithPools`: LoadBalancerResponse
+    fmt.Fprintf(os.Stdout, "Response from `LoadBalancingApi.LoadBalancersUpdateWithPools`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domain** | **string** | Domain name | 
+**loadBalancerId** | **string** | ID of the load balancer | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLoadBalancersUpdateWithPoolsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **loadBalancerUpdate** | [**LoadBalancerUpdate**](LoadBalancerUpdate.md) |  | 
 
 ### Return type
 

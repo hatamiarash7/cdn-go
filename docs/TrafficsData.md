@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to **map[string]interface{}** |  | [optional] 
+**Data** | Pointer to [**Traffics**](Traffics.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *TrafficsData) GetData() map[string]interface{}`
+`func (o *TrafficsData) GetData() Traffics`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *TrafficsData) GetDataOk() (*map[string]interface{}, bool)`
+`func (o *TrafficsData) GetDataOk() (*Traffics, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *TrafficsData) SetData(v map[string]interface{})`
+`func (o *TrafficsData) SetData(v Traffics)`
 
 SetData sets Data field to given value.
 

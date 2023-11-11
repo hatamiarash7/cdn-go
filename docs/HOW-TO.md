@@ -2,7 +2,7 @@
 
 Use this documentation to learn how to use the ArvanCloud SDK.
 
-**API version**: 4.108.0
+**API version**: 4.114.0
 
 ## Dependencies
 
@@ -188,6 +188,7 @@ Class | Method | HTTP request | Description
 *LoadBalancingApi* | [**LoadBalancersShow**](LoadBalancingApi.md#loadbalancersshow) | **Get** /domains/{domain}/load-balancers/{loadBalancerId} | Get load balancer information
 *LoadBalancingApi* | [**LoadBalancersStore**](LoadBalancingApi.md#loadbalancersstore) | **Post** /domains/{domain}/load-balancers | Create a new load balancer
 *LoadBalancingApi* | [**LoadBalancersUpdate**](LoadBalancingApi.md#loadbalancersupdate) | **Patch** /domains/{domain}/load-balancers/{loadBalancerId} | Update a load balancer
+*LoadBalancingApi* | [**LoadBalancersUpdateWithPools**](LoadBalancingApi.md#loadbalancersupdatewithpools) | **Put** /domains/{domain}/load-balancers/{loadBalancerId} | Update a load balancer
 *LogForwardersApi* | [**LogForwardersDestroy**](LogForwardersApi.md#logforwardersdestroy) | **Delete** /domains/{domain}/log-forwarders/{logForwarderId} | Delete a log forwarder
 *LogForwardersApi* | [**LogForwardersIndex**](LogForwardersApi.md#logforwardersindex) | **Get** /domains/{domain}/log-forwarders | Show list of log forwarders for given domain
 *LogForwardersApi* | [**LogForwardersShow**](LogForwardersApi.md#logforwardersshow) | **Get** /domains/{domain}/log-forwarders/{logForwarderId} | Show a log forwarder&#39;s details based on given id
@@ -483,6 +484,8 @@ Class | Method | HTTP request | Description
  - [LoadBalancerSetting](LoadBalancerSetting.md)
  - [LoadBalancerSettingsData](LoadBalancerSettingsData.md)
  - [LoadBalancerStore](LoadBalancerStore.md)
+ - [LoadBalancerUpdate](LoadBalancerUpdate.md)
+ - [LoadBalancerUpdatePoolsInner](LoadBalancerUpdatePoolsInner.md)
  - [LoadBalancersIndex200Response](LoadBalancersIndex200Response.md)
  - [LoadBalancersPoolsIndex200Response](LoadBalancersPoolsIndex200Response.md)
  - [LoadBalancersPoolsOriginsIndex200Response](LoadBalancersPoolsOriginsIndex200Response.md)
@@ -512,6 +515,8 @@ Class | Method | HTTP request | Description
  - [MonitoringStatus](MonitoringStatus.md)
  - [NSRecord](NSRecord.md)
  - [NSRecordValue](NSRecordValue.md)
+ - [NextUpstreamTcp](NextUpstreamTcp.md)
+ - [NextUpstreamTcpCodes](NextUpstreamTcpCodes.md)
  - [NsDomain](NsDomain.md)
  - [NsKeys](NsKeys.md)
  - [NsKeysResponse](NsKeysResponse.md)
@@ -599,7 +604,10 @@ Class | Method | HTTP request | Description
  - [TrafficChartsTrafficsSeriesInner](TrafficChartsTrafficsSeriesInner.md)
  - [TrafficStatistics](TrafficStatistics.md)
  - [TrafficStatisticsTraffics](TrafficStatisticsTraffics.md)
+ - [Traffics](Traffics.md)
  - [TrafficsData](TrafficsData.md)
+ - [TrafficsMap](TrafficsMap.md)
+ - [TrafficsMapCharts](TrafficsMapCharts.md)
  - [TransferDomain](TransferDomain.md)
  - [TransferDomainChangeStatus](TransferDomainChangeStatus.md)
  - [TransportLayerProxiesIndex200Response](TransportLayerProxiesIndex200Response.md)

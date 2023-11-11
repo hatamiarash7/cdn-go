@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **Name** | Pointer to **string** |  | [optional] 
+**HealthCheckStatus** | Pointer to **string** |  | [optional] [readonly] 
 **Status** | Pointer to **bool** |  | [optional] 
 **Address** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
@@ -83,6 +84,31 @@ SetName sets Name field to given value.
 `func (o *LoadBalancerOrigin) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetHealthCheckStatus
+
+`func (o *LoadBalancerOrigin) GetHealthCheckStatus() string`
+
+GetHealthCheckStatus returns the HealthCheckStatus field if non-nil, zero value otherwise.
+
+### GetHealthCheckStatusOk
+
+`func (o *LoadBalancerOrigin) GetHealthCheckStatusOk() (*string, bool)`
+
+GetHealthCheckStatusOk returns a tuple with the HealthCheckStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHealthCheckStatus
+
+`func (o *LoadBalancerOrigin) SetHealthCheckStatus(v string)`
+
+SetHealthCheckStatus sets HealthCheckStatus field to given value.
+
+### HasHealthCheckStatus
+
+`func (o *LoadBalancerOrigin) HasHealthCheckStatus() bool`
+
+HasHealthCheckStatus returns a boolean if a field has been set.
 
 ### GetStatus
 

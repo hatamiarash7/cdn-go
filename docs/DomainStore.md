@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Domain** | **string** | Name of the domain | 
 **DomainType** | Pointer to **string** | If you want to register a subdomain, you can use cname setup by sending partial type | [optional] [default to "full"]
-**PlanLevel** | Pointer to **int32** | - &#x60;0&#x60; - Traffic - &#x60;1&#x60; - Basic - &#x60;2&#x60; - Growth - &#x60;3&#x60; - Professional - &#x60;4&#x60; - Enterprise  | [optional] 
+**PlanLevel** | Pointer to **int32** | - &#x60;0&#x60; - Traffic - &#x60;1&#x60; - Basic - &#x60;2&#x60; - Growth - &#x60;3&#x60; - Professional - &#x60;4&#x60; - Enterprise - Subdomains require to have Growth plan or higher  | [optional] 
 
 ## Methods
 

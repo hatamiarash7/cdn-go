@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **bool** |  | [optional] 
 **Method** | Pointer to **string** |  | [optional] 
+**TimeSlice** | Pointer to **string** | Human friendly time duration for which a pool will uninterruptedly be selected in cluster_rr strategy, i.e. pools will switch once every time slice. | [optional] [default to "0s"]
 **Pools** | Pointer to [**[]LoadBalancerPool**](LoadBalancerPool.md) |  | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -156,6 +157,31 @@ SetMethod sets Method field to given value.
 `func (o *LoadBalancer) HasMethod() bool`
 
 HasMethod returns a boolean if a field has been set.
+
+### GetTimeSlice
+
+`func (o *LoadBalancer) GetTimeSlice() string`
+
+GetTimeSlice returns the TimeSlice field if non-nil, zero value otherwise.
+
+### GetTimeSliceOk
+
+`func (o *LoadBalancer) GetTimeSliceOk() (*string, bool)`
+
+GetTimeSliceOk returns a tuple with the TimeSlice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeSlice
+
+`func (o *LoadBalancer) SetTimeSlice(v string)`
+
+SetTimeSlice sets TimeSlice field to given value.
+
+### HasTimeSlice
+
+`func (o *LoadBalancer) HasTimeSlice() bool`
+
+HasTimeSlice returns a boolean if a field has been set.
 
 ### GetPools
 

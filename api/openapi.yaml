@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ArvanCloud CDN Services
-  version: 4.108.0
+  version: 4.114.0
   x-logo:
     url: /images/other/arvan-api-docs-logo.svg
     backgroundColor: white
@@ -1939,6 +1939,61 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LoadBalancer'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadBalancerResponse'
+          description: Successfully updated a load balancer
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+          description: Access token is missing or invalid
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domains_show_404_response'
+          description: Resource not found
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domains_store_422_response'
+          description: The given data was invalid
+      summary: Update a load balancer
+      tags:
+      - Load Balancing
+    put:
+      operationId: load-balancers.updateWithPools
+      parameters:
+      - description: Domain name
+        example: example.com
+        explode: false
+        in: path
+        name: domain
+        required: true
+        schema:
+          format: hostname
+          type: string
+        style: simple
+      - description: ID of the load balancer
+        explode: false
+        in: path
+        name: loadBalancerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoadBalancerUpdate'
       responses:
         "200":
           content:
@@ -9884,6 +9939,35 @@ components:
           $ref: '#/components/schemas/TransportLayerProxyTrafficCharts_traffics'
       type: object
     TrafficCharts:
+      example:
+        traffics:
+          series:
+          - data:
+            - 5
+            - 5
+            name: reports.traffics.total
+          - data:
+            - 5
+            - 5
+            name: reports.traffics.total
+          categories:
+          - 2000-01-23T04:56:07.000+00:00
+          - 2000-01-23T04:56:07.000+00:00
+          title: reports.traffics
+        requests:
+          series:
+          - data:
+            - 1
+            - 1
+            name: reports.requests.total
+          - data:
+            - 1
+            - 1
+            name: reports.requests.total
+          categories:
+          - 2000-01-23T04:56:07.000+00:00
+          - 2000-01-23T04:56:07.000+00:00
+          title: reports.requests
       properties:
         requests:
           $ref: '#/components/schemas/TrafficCharts_requests'
@@ -9891,6 +9975,15 @@ components:
           $ref: '#/components/schemas/TrafficCharts_traffics'
       type: object
     TrafficStatistics:
+      example:
+        traffics:
+          total: 6
+          top: 2000-01-23T04:56:07.000+00:00
+          saved: 0
+        requests:
+          total: 6
+          top: 2000-01-23T04:56:07.000+00:00
+          saved: 0
       properties:
         traffics:
           $ref: '#/components/schemas/TrafficStatistics_traffics'
@@ -9912,16 +10005,53 @@ components:
       allOf:
       - $ref: '#/components/schemas/DataResponse'
       example:
-        data: "{}"
+        data:
+          charts:
+            traffics:
+              series:
+              - data:
+                - 5
+                - 5
+                name: reports.traffics.total
+              - data:
+                - 5
+                - 5
+                name: reports.traffics.total
+              categories:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              title: reports.traffics
+            requests:
+              series:
+              - data:
+                - 1
+                - 1
+                name: reports.requests.total
+              - data:
+                - 1
+                - 1
+                name: reports.requests.total
+              categories:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              title: reports.requests
+          statistics:
+            traffics:
+              total: 6
+              top: 2000-01-23T04:56:07.000+00:00
+              saved: 0
+            requests:
+              total: 6
+              top: 2000-01-23T04:56:07.000+00:00
+              saved: 0
       properties:
         data:
-          properties:
-            statistics:
-              $ref: '#/components/schemas/TrafficStatistics'
-            charts:
-              $ref: '#/components/schemas/TrafficCharts'
-          type: object
+          $ref: '#/components/schemas/Traffics'
     CountryStatistics:
+      example:
+        country: country
+        traffics: 6
+        requests: 0
       properties:
         country:
           description: The name of the country
@@ -9952,6 +10082,10 @@ components:
           type: integer
       type: object
     CountryTrafficChart:
+      example:
+        fillKey: 1
+        name: name
+        value: 5
       properties:
         fillKey:
           description: The fill key for the country
@@ -9967,8 +10101,8 @@ components:
       example:
         country: country
         code: code
-        traffics: 6
-        requests: 0
+        traffics: 2
+        requests: 5
       properties:
         country:
           description: The name of the country
@@ -9987,40 +10121,39 @@ components:
       allOf:
       - $ref: '#/components/schemas/DataResponse'
       example:
-        data: "{}"
-        lists:
-        - country: country
-          code: code
-          traffics: 6
-          requests: 0
-        - country: country
-          code: code
-          traffics: 6
-          requests: 0
+        data:
+          charts:
+            traffics:
+              key:
+                fillKey: 1
+                name: name
+                value: 5
+            requests:
+              key:
+                IRN:
+                  fillKey: 4
+                  name: Iran (Islamic Republic of)
+                  value: 12456789
+                description: A dictionay which maps country codes to fill and value
+          lists:
+          - country: country
+            code: code
+            traffics: 2
+            requests: 5
+          - country: country
+            code: code
+            traffics: 2
+            requests: 5
+          statistics:
+          - country: country
+            traffics: 6
+            requests: 0
+          - country: country
+            traffics: 6
+            requests: 0
       properties:
         data:
-          properties:
-            statistics:
-              deprecated: true
-              items:
-                $ref: '#/components/schemas/CountryStatistics'
-              type: array
-            charts:
-              properties:
-                requests:
-                  additionalProperties:
-                    $ref: '#/components/schemas/CountryRequestChart'
-                  type: object
-                traffics:
-                  additionalProperties:
-                    $ref: '#/components/schemas/CountryTrafficChart'
-                  type: object
-              type: object
-          type: object
-        lists:
-          items:
-            $ref: '#/components/schemas/CountryList'
-          type: array
+          $ref: '#/components/schemas/TrafficsMap'
     VisitorsStatistics:
       example:
         visitors:
@@ -10049,6 +10182,96 @@ components:
       properties:
         visitors:
           $ref: '#/components/schemas/VisitorsCharts_visitors'
+      type: object
+    Traffics:
+      example:
+        charts:
+          traffics:
+            series:
+            - data:
+              - 5
+              - 5
+              name: reports.traffics.total
+            - data:
+              - 5
+              - 5
+              name: reports.traffics.total
+            categories:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            title: reports.traffics
+          requests:
+            series:
+            - data:
+              - 1
+              - 1
+              name: reports.requests.total
+            - data:
+              - 1
+              - 1
+              name: reports.requests.total
+            categories:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            title: reports.requests
+        statistics:
+          traffics:
+            total: 6
+            top: 2000-01-23T04:56:07.000+00:00
+            saved: 0
+          requests:
+            total: 6
+            top: 2000-01-23T04:56:07.000+00:00
+            saved: 0
+      properties:
+        statistics:
+          $ref: '#/components/schemas/TrafficStatistics'
+        charts:
+          $ref: '#/components/schemas/TrafficCharts'
+      type: object
+    TrafficsMap:
+      example:
+        charts:
+          traffics:
+            key:
+              fillKey: 1
+              name: name
+              value: 5
+          requests:
+            key:
+              IRN:
+                fillKey: 4
+                name: Iran (Islamic Republic of)
+                value: 12456789
+              description: A dictionay which maps country codes to fill and value
+        lists:
+        - country: country
+          code: code
+          traffics: 2
+          requests: 5
+        - country: country
+          code: code
+          traffics: 2
+          requests: 5
+        statistics:
+        - country: country
+          traffics: 6
+          requests: 0
+        - country: country
+          traffics: 6
+          requests: 0
+      properties:
+        statistics:
+          deprecated: true
+          items:
+            $ref: '#/components/schemas/CountryStatistics'
+          type: array
+        charts:
+          $ref: '#/components/schemas/TrafficsMap_charts'
+        lists:
+          items:
+            $ref: '#/components/schemas/CountryList'
+          type: array
       type: object
     Visitors:
       example:
@@ -11091,6 +11314,7 @@ components:
             - `2` - Growth
             - `3` - Professional
             - `4` - Enterprise
+            - Subdomains require to have Growth plan or higher
           maximum: 4
           minimum: 0
           type: integer
@@ -11186,6 +11410,7 @@ components:
             - `2` - Growth
             - `3` - Professional
             - `4` - Enterprise
+            - Subdomains require to have Growth plan or higher
           maximum: 4
           minimum: 0
           type: integer
@@ -11344,6 +11569,7 @@ components:
         - `2` - Growth
         - `3` - Professional
         - `4` - Enterprise
+        - Subdomains require to have Growth plan or higher
       maximum: 4
       minimum: 0
       type: integer
@@ -11358,6 +11584,7 @@ components:
             - `2` - Growth
             - `3` - Professional
             - `4` - Enterprise
+            - Subdomains require to have Growth plan or higher
           maximum: 4
           minimum: 0
           type: integer
@@ -12755,10 +12982,32 @@ components:
       type: object
     LoadBalancerSetting:
       example:
+        next_upstream_tcp_code:
+          head:
+          - 0.8008281904610115
+          - 0.8008281904610115
+          patch:
+          - 7.061401241503109
+          - 7.061401241503109
+          post:
+          - 1.4658129805029452
+          - 1.4658129805029452
+          get:
+          - 6.027456183070403
+          - 6.027456183070403
+          options:
+          - 2.3021358869347655
+          - 2.3021358869347655
+          delete:
+          - 5.637376656633329
+          - 5.637376656633329
+          put:
+          - 5.962133916683182
+          - 5.962133916683182
         protocol: auto
-        max_fails: 800.8281904610114
+        max_fails: 9301.444243932576
         method: cluster_rr
-        next_upstream_tcp: "off"
+        next_upstream_tcp: null
         keepalive: "off"
         fail_timeout: 45s
       properties:
@@ -12768,11 +13017,9 @@ components:
           - cluster_chash
           type: string
         next_upstream_tcp:
-          default: "off"
-          enum:
-          - "true"
-          - "false"
-          type: string
+          $ref: '#/components/schemas/NextUpstreamTcp'
+        next_upstream_tcp_code:
+          $ref: '#/components/schemas/NextUpstreamTcpCodes'
         protocol:
           enum:
           - auto
@@ -12797,15 +13044,167 @@ components:
           example: 45s
           type: string
       type: object
+    NextUpstreamTcp:
+      default: "false"
+      description: Try another server when the first one failed
+      enum:
+      - "true"
+      - "false"
+      type: string
+    NextUpstreamTcpCodes:
+      description: Status codes from the upstream that trigger a switch to the next
+        upstream
+      example:
+        head:
+        - 0.8008281904610115
+        - 0.8008281904610115
+        patch:
+        - 7.061401241503109
+        - 7.061401241503109
+        post:
+        - 1.4658129805029452
+        - 1.4658129805029452
+        get:
+        - 6.027456183070403
+        - 6.027456183070403
+        options:
+        - 2.3021358869347655
+        - 2.3021358869347655
+        delete:
+        - 5.637376656633329
+        - 5.637376656633329
+        put:
+        - 5.962133916683182
+        - 5.962133916683182
+      properties:
+        head:
+          items:
+            enum:
+            - 500
+            - 502
+            - 503
+            - 504
+            - 403
+            - 404
+            - 429
+            type: number
+          type: array
+        get:
+          items:
+            enum:
+            - 500
+            - 502
+            - 503
+            - 504
+            - 403
+            - 404
+            - 429
+            type: number
+          type: array
+        post:
+          items:
+            enum:
+            - 500
+            - 502
+            - 503
+            - 504
+            - 403
+            - 404
+            - 429
+            type: number
+          type: array
+        put:
+          items:
+            enum:
+            - 500
+            - 502
+            - 503
+            - 504
+            - 403
+            - 404
+            - 429
+            type: number
+          type: array
+        delete:
+          items:
+            enum:
+            - 500
+            - 502
+            - 503
+            - 504
+            - 403
+            - 404
+            - 429
+            type: number
+          type: array
+        options:
+          items:
+            enum:
+            - 500
+            - 502
+            - 503
+            - 504
+            - 403
+            - 404
+            - 429
+            type: number
+          type: array
+        patch:
+          items:
+            enum:
+            - 500
+            - 502
+            - 503
+            - 504
+            - 403
+            - 404
+            - 429
+            type: number
+          type: array
+      type: object
+    NextUpstreamCodes:
+      items:
+        enum:
+        - 500
+        - 502
+        - 503
+        - 504
+        - 403
+        - 404
+        - 429
+        type: number
+      type: array
     LoadBalancerSettingsData:
       allOf:
       - $ref: '#/components/schemas/DataResponse'
       example:
         data:
+          next_upstream_tcp_code:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           protocol: auto
-          max_fails: 800.8281904610114
+          max_fails: 9301.444243932576
           method: cluster_rr
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           keepalive: "off"
           fail_timeout: 45s
       properties:
@@ -12813,6 +13212,7 @@ components:
           $ref: '#/components/schemas/LoadBalancerSetting'
     LoadBalancer:
       example:
+        time_slice: 0s
         method: failover
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: lb1
@@ -12824,16 +13224,39 @@ components:
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           priority: 0
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           origins:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -12844,6 +13267,7 @@ components:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -12859,16 +13283,39 @@ components:
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           priority: 0
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           origins:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -12879,6 +13326,7 @@ components:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -12910,10 +13358,95 @@ components:
           - cluster_rr
           - cluster_chash
           type: string
+        time_slice:
+          default: 0s
+          description: "Human friendly time duration for which a pool will uninterruptedly\
+            \ be selected in cluster_rr strategy, i.e. pools will switch once every\
+            \ time slice."
+          type: string
         pools:
           items:
             $ref: '#/components/schemas/LoadBalancerPool'
           readOnly: true
+          type: array
+        created_at:
+          format: date-time
+          readOnly: true
+          type: string
+        updated_at:
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    LoadBalancerUpdate:
+      example:
+        time_slice: 0s
+        method: failover
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: lb1
+        description: description
+        pools:
+        - origins:
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+        - origins:
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: true
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          example: lb1
+          pattern: "^[A-Za-z0-9-]+$"
+          type: string
+        description:
+          type: string
+        status:
+          type: boolean
+        method:
+          enum:
+          - failover
+          - cluster_rr
+          - cluster_chash
+          type: string
+        time_slice:
+          default: 0s
+          description: "Human friendly time duration for which a pool will uninterruptedly\
+            \ be selected in cluster_rr strategy, i.e. pools will switch once every\
+            \ time slice."
+          type: string
+        pools:
+          items:
+            $ref: '#/components/schemas/LoadBalancerUpdate_pools_inner'
           type: array
         created_at:
           format: date-time
@@ -12929,6 +13462,7 @@ components:
       - $ref: '#/components/schemas/DataWithMessageResponse'
       example:
         data:
+          time_slice: 0s
           method: failover
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: lb1
@@ -12940,16 +13474,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -12960,6 +13517,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -12975,16 +13533,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -12995,6 +13576,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -13015,6 +13597,7 @@ components:
       - $ref: '#/components/schemas/DataResponse'
       example:
         data:
+          time_slice: 0s
           method: failover
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: lb1
@@ -13026,16 +13609,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -13046,6 +13652,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -13061,16 +13668,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -13081,6 +13711,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -13104,16 +13735,39 @@ components:
         method: cluster_rr
         monitoring_status: null
         keepalive: "off"
-        next_upstream_tcp: "off"
+        next_upstream_tcp: null
         description: description
         created_at: 2000-01-23T04:56:07.000+00:00
         priority: 0
+        next_upstream_tcp_codes:
+          head:
+          - 0.8008281904610115
+          - 0.8008281904610115
+          patch:
+          - 7.061401241503109
+          - 7.061401241503109
+          post:
+          - 1.4658129805029452
+          - 1.4658129805029452
+          get:
+          - 6.027456183070403
+          - 6.027456183070403
+          options:
+          - 2.3021358869347655
+          - 2.3021358869347655
+          delete:
+          - 5.637376656633329
+          - 5.637376656633329
+          put:
+          - 5.962133916683182
+          - 5.962133916683182
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
         origins:
         - protocol: auto
           address: address
           updated_at: 2000-01-23T04:56:07.000+00:00
+          health_check_status: "off"
           port: 39500
           name: name
           weight: 147
@@ -13124,6 +13778,7 @@ components:
         - protocol: auto
           address: address
           updated_at: 2000-01-23T04:56:07.000+00:00
+          health_check_status: "off"
           port: 39500
           name: name
           weight: 147
@@ -13159,11 +13814,9 @@ components:
           - "false"
           type: string
         next_upstream_tcp:
-          default: "off"
-          enum:
-          - "true"
-          - "false"
-          type: string
+          $ref: '#/components/schemas/NextUpstreamTcp'
+        next_upstream_tcp_codes:
+          $ref: '#/components/schemas/NextUpstreamTcpCodes'
         regions:
           items:
             pattern: "^[A-Z]{3}$"
@@ -13196,16 +13849,39 @@ components:
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           priority: 0
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           origins:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -13216,6 +13892,7 @@ components:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -13239,16 +13916,39 @@ components:
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           priority: 0
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           origins:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -13259,6 +13959,7 @@ components:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -13274,16 +13975,39 @@ components:
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           priority: 0
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           origins:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -13294,6 +14018,7 @@ components:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -13313,6 +14038,7 @@ components:
         protocol: auto
         address: address
         updated_at: 2000-01-23T04:56:07.000+00:00
+        health_check_status: "off"
         port: 39500
         name: name
         weight: 147
@@ -13326,6 +14052,14 @@ components:
           readOnly: true
           type: string
         name:
+          type: string
+        health_check_status:
+          enum:
+          - "off"
+          - healthy
+          - unhealthy
+          - no-data
+          readOnly: true
           type: string
         status:
           type: boolean
@@ -13365,6 +14099,7 @@ components:
           protocol: auto
           address: address
           updated_at: 2000-01-23T04:56:07.000+00:00
+          health_check_status: "off"
           port: 39500
           name: name
           weight: 147
@@ -13383,6 +14118,7 @@ components:
           protocol: auto
           address: address
           updated_at: 2000-01-23T04:56:07.000+00:00
+          health_check_status: "off"
           port: 39500
           name: name
           weight: 147
@@ -13398,6 +14134,101 @@ components:
         method: failover
         name: lb1
         description: description
+        pools:
+        - regions:
+          - regions
+          - regions
+          method: cluster_rr
+          keepalive: "off"
+          next_upstream_tcp: null
+          name: name
+          description: description
+          origins:
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+          priority: 0
+          status: true
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
+        - regions:
+          - regions
+          - regions
+          method: cluster_rr
+          keepalive: "off"
+          next_upstream_tcp: null
+          name: name
+          description: description
+          origins:
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+          - protocol: auto
+            address: address
+            port: 39500
+            name: name
+            weight: 147
+            status: true
+            host_header: host_header
+          priority: 0
+          status: true
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
         status: true
       properties:
         name:
@@ -13414,6 +14245,10 @@ components:
           - cluster_rr
           - cluster_chash
           type: string
+        pools:
+          items:
+            $ref: '#/components/schemas/LoadBalancerPoolStore'
+          type: array
       required:
       - method
       - name
@@ -13426,7 +14261,7 @@ components:
         - regions
         method: cluster_rr
         keepalive: "off"
-        next_upstream_tcp: "off"
+        next_upstream_tcp: null
         name: name
         description: description
         origins:
@@ -13446,6 +14281,28 @@ components:
           host_header: host_header
         priority: 0
         status: true
+        next_upstream_tcp_codes:
+          head:
+          - 0.8008281904610115
+          - 0.8008281904610115
+          patch:
+          - 7.061401241503109
+          - 7.061401241503109
+          post:
+          - 1.4658129805029452
+          - 1.4658129805029452
+          get:
+          - 6.027456183070403
+          - 6.027456183070403
+          options:
+          - 2.3021358869347655
+          - 2.3021358869347655
+          delete:
+          - 5.637376656633329
+          - 5.637376656633329
+          put:
+          - 5.962133916683182
+          - 5.962133916683182
       properties:
         name:
           type: string
@@ -13468,11 +14325,9 @@ components:
           - "false"
           type: string
         next_upstream_tcp:
-          default: "off"
-          enum:
-          - "true"
-          - "false"
-          type: string
+          $ref: '#/components/schemas/NextUpstreamTcp'
+        next_upstream_tcp_codes:
+          $ref: '#/components/schemas/NextUpstreamTcpCodes'
         regions:
           items:
             pattern: "^[A-Z]{3}$"
@@ -14868,6 +15723,8 @@ components:
     DdosSettings:
       example:
         is_enabled: true
+        secret_key: secret_key
+        site_key: site_key
         https_only: true
         captcha_service: recaptcha
         ttl: 0
@@ -14897,6 +15754,12 @@ components:
           - arcaptcha
           - hcaptcha
           type: string
+        site_key:
+          description: it can be configured when the captcha_service is set to arcaptcha
+          type: string
+        secret_key:
+          description: it can be configured when the captcha_service is set to arcaptcha
+          type: string
         ttl:
           description: Time in seconds for cookie max-age
           type: integer
@@ -14912,6 +15775,8 @@ components:
       example:
         data:
           is_enabled: true
+          secret_key: secret_key
+          site_key: site_key
           https_only: true
           captcha_service: recaptcha
           ttl: 0
@@ -16404,8 +17269,6 @@ components:
           type: string
         origin_type:
           enum:
-          - upstream
-          - dns
           - pool
           type: string
         upstreams:
@@ -18748,10 +19611,32 @@ components:
       - $ref: '#/components/schemas/DataWithMessageResponse'
       example:
         data:
+          next_upstream_tcp_code:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           protocol: auto
-          max_fails: 800.8281904610114
+          max_fails: 9301.444243932576
           method: cluster_rr
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           keepalive: "off"
           fail_timeout: 45s
       properties:
@@ -18762,7 +19647,8 @@ components:
       - $ref: '#/components/schemas/DataResponse'
       example:
         data:
-        - method: failover
+        - time_slice: 0s
+          method: failover
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: lb1
           description: description
@@ -18773,16 +19659,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18793,6 +19702,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18808,16 +19718,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18828,6 +19761,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18840,7 +19774,8 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: true
-        - method: failover
+        - time_slice: 0s
+          method: failover
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: lb1
           description: description
@@ -18851,16 +19786,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18871,6 +19829,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18886,16 +19845,39 @@ components:
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
-            next_upstream_tcp: "off"
+            next_upstream_tcp: null
             description: description
             created_at: 2000-01-23T04:56:07.000+00:00
             priority: 0
+            next_upstream_tcp_codes:
+              head:
+              - 0.8008281904610115
+              - 0.8008281904610115
+              patch:
+              - 7.061401241503109
+              - 7.061401241503109
+              post:
+              - 1.4658129805029452
+              - 1.4658129805029452
+              get:
+              - 6.027456183070403
+              - 6.027456183070403
+              options:
+              - 2.3021358869347655
+              - 2.3021358869347655
+              delete:
+              - 5.637376656633329
+              - 5.637376656633329
+              put:
+              - 5.962133916683182
+              - 5.962133916683182
             updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
             origins:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18906,6 +19888,7 @@ components:
             - protocol: auto
               address: address
               updated_at: 2000-01-23T04:56:07.000+00:00
+              health_check_status: "off"
               port: 39500
               name: name
               weight: 147
@@ -18934,16 +19917,39 @@ components:
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           priority: 0
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           origins:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -18954,6 +19960,7 @@ components:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -18969,16 +19976,39 @@ components:
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
-          next_upstream_tcp: "off"
+          next_upstream_tcp: null
           description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           priority: 0
+          next_upstream_tcp_codes:
+            head:
+            - 0.8008281904610115
+            - 0.8008281904610115
+            patch:
+            - 7.061401241503109
+            - 7.061401241503109
+            post:
+            - 1.4658129805029452
+            - 1.4658129805029452
+            get:
+            - 6.027456183070403
+            - 6.027456183070403
+            options:
+            - 2.3021358869347655
+            - 2.3021358869347655
+            delete:
+            - 5.637376656633329
+            - 5.637376656633329
+            put:
+            - 5.962133916683182
+            - 5.962133916683182
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           origins:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -18989,6 +20019,7 @@ components:
           - protocol: auto
             address: address
             updated_at: 2000-01-23T04:56:07.000+00:00
+            health_check_status: "off"
             port: 39500
             name: name
             weight: 147
@@ -19011,6 +20042,7 @@ components:
         - protocol: auto
           address: address
           updated_at: 2000-01-23T04:56:07.000+00:00
+          health_check_status: "off"
           port: 39500
           name: name
           weight: 147
@@ -19021,6 +20053,7 @@ components:
         - protocol: auto
           address: address
           updated_at: 2000-01-23T04:56:07.000+00:00
+          health_check_status: "off"
           port: 39500
           name: name
           weight: 147
@@ -19543,6 +20576,8 @@ components:
       example:
         data:
           is_enabled: true
+          secret_key: secret_key
+          site_key: site_key
           https_only: true
           captcha_service: recaptcha
           ttl: 0
@@ -20158,6 +21193,11 @@ components:
           type: array
       type: object
     TrafficCharts_requests_series_inner:
+      example:
+        data:
+        - 1
+        - 1
+        name: reports.requests.total
       properties:
         name:
           enum:
@@ -20170,6 +21210,20 @@ components:
           type: array
       type: object
     TrafficCharts_requests:
+      example:
+        series:
+        - data:
+          - 1
+          - 1
+          name: reports.requests.total
+        - data:
+          - 1
+          - 1
+          name: reports.requests.total
+        categories:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+        title: reports.requests
       properties:
         title:
           enum:
@@ -20186,6 +21240,11 @@ components:
           type: array
       type: object
     TrafficCharts_traffics_series_inner:
+      example:
+        data:
+        - 5
+        - 5
+        name: reports.traffics.total
       properties:
         name:
           enum:
@@ -20198,6 +21257,20 @@ components:
           type: array
       type: object
     TrafficCharts_traffics:
+      example:
+        series:
+        - data:
+          - 5
+          - 5
+          name: reports.traffics.total
+        - data:
+          - 5
+          - 5
+          name: reports.traffics.total
+        categories:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+        title: reports.traffics
       properties:
         title:
           enum:
@@ -20214,6 +21287,10 @@ components:
           type: array
       type: object
     TrafficStatistics_traffics:
+      example:
+        total: 6
+        top: 2000-01-23T04:56:07.000+00:00
+        saved: 0
       properties:
         saved:
           type: integer
@@ -20286,6 +21363,30 @@ components:
           items:
             $ref: '#/components/schemas/VisitorsCharts_visitors_series_inner'
           type: array
+      type: object
+    TrafficsMap_charts:
+      example:
+        traffics:
+          key:
+            fillKey: 1
+            name: name
+            value: 5
+        requests:
+          key:
+            IRN:
+              fillKey: 4
+              name: Iran (Islamic Republic of)
+              value: 12456789
+            description: A dictionay which maps country codes to fill and value
+      properties:
+        requests:
+          additionalProperties:
+            $ref: '#/components/schemas/CountryRequestChart'
+          type: object
+        traffics:
+          additionalProperties:
+            $ref: '#/components/schemas/CountryTrafficChart'
+          type: object
       type: object
     HighRequestedIp_ip:
       anyOf:
@@ -20921,6 +22022,31 @@ components:
           nullable: true
           type: string
       type: object
+    LoadBalancerUpdate_pools_inner:
+      allOf:
+      - $ref: '#/components/schemas/LoadBalancerPool'
+      example:
+        origins:
+        - protocol: auto
+          address: address
+          port: 39500
+          name: name
+          weight: 147
+          status: true
+          host_header: host_header
+        - protocol: auto
+          address: address
+          port: 39500
+          name: name
+          weight: 147
+          status: true
+          host_header: host_header
+      properties:
+        origins:
+          items:
+            $ref: '#/components/schemas/LoadBalancerOriginStore'
+          readOnly: false
+          type: array
     Troubleshoot_details_inner:
       example:
         details: details
