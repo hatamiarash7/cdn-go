@@ -13026,8 +13026,8 @@ components:
           default: "off"
           description: Try another server when the first one failed if on
           enum:
-          - "true"
-          - "false"
+          - "on"
+          - "off"
           type: string
         next_upstream_tcp_code:
           $ref: '#/components/schemas/NextUpstreamTcpCodes'
@@ -13040,8 +13040,8 @@ components:
         keepalive:
           default: "off"
           enum:
-          - "true"
-          - "false"
+          - "on"
+          - "off"
           type: string
         max_fails:
           default: 0
@@ -13814,15 +13814,15 @@ components:
         keepalive:
           default: "off"
           enum:
-          - "true"
-          - "false"
+          - "on"
+          - "off"
           type: string
         next_upstream_tcp:
           default: "off"
           description: Try another server when the first one failed if on
           enum:
-          - "true"
-          - "false"
+          - "on"
+          - "off"
           type: string
         next_upstream_tcp_codes:
           $ref: '#/components/schemas/NextUpstreamTcpCodes'
@@ -14330,15 +14330,15 @@ components:
         keepalive:
           default: "off"
           enum:
-          - "true"
-          - "false"
+          - "on"
+          - "off"
           type: string
         next_upstream_tcp:
           default: "off"
           description: Try another server when the first one failed if on
           enum:
-          - "true"
-          - "false"
+          - "on"
+          - "off"
           type: string
         next_upstream_tcp_codes:
           $ref: '#/components/schemas/NextUpstreamTcpCodes'
