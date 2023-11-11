@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Saved** | **int32** |  | 
+**Bypass** | Pointer to **int32** |  | [optional] 
 **Top** | **time.Time** |  | 
 **Total** | **int32** |  | 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetSaved sets Saved field to given value.
 
+
+### GetBypass
+
+`func (o *TrafficStatisticsTraffics) GetBypass() int32`
+
+GetBypass returns the Bypass field if non-nil, zero value otherwise.
+
+### GetBypassOk
+
+`func (o *TrafficStatisticsTraffics) GetBypassOk() (*int32, bool)`
+
+GetBypassOk returns a tuple with the Bypass field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBypass
+
+`func (o *TrafficStatisticsTraffics) SetBypass(v int32)`
+
+SetBypass sets Bypass field to given value.
+
+### HasBypass
+
+`func (o *TrafficStatisticsTraffics) HasBypass() bool`
+
+HasBypass returns a boolean if a field has been set.
 
 ### GetTop
 

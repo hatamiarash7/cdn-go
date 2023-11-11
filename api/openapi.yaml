@@ -9957,12 +9957,12 @@ components:
         requests:
           series:
           - data:
-            - 1
-            - 1
+            - 5
+            - 5
             name: reports.requests.total
           - data:
-            - 1
-            - 1
+            - 5
+            - 5
             name: reports.requests.total
           categories:
           - 2000-01-23T04:56:07.000+00:00
@@ -9977,11 +9977,13 @@ components:
     TrafficStatistics:
       example:
         traffics:
-          total: 6
+          bypass: 6
+          total: 1
           top: 2000-01-23T04:56:07.000+00:00
           saved: 0
         requests:
-          total: 6
+          bypass: 6
+          total: 1
           top: 2000-01-23T04:56:07.000+00:00
           saved: 0
       properties:
@@ -10024,12 +10026,12 @@ components:
             requests:
               series:
               - data:
-                - 1
-                - 1
+                - 5
+                - 5
                 name: reports.requests.total
               - data:
-                - 1
-                - 1
+                - 5
+                - 5
                 name: reports.requests.total
               categories:
               - 2000-01-23T04:56:07.000+00:00
@@ -10037,11 +10039,13 @@ components:
               title: reports.requests
           statistics:
             traffics:
-              total: 6
+              bypass: 6
+              total: 1
               top: 2000-01-23T04:56:07.000+00:00
               saved: 0
             requests:
-              total: 6
+              bypass: 6
+              total: 1
               top: 2000-01-23T04:56:07.000+00:00
               saved: 0
       properties:
@@ -10203,12 +10207,12 @@ components:
           requests:
             series:
             - data:
-              - 1
-              - 1
+              - 5
+              - 5
               name: reports.requests.total
             - data:
-              - 1
-              - 1
+              - 5
+              - 5
               name: reports.requests.total
             categories:
             - 2000-01-23T04:56:07.000+00:00
@@ -10216,11 +10220,13 @@ components:
             title: reports.requests
         statistics:
           traffics:
-            total: 6
+            bypass: 6
+            total: 1
             top: 2000-01-23T04:56:07.000+00:00
             saved: 0
           requests:
-            total: 6
+            bypass: 6
+            total: 1
             top: 2000-01-23T04:56:07.000+00:00
             saved: 0
       properties:
@@ -21195,8 +21201,8 @@ components:
     TrafficCharts_requests_series_inner:
       example:
         data:
-        - 1
-        - 1
+        - 5
+        - 5
         name: reports.requests.total
       properties:
         name:
@@ -21213,12 +21219,12 @@ components:
       example:
         series:
         - data:
-          - 1
-          - 1
+          - 5
+          - 5
           name: reports.requests.total
         - data:
-          - 1
-          - 1
+          - 5
+          - 5
           name: reports.requests.total
         categories:
         - 2000-01-23T04:56:07.000+00:00
@@ -21288,11 +21294,14 @@ components:
       type: object
     TrafficStatistics_traffics:
       example:
-        total: 6
+        bypass: 6
+        total: 1
         top: 2000-01-23T04:56:07.000+00:00
         saved: 0
       properties:
         saved:
+          type: integer
+        bypass:
           type: integer
         top:
           format: date-time

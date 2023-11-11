@@ -21,6 +21,7 @@ var _ MappedNullable = &TrafficStatisticsTraffics{}
 // TrafficStatisticsTraffics struct for TrafficStatisticsTraffics
 type TrafficStatisticsTraffics struct {
 	Saved int32 `json:"saved"`
+	Bypass *int32 `json:"bypass,omitempty"`
 	Top time.Time `json:"top"`
 	Total int32 `json:"total"`
 }
@@ -67,6 +68,38 @@ func (o *TrafficStatisticsTraffics) GetSavedOk() (*int32, bool) {
 // SetSaved sets field value
 func (o *TrafficStatisticsTraffics) SetSaved(v int32) {
 	o.Saved = v
+}
+
+// GetBypass returns the Bypass field value if set, zero value otherwise.
+func (o *TrafficStatisticsTraffics) GetBypass() int32 {
+	if o == nil || IsNil(o.Bypass) {
+		var ret int32
+		return ret
+	}
+	return *o.Bypass
+}
+
+// GetBypassOk returns a tuple with the Bypass field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TrafficStatisticsTraffics) GetBypassOk() (*int32, bool) {
+	if o == nil || IsNil(o.Bypass) {
+		return nil, false
+	}
+	return o.Bypass, true
+}
+
+// HasBypass returns a boolean if a field has been set.
+func (o *TrafficStatisticsTraffics) HasBypass() bool {
+	if o != nil && !IsNil(o.Bypass) {
+		return true
+	}
+
+	return false
+}
+
+// SetBypass gets a reference to the given int32 and assigns it to the Bypass field.
+func (o *TrafficStatisticsTraffics) SetBypass(v int32) {
+	o.Bypass = &v
 }
 
 // GetTop returns the Top field value
@@ -128,6 +161,9 @@ func (o TrafficStatisticsTraffics) MarshalJSON() ([]byte, error) {
 func (o TrafficStatisticsTraffics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["saved"] = o.Saved
+	if !IsNil(o.Bypass) {
+		toSerialize["bypass"] = o.Bypass
+	}
 	toSerialize["top"] = o.Top
 	toSerialize["total"] = o.Total
 	return toSerialize, nil
