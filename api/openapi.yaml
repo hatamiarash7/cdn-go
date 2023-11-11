@@ -10343,12 +10343,12 @@ components:
           ir:
             series:
             - data:
-              - 0.8008281904610115
-              - 0.8008281904610115
+              - 0.8008282
+              - 0.8008282
               name: reports.response_time.Server
             - data:
-              - 0.8008281904610115
-              - 0.8008281904610115
+              - 0.8008282
+              - 0.8008282
               name: reports.response_time.Server
             categories:
             - 2000-01-23T04:56:07.000+00:00
@@ -10371,12 +10371,12 @@ components:
             ir:
               series:
               - data:
-                - 0.8008281904610115
-                - 0.8008281904610115
+                - 0.8008282
+                - 0.8008282
                 name: reports.response_time.Server
               - data:
-                - 0.8008281904610115
-                - 0.8008281904610115
+                - 0.8008282
+                - 0.8008282
                 name: reports.response_time.Server
               categories:
               - 2000-01-23T04:56:07.000+00:00
@@ -21404,8 +21404,8 @@ components:
     ResponseTime_charts_ir_series_inner:
       example:
         data:
-        - 0.8008281904610115
-        - 0.8008281904610115
+        - 0.8008282
+        - 0.8008282
         name: reports.response_time.Server
       properties:
         name:
@@ -21414,6 +21414,7 @@ components:
           type: string
         data:
           items:
+            format: float
             type: number
           type: array
       type: object
@@ -21421,12 +21422,12 @@ components:
       example:
         series:
         - data:
-          - 0.8008281904610115
-          - 0.8008281904610115
+          - 0.8008282
+          - 0.8008282
           name: reports.response_time.Server
         - data:
-          - 0.8008281904610115
-          - 0.8008281904610115
+          - 0.8008282
+          - 0.8008282
           name: reports.response_time.Server
         categories:
         - 2000-01-23T04:56:07.000+00:00
@@ -21452,12 +21453,12 @@ components:
         ir:
           series:
           - data:
-            - 0.8008281904610115
-            - 0.8008281904610115
+            - 0.8008282
+            - 0.8008282
             name: reports.response_time.Server
           - data:
-            - 0.8008281904610115
-            - 0.8008281904610115
+            - 0.8008282
+            - 0.8008282
             name: reports.response_time.Server
           categories:
           - 2000-01-23T04:56:07.000+00:00
