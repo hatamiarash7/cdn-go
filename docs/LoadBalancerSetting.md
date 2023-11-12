@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Method** | Pointer to **string** |  | [optional] 
 **NextUpstreamTcp** | Pointer to **string** | Try another server when the first one failed if on | [optional] [default to "off"]
-**NextUpstreamTcpCode** | Pointer to [**NextUpstreamTcpCodes**](NextUpstreamTcpCodes.md) |  | [optional] 
+**NextUpstreamTcpCodes** | Pointer to [**NextUpstreamTcpCodes**](NextUpstreamTcpCodes.md) |  | [optional] 
 **Protocol** | Pointer to **string** |  | [optional] 
 **Keepalive** | Pointer to **string** |  | [optional] [default to "off"]
 **MaxFails** | Pointer to **float32** | Zero will disable failing strategy. | [optional] [default to 0]
@@ -81,30 +81,30 @@ SetNextUpstreamTcp sets NextUpstreamTcp field to given value.
 
 HasNextUpstreamTcp returns a boolean if a field has been set.
 
-### GetNextUpstreamTcpCode
+### GetNextUpstreamTcpCodes
 
-`func (o *LoadBalancerSetting) GetNextUpstreamTcpCode() NextUpstreamTcpCodes`
+`func (o *LoadBalancerSetting) GetNextUpstreamTcpCodes() NextUpstreamTcpCodes`
 
-GetNextUpstreamTcpCode returns the NextUpstreamTcpCode field if non-nil, zero value otherwise.
+GetNextUpstreamTcpCodes returns the NextUpstreamTcpCodes field if non-nil, zero value otherwise.
 
-### GetNextUpstreamTcpCodeOk
+### GetNextUpstreamTcpCodesOk
 
-`func (o *LoadBalancerSetting) GetNextUpstreamTcpCodeOk() (*NextUpstreamTcpCodes, bool)`
+`func (o *LoadBalancerSetting) GetNextUpstreamTcpCodesOk() (*NextUpstreamTcpCodes, bool)`
 
-GetNextUpstreamTcpCodeOk returns a tuple with the NextUpstreamTcpCode field if it's non-nil, zero value otherwise
+GetNextUpstreamTcpCodesOk returns a tuple with the NextUpstreamTcpCodes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNextUpstreamTcpCode
+### SetNextUpstreamTcpCodes
 
-`func (o *LoadBalancerSetting) SetNextUpstreamTcpCode(v NextUpstreamTcpCodes)`
+`func (o *LoadBalancerSetting) SetNextUpstreamTcpCodes(v NextUpstreamTcpCodes)`
 
-SetNextUpstreamTcpCode sets NextUpstreamTcpCode field to given value.
+SetNextUpstreamTcpCodes sets NextUpstreamTcpCodes field to given value.
 
-### HasNextUpstreamTcpCode
+### HasNextUpstreamTcpCodes
 
-`func (o *LoadBalancerSetting) HasNextUpstreamTcpCode() bool`
+`func (o *LoadBalancerSetting) HasNextUpstreamTcpCodes() bool`
 
-HasNextUpstreamTcpCode returns a boolean if a field has been set.
+HasNextUpstreamTcpCodes returns a boolean if a field has been set.
 
 ### GetProtocol
 

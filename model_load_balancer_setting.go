@@ -22,7 +22,7 @@ type LoadBalancerSetting struct {
 	Method *string `json:"method,omitempty"`
 	// Try another server when the first one failed if on
 	NextUpstreamTcp *string `json:"next_upstream_tcp,omitempty"`
-	NextUpstreamTcpCode *NextUpstreamTcpCodes `json:"next_upstream_tcp_code,omitempty"`
+	NextUpstreamTcpCodes *NextUpstreamTcpCodes `json:"next_upstream_tcp_codes,omitempty"`
 	Protocol *string `json:"protocol,omitempty"`
 	Keepalive *string `json:"keepalive,omitempty"`
 	// Zero will disable failing strategy.
@@ -128,36 +128,36 @@ func (o *LoadBalancerSetting) SetNextUpstreamTcp(v string) {
 	o.NextUpstreamTcp = &v
 }
 
-// GetNextUpstreamTcpCode returns the NextUpstreamTcpCode field value if set, zero value otherwise.
-func (o *LoadBalancerSetting) GetNextUpstreamTcpCode() NextUpstreamTcpCodes {
-	if o == nil || IsNil(o.NextUpstreamTcpCode) {
+// GetNextUpstreamTcpCodes returns the NextUpstreamTcpCodes field value if set, zero value otherwise.
+func (o *LoadBalancerSetting) GetNextUpstreamTcpCodes() NextUpstreamTcpCodes {
+	if o == nil || IsNil(o.NextUpstreamTcpCodes) {
 		var ret NextUpstreamTcpCodes
 		return ret
 	}
-	return *o.NextUpstreamTcpCode
+	return *o.NextUpstreamTcpCodes
 }
 
-// GetNextUpstreamTcpCodeOk returns a tuple with the NextUpstreamTcpCode field value if set, nil otherwise
+// GetNextUpstreamTcpCodesOk returns a tuple with the NextUpstreamTcpCodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerSetting) GetNextUpstreamTcpCodeOk() (*NextUpstreamTcpCodes, bool) {
-	if o == nil || IsNil(o.NextUpstreamTcpCode) {
+func (o *LoadBalancerSetting) GetNextUpstreamTcpCodesOk() (*NextUpstreamTcpCodes, bool) {
+	if o == nil || IsNil(o.NextUpstreamTcpCodes) {
 		return nil, false
 	}
-	return o.NextUpstreamTcpCode, true
+	return o.NextUpstreamTcpCodes, true
 }
 
-// HasNextUpstreamTcpCode returns a boolean if a field has been set.
-func (o *LoadBalancerSetting) HasNextUpstreamTcpCode() bool {
-	if o != nil && !IsNil(o.NextUpstreamTcpCode) {
+// HasNextUpstreamTcpCodes returns a boolean if a field has been set.
+func (o *LoadBalancerSetting) HasNextUpstreamTcpCodes() bool {
+	if o != nil && !IsNil(o.NextUpstreamTcpCodes) {
 		return true
 	}
 
 	return false
 }
 
-// SetNextUpstreamTcpCode gets a reference to the given NextUpstreamTcpCodes and assigns it to the NextUpstreamTcpCode field.
-func (o *LoadBalancerSetting) SetNextUpstreamTcpCode(v NextUpstreamTcpCodes) {
-	o.NextUpstreamTcpCode = &v
+// SetNextUpstreamTcpCodes gets a reference to the given NextUpstreamTcpCodes and assigns it to the NextUpstreamTcpCodes field.
+func (o *LoadBalancerSetting) SetNextUpstreamTcpCodes(v NextUpstreamTcpCodes) {
+	o.NextUpstreamTcpCodes = &v
 }
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
@@ -304,8 +304,8 @@ func (o LoadBalancerSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextUpstreamTcp) {
 		toSerialize["next_upstream_tcp"] = o.NextUpstreamTcp
 	}
-	if !IsNil(o.NextUpstreamTcpCode) {
-		toSerialize["next_upstream_tcp_code"] = o.NextUpstreamTcpCode
+	if !IsNil(o.NextUpstreamTcpCodes) {
+		toSerialize["next_upstream_tcp_codes"] = o.NextUpstreamTcpCodes
 	}
 	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol

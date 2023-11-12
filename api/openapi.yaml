@@ -12988,7 +12988,13 @@ components:
       type: object
     LoadBalancerSetting:
       example:
-        next_upstream_tcp_code:
+        protocol: auto
+        max_fails: 9301.444243932576
+        method: cluster_rr
+        next_upstream_tcp: "off"
+        keepalive: "off"
+        fail_timeout: 45s
+        next_upstream_tcp_codes:
           head:
           - 0.8008281904610115
           - 0.8008281904610115
@@ -13010,12 +13016,6 @@ components:
           put:
           - 5.962133916683182
           - 5.962133916683182
-        protocol: auto
-        max_fails: 9301.444243932576
-        method: cluster_rr
-        next_upstream_tcp: "off"
-        keepalive: "off"
-        fail_timeout: 45s
       properties:
         method:
           enum:
@@ -13029,7 +13029,7 @@ components:
           - "on"
           - "off"
           type: string
-        next_upstream_tcp_code:
+        next_upstream_tcp_codes:
           $ref: '#/components/schemas/NextUpstreamTcpCodes'
         protocol:
           enum:
@@ -13183,7 +13183,13 @@ components:
       - $ref: '#/components/schemas/DataResponse'
       example:
         data:
-          next_upstream_tcp_code:
+          protocol: auto
+          max_fails: 9301.444243932576
+          method: cluster_rr
+          next_upstream_tcp: "off"
+          keepalive: "off"
+          fail_timeout: 45s
+          next_upstream_tcp_codes:
             head:
             - 0.8008281904610115
             - 0.8008281904610115
@@ -13205,12 +13211,6 @@ components:
             put:
             - 5.962133916683182
             - 5.962133916683182
-          protocol: auto
-          max_fails: 9301.444243932576
-          method: cluster_rr
-          next_upstream_tcp: "off"
-          keepalive: "off"
-          fail_timeout: 45s
       properties:
         data:
           $ref: '#/components/schemas/LoadBalancerSetting'
@@ -19625,7 +19625,13 @@ components:
       - $ref: '#/components/schemas/DataWithMessageResponse'
       example:
         data:
-          next_upstream_tcp_code:
+          protocol: auto
+          max_fails: 9301.444243932576
+          method: cluster_rr
+          next_upstream_tcp: "off"
+          keepalive: "off"
+          fail_timeout: 45s
+          next_upstream_tcp_codes:
             head:
             - 0.8008281904610115
             - 0.8008281904610115
@@ -19647,12 +19653,6 @@ components:
             put:
             - 5.962133916683182
             - 5.962133916683182
-          protocol: auto
-          max_fails: 9301.444243932576
-          method: cluster_rr
-          next_upstream_tcp: "off"
-          keepalive: "off"
-          fail_timeout: 45s
       properties:
         data:
           $ref: '#/components/schemas/LoadBalancerSetting'
