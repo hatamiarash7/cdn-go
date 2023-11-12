@@ -14061,6 +14061,7 @@ components:
           $ref: '#/components/schemas/LoadBalancerOrigin'
     LoadBalancerStore:
       example:
+        time_slice: 0s
         method: failover
         name: lb1
         description: description
@@ -14076,18 +14077,21 @@ components:
           origins:
           - protocol: auto
             address: address
-            port: 39500
+            port: 39501
             name: name
             weight: 147
+            id: id
             status: true
             host_header: host_header
           - protocol: auto
             address: address
-            port: 39500
+            port: 39501
             name: name
             weight: 147
+            id: id
             status: true
             host_header: host_header
+          id: id
           priority: 0
           status: true
           next_upstream_tcp_codes:
@@ -14123,18 +14127,21 @@ components:
           origins:
           - protocol: auto
             address: address
-            port: 39500
+            port: 39501
             name: name
             weight: 147
+            id: id
             status: true
             host_header: host_header
           - protocol: auto
             address: address
-            port: 39500
+            port: 39501
             name: name
             weight: 147
+            id: id
             status: true
             host_header: host_header
+          id: id
           priority: 0
           status: true
           next_upstream_tcp_codes:
@@ -14169,6 +14176,12 @@ components:
           type: string
         status:
           type: boolean
+        time_slice:
+          default: 0s
+          description: "Human friendly time duration for which a pool will uninterruptedly\
+            \ be selected in cluster_rr strategy, i.e. pools will switch once every\
+            \ time slice."
+          type: string
         method:
           enum:
           - failover
@@ -14197,18 +14210,21 @@ components:
         origins:
         - protocol: auto
           address: address
-          port: 39500
+          port: 39501
           name: name
           weight: 147
+          id: id
           status: true
           host_header: host_header
         - protocol: auto
           address: address
-          port: 39500
+          port: 39501
           name: name
           weight: 147
+          id: id
           status: true
           host_header: host_header
+        id: id
         priority: 0
         status: true
         next_upstream_tcp_codes:
@@ -14234,6 +14250,8 @@ components:
           - 5.962133916683182
           - 5.962133916683182
       properties:
+        id:
+          type: string
         name:
           type: string
         description:
@@ -14284,12 +14302,15 @@ components:
       example:
         protocol: auto
         address: address
-        port: 39500
+        port: 39501
         name: name
         weight: 147
+        id: id
         status: true
         host_header: host_header
       properties:
+        id:
+          type: string
         name:
           type: string
         status:
@@ -14298,7 +14319,7 @@ components:
           type: string
         port:
           maximum: 65535
-          minimum: -1
+          minimum: 1
           type: integer
         weight:
           maximum: 1000

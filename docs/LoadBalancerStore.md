@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Status** | **bool** |  | 
+**TimeSlice** | Pointer to **string** | Human friendly time duration for which a pool will uninterruptedly be selected in cluster_rr strategy, i.e. pools will switch once every time slice. | [optional] [default to "0s"]
 **Method** | **string** |  | 
 **Pools** | Pointer to [**[]LoadBalancerPoolStore**](LoadBalancerPoolStore.md) |  | [optional] 
 
@@ -93,6 +94,31 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+
+### GetTimeSlice
+
+`func (o *LoadBalancerStore) GetTimeSlice() string`
+
+GetTimeSlice returns the TimeSlice field if non-nil, zero value otherwise.
+
+### GetTimeSliceOk
+
+`func (o *LoadBalancerStore) GetTimeSliceOk() (*string, bool)`
+
+GetTimeSliceOk returns a tuple with the TimeSlice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeSlice
+
+`func (o *LoadBalancerStore) SetTimeSlice(v string)`
+
+SetTimeSlice sets TimeSlice field to given value.
+
+### HasTimeSlice
+
+`func (o *LoadBalancerStore) HasTimeSlice() bool`
+
+HasTimeSlice returns a boolean if a field has been set.
 
 ### GetMethod
 

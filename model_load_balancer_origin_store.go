@@ -19,6 +19,7 @@ var _ MappedNullable = &LoadBalancerOriginStore{}
 
 // LoadBalancerOriginStore struct for LoadBalancerOriginStore
 type LoadBalancerOriginStore struct {
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Status bool `json:"status"`
 	Address string `json:"address"`
@@ -50,6 +51,38 @@ func NewLoadBalancerOriginStoreWithDefaults() *LoadBalancerOriginStore {
 	var protocol string = "auto"
 	this.Protocol = protocol
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *LoadBalancerOriginStore) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadBalancerOriginStore) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *LoadBalancerOriginStore) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *LoadBalancerOriginStore) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -246,6 +279,9 @@ func (o LoadBalancerOriginStore) MarshalJSON() ([]byte, error) {
 
 func (o LoadBalancerOriginStore) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}

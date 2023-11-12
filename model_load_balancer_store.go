@@ -22,6 +22,8 @@ type LoadBalancerStore struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Status bool `json:"status"`
+	// Human friendly time duration for which a pool will uninterruptedly be selected in cluster_rr strategy, i.e. pools will switch once every time slice.
+	TimeSlice *string `json:"time_slice,omitempty"`
 	Method string `json:"method"`
 	Pools []LoadBalancerPoolStore `json:"pools,omitempty"`
 }
@@ -34,6 +36,8 @@ func NewLoadBalancerStore(name string, status bool, method string) *LoadBalancer
 	this := LoadBalancerStore{}
 	this.Name = name
 	this.Status = status
+	var timeSlice string = "0s"
+	this.TimeSlice = &timeSlice
 	this.Method = method
 	return &this
 }
@@ -43,6 +47,8 @@ func NewLoadBalancerStore(name string, status bool, method string) *LoadBalancer
 // but it doesn't guarantee that properties required by API are set
 func NewLoadBalancerStoreWithDefaults() *LoadBalancerStore {
 	this := LoadBalancerStore{}
+	var timeSlice string = "0s"
+	this.TimeSlice = &timeSlice
 	return &this
 }
 
@@ -126,6 +132,38 @@ func (o *LoadBalancerStore) SetStatus(v bool) {
 	o.Status = v
 }
 
+// GetTimeSlice returns the TimeSlice field value if set, zero value otherwise.
+func (o *LoadBalancerStore) GetTimeSlice() string {
+	if o == nil || IsNil(o.TimeSlice) {
+		var ret string
+		return ret
+	}
+	return *o.TimeSlice
+}
+
+// GetTimeSliceOk returns a tuple with the TimeSlice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadBalancerStore) GetTimeSliceOk() (*string, bool) {
+	if o == nil || IsNil(o.TimeSlice) {
+		return nil, false
+	}
+	return o.TimeSlice, true
+}
+
+// HasTimeSlice returns a boolean if a field has been set.
+func (o *LoadBalancerStore) HasTimeSlice() bool {
+	if o != nil && !IsNil(o.TimeSlice) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeSlice gets a reference to the given string and assigns it to the TimeSlice field.
+func (o *LoadBalancerStore) SetTimeSlice(v string) {
+	o.TimeSlice = &v
+}
+
 // GetMethod returns the Method field value
 func (o *LoadBalancerStore) GetMethod() string {
 	if o == nil {
@@ -197,6 +235,9 @@ func (o LoadBalancerStore) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["status"] = o.Status
+	if !IsNil(o.TimeSlice) {
+		toSerialize["time_slice"] = o.TimeSlice
+	}
 	toSerialize["method"] = o.Method
 	if !IsNil(o.Pools) {
 		toSerialize["pools"] = o.Pools

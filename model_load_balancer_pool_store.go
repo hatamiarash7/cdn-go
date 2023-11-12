@@ -19,6 +19,7 @@ var _ MappedNullable = &LoadBalancerPoolStore{}
 
 // LoadBalancerPoolStore struct for LoadBalancerPoolStore
 type LoadBalancerPoolStore struct {
+	Id *string `json:"id,omitempty"`
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Status bool `json:"status"`
@@ -57,6 +58,38 @@ func NewLoadBalancerPoolStoreWithDefaults() *LoadBalancerPoolStore {
 	var nextUpstreamTcp string = "off"
 	this.NextUpstreamTcp = nextUpstreamTcp
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *LoadBalancerPoolStore) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadBalancerPoolStore) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *LoadBalancerPoolStore) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *LoadBalancerPoolStore) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value
@@ -349,6 +382,9 @@ func (o LoadBalancerPoolStore) MarshalJSON() ([]byte, error) {
 
 func (o LoadBalancerPoolStore) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
