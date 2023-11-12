@@ -2688,7 +2688,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoadBalancerOrigin'
+              $ref: '#/components/schemas/LoadBalancerOriginStore'
       responses:
         "200":
           content:

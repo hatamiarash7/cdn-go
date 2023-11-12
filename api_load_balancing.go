@@ -1205,11 +1205,11 @@ type ApiLoadBalancersPoolsOriginsUpdateRequest struct {
 	loadBalancerId string
 	loadBalancerPoolId string
 	loadBalancerPoolOriginId string
-	loadBalancerOrigin *LoadBalancerOrigin
+	loadBalancerOriginStore *LoadBalancerOriginStore
 }
 
-func (r ApiLoadBalancersPoolsOriginsUpdateRequest) LoadBalancerOrigin(loadBalancerOrigin LoadBalancerOrigin) ApiLoadBalancersPoolsOriginsUpdateRequest {
-	r.loadBalancerOrigin = &loadBalancerOrigin
+func (r ApiLoadBalancersPoolsOriginsUpdateRequest) LoadBalancerOriginStore(loadBalancerOriginStore LoadBalancerOriginStore) ApiLoadBalancersPoolsOriginsUpdateRequest {
+	r.loadBalancerOriginStore = &loadBalancerOriginStore
 	return r
 }
 
@@ -1281,7 +1281,7 @@ func (a *LoadBalancingApiService) LoadBalancersPoolsOriginsUpdateExecute(r ApiLo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.loadBalancerOrigin
+	localVarPostBody = r.loadBalancerOriginStore
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

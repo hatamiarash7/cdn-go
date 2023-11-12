@@ -618,7 +618,7 @@ Name | Type | Description  | Notes
 
 ## LoadBalancersPoolsOriginsUpdate
 
-> LoadBalancerOriginResponse LoadBalancersPoolsOriginsUpdate(ctx, domain, loadBalancerId, loadBalancerPoolId, loadBalancerPoolOriginId).LoadBalancerOrigin(loadBalancerOrigin).Execute()
+> LoadBalancerOriginResponse LoadBalancersPoolsOriginsUpdate(ctx, domain, loadBalancerId, loadBalancerPoolId, loadBalancerPoolOriginId).LoadBalancerOriginStore(loadBalancerOriginStore).Execute()
 
 Update an existing origin of the pool
 
@@ -639,11 +639,11 @@ func main() {
     loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
     loadBalancerPoolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of a pool of the load balancer
     loadBalancerPoolOriginId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of an origin of the pool in the load balancer
-    loadBalancerOrigin := *openapiclient.NewLoadBalancerOrigin() // LoadBalancerOrigin |  (optional)
+    loadBalancerOriginStore := *openapiclient.NewLoadBalancerOriginStore(false, "Address_example", int32(123), int32(123), "Protocol_example") // LoadBalancerOriginStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LoadBalancingApi.LoadBalancersPoolsOriginsUpdate(context.Background(), domain, loadBalancerId, loadBalancerPoolId, loadBalancerPoolOriginId).LoadBalancerOrigin(loadBalancerOrigin).Execute()
+    resp, r, err := apiClient.LoadBalancingApi.LoadBalancersPoolsOriginsUpdate(context.Background(), domain, loadBalancerId, loadBalancerPoolId, loadBalancerPoolOriginId).LoadBalancerOriginStore(loadBalancerOriginStore).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LoadBalancingApi.LoadBalancersPoolsOriginsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -675,7 +675,7 @@ Name | Type | Description  | Notes
 
 
 
- **loadBalancerOrigin** | [**LoadBalancerOrigin**](LoadBalancerOrigin.md) |  | 
+ **loadBalancerOriginStore** | [**LoadBalancerOriginStore**](LoadBalancerOriginStore.md) |  | 
 
 ### Return type
 
