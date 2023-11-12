@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Keepalive** | Pointer to **string** |  | [optional] [default to "off"]
 **NextUpstreamTcp** | Pointer to **string** | Try another server when the first one failed if on | [optional] [default to "off"]
 **NextUpstreamTcpCodes** | Pointer to [**NextUpstreamTcpCodes**](NextUpstreamTcpCodes.md) |  | [optional] 
-**Regions** | Pointer to **[]string** |  | [optional] 
+**Regions** | Pointer to [**[]LoadBalancerRegion**](LoadBalancerRegion.md) |  | [optional] 
 **Origins** | Pointer to [**[]LoadBalancerOrigin**](LoadBalancerOrigin.md) |  | [optional] [readonly] 
 **MonitoringStatus** | Pointer to [**NullableMonitoringStatus**](MonitoringStatus.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -265,20 +265,20 @@ HasNextUpstreamTcpCodes returns a boolean if a field has been set.
 
 ### GetRegions
 
-`func (o *LoadBalancerPool) GetRegions() []string`
+`func (o *LoadBalancerPool) GetRegions() []LoadBalancerRegion`
 
 GetRegions returns the Regions field if non-nil, zero value otherwise.
 
 ### GetRegionsOk
 
-`func (o *LoadBalancerPool) GetRegionsOk() (*[]string, bool)`
+`func (o *LoadBalancerPool) GetRegionsOk() (*[]LoadBalancerRegion, bool)`
 
 GetRegionsOk returns a tuple with the Regions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegions
 
-`func (o *LoadBalancerPool) SetRegions(v []string)`
+`func (o *LoadBalancerPool) SetRegions(v []LoadBalancerRegion)`
 
 SetRegions sets Regions field to given value.
 

@@ -13223,8 +13223,12 @@ components:
         description: description
         pools:
         - regions:
-          - regions
-          - regions
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
@@ -13282,8 +13286,12 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: true
         - regions:
-          - regions
-          - regions
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
@@ -13394,8 +13402,12 @@ components:
           description: description
           pools:
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -13453,8 +13465,12 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             status: true
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -13529,8 +13545,12 @@ components:
           description: description
           pools:
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -13588,8 +13608,12 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             status: true
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -13655,8 +13679,12 @@ components:
     LoadBalancerPool:
       example:
         regions:
-        - regions
-        - regions
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          region: LAH
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          region: LAH
         method: cluster_rr
         monitoring_status: null
         keepalive: "off"
@@ -13749,8 +13777,7 @@ components:
           $ref: '#/components/schemas/NextUpstreamTcpCodes'
         regions:
           items:
-            pattern: "^[A-Z]{3}$"
-            type: string
+            $ref: '#/components/schemas/LoadBalancerRegion'
           type: array
         origins:
           items:
@@ -13774,8 +13801,12 @@ components:
       example:
         data:
           regions:
-          - regions
-          - regions
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
@@ -13841,8 +13872,12 @@ components:
       example:
         data:
         - regions:
-          - regions
-          - regions
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
@@ -13900,8 +13935,12 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: true
         - regions:
-          - regions
-          - regions
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
@@ -19610,8 +19649,12 @@ components:
           description: description
           pools:
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -19669,8 +19712,12 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             status: true
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -19737,8 +19784,12 @@ components:
           description: description
           pools:
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -19796,8 +19847,12 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             status: true
           - regions:
-            - regions
-            - regions
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              region: LAH
             method: cluster_rr
             monitoring_status: null
             keepalive: "off"
@@ -19868,8 +19923,12 @@ components:
       example:
         data:
         - regions:
-          - regions
-          - regions
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"
@@ -19927,8 +19986,12 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: true
         - regions:
-          - regions
-          - regions
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            region: LAH
           method: cluster_rr
           monitoring_status: null
           keepalive: "off"

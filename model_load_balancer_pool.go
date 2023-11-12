@@ -31,7 +31,7 @@ type LoadBalancerPool struct {
 	// Try another server when the first one failed if on
 	NextUpstreamTcp *string `json:"next_upstream_tcp,omitempty"`
 	NextUpstreamTcpCodes *NextUpstreamTcpCodes `json:"next_upstream_tcp_codes,omitempty"`
-	Regions []string `json:"regions,omitempty"`
+	Regions []LoadBalancerRegion `json:"regions,omitempty"`
 	Origins []LoadBalancerOrigin `json:"origins,omitempty"`
 	MonitoringStatus NullableMonitoringStatus `json:"monitoring_status,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
@@ -352,9 +352,9 @@ func (o *LoadBalancerPool) SetNextUpstreamTcpCodes(v NextUpstreamTcpCodes) {
 }
 
 // GetRegions returns the Regions field value if set, zero value otherwise.
-func (o *LoadBalancerPool) GetRegions() []string {
+func (o *LoadBalancerPool) GetRegions() []LoadBalancerRegion {
 	if o == nil || IsNil(o.Regions) {
-		var ret []string
+		var ret []LoadBalancerRegion
 		return ret
 	}
 	return o.Regions
@@ -362,7 +362,7 @@ func (o *LoadBalancerPool) GetRegions() []string {
 
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerPool) GetRegionsOk() ([]string, bool) {
+func (o *LoadBalancerPool) GetRegionsOk() ([]LoadBalancerRegion, bool) {
 	if o == nil || IsNil(o.Regions) {
 		return nil, false
 	}
@@ -378,8 +378,8 @@ func (o *LoadBalancerPool) HasRegions() bool {
 	return false
 }
 
-// SetRegions gets a reference to the given []string and assigns it to the Regions field.
-func (o *LoadBalancerPool) SetRegions(v []string) {
+// SetRegions gets a reference to the given []LoadBalancerRegion and assigns it to the Regions field.
+func (o *LoadBalancerPool) SetRegions(v []LoadBalancerRegion) {
 	o.Regions = v
 }
 
