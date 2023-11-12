@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**LoadBalancersPoolsShow**](LoadBalancingApi.md#LoadBalancersPoolsShow) | **Get** /domains/{domain}/load-balancers/{loadBalancerId}/pools/{loadBalancerPoolId} | Get load balancer pool information
 [**LoadBalancersPoolsStore**](LoadBalancingApi.md#LoadBalancersPoolsStore) | **Post** /domains/{domain}/load-balancers/{loadBalancerId}/pools | Create a new pool for the load balancer
 [**LoadBalancersPoolsUpdate**](LoadBalancingApi.md#LoadBalancersPoolsUpdate) | **Put** /domains/{domain}/load-balancers/{loadBalancerId}/pools/{loadBalancerPoolId} | Update an existing load balancer pool with origins
-[**LoadBalancersPoolsUpdatePool**](LoadBalancingApi.md#LoadBalancersPoolsUpdatePool) | **Patch** /domains/{domain}/load-balancers/{loadBalancerId}/pools/{loadBalancerPoolId} | Update an existing load balancer pool
+[**LoadBalancersPoolsUpdatePool**](LoadBalancingApi.md#LoadBalancersPoolsUpdatePool) | **Patch** /domains/{domain}/load-balancers/{loadBalancerId}/pools/{loadBalancerPoolId} | Update an existing load balancer pool without origins
 [**LoadBalancersPrioritizePool**](LoadBalancingApi.md#LoadBalancersPrioritizePool) | **Post** /domains/{domain}/load-balancers/{loadBalancerId}/prioritize | Reorder the priority of load balancer pools
 [**LoadBalancersRegionsIndex**](LoadBalancingApi.md#LoadBalancersRegionsIndex) | **Get** /load-balancers/regions | Get list of regions for load balancers
 [**LoadBalancersSettingsShow**](LoadBalancingApi.md#LoadBalancersSettingsShow) | **Get** /domains/{domain}/load-balancers/settings | Get list of domain load balancer global settings
@@ -920,9 +920,9 @@ Name | Type | Description  | Notes
 
 ## LoadBalancersPoolsUpdatePool
 
-> LoadBalancerPoolResponse LoadBalancersPoolsUpdatePool(ctx, domain, loadBalancerId, loadBalancerPoolId).LoadBalancerPool(loadBalancerPool).Execute()
+> LoadBalancerPoolResponse LoadBalancersPoolsUpdatePool(ctx, domain, loadBalancerId, loadBalancerPoolId).LoadBalancerPoolStore(loadBalancerPoolStore).Execute()
 
-Update an existing load balancer pool
+Update an existing load balancer pool without origins
 
 ### Example
 
@@ -940,11 +940,11 @@ func main() {
     domain := "example.com" // string | Domain name
     loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
     loadBalancerPoolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of a pool of the load balancer
-    loadBalancerPool := *openapiclient.NewLoadBalancerPool() // LoadBalancerPool |  (optional)
+    loadBalancerPoolStore := *openapiclient.NewLoadBalancerPoolStore("Name_example", false, "Method_example", "Keepalive_example", "NextUpstreamTcp_example") // LoadBalancerPoolStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LoadBalancingApi.LoadBalancersPoolsUpdatePool(context.Background(), domain, loadBalancerId, loadBalancerPoolId).LoadBalancerPool(loadBalancerPool).Execute()
+    resp, r, err := apiClient.LoadBalancingApi.LoadBalancersPoolsUpdatePool(context.Background(), domain, loadBalancerId, loadBalancerPoolId).LoadBalancerPoolStore(loadBalancerPoolStore).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LoadBalancingApi.LoadBalancersPoolsUpdatePool``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -974,7 +974,7 @@ Name | Type | Description  | Notes
 
 
 
- **loadBalancerPool** | [**LoadBalancerPool**](LoadBalancerPool.md) |  | 
+ **loadBalancerPoolStore** | [**LoadBalancerPoolStore**](LoadBalancerPoolStore.md) |  | 
 
 ### Return type
 

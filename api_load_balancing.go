@@ -1816,11 +1816,11 @@ type ApiLoadBalancersPoolsUpdatePoolRequest struct {
 	domain string
 	loadBalancerId string
 	loadBalancerPoolId string
-	loadBalancerPool *LoadBalancerPool
+	loadBalancerPoolStore *LoadBalancerPoolStore
 }
 
-func (r ApiLoadBalancersPoolsUpdatePoolRequest) LoadBalancerPool(loadBalancerPool LoadBalancerPool) ApiLoadBalancersPoolsUpdatePoolRequest {
-	r.loadBalancerPool = &loadBalancerPool
+func (r ApiLoadBalancersPoolsUpdatePoolRequest) LoadBalancerPoolStore(loadBalancerPoolStore LoadBalancerPoolStore) ApiLoadBalancersPoolsUpdatePoolRequest {
+	r.loadBalancerPoolStore = &loadBalancerPoolStore
 	return r
 }
 
@@ -1829,7 +1829,7 @@ func (r ApiLoadBalancersPoolsUpdatePoolRequest) Execute() (*LoadBalancerPoolResp
 }
 
 /*
-LoadBalancersPoolsUpdatePool Update an existing load balancer pool
+LoadBalancersPoolsUpdatePool Update an existing load balancer pool without origins
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domain Domain name
@@ -1889,7 +1889,7 @@ func (a *LoadBalancingApiService) LoadBalancersPoolsUpdatePoolExecute(r ApiLoadB
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.loadBalancerPool
+	localVarPostBody = r.loadBalancerPoolStore
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

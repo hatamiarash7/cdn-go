@@ -2314,7 +2314,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoadBalancerPool'
+              $ref: '#/components/schemas/LoadBalancerPoolStore'
       responses:
         "200":
           content:
@@ -2340,7 +2340,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/domains_store_422_response'
           description: The given data was invalid
-      summary: Update an existing load balancer pool
+      summary: Update an existing load balancer pool without origins
       tags:
       - Load Balancing
     put:
