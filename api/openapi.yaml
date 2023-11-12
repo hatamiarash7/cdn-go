@@ -1993,7 +1993,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoadBalancerUpdate'
+              $ref: '#/components/schemas/LoadBalancerStore'
       responses:
         "200":
           content:
@@ -13382,85 +13382,6 @@ components:
           readOnly: true
           type: string
       type: object
-    LoadBalancerUpdate:
-      example:
-        time_slice: 0s
-        method: failover
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        name: lb1
-        description: description
-        pools:
-        - origins:
-          - protocol: auto
-            address: address
-            port: 39500
-            name: name
-            weight: 147
-            status: true
-            host_header: host_header
-          - protocol: auto
-            address: address
-            port: 39500
-            name: name
-            weight: 147
-            status: true
-            host_header: host_header
-        - origins:
-          - protocol: auto
-            address: address
-            port: 39500
-            name: name
-            weight: 147
-            status: true
-            host_header: host_header
-          - protocol: auto
-            address: address
-            port: 39500
-            name: name
-            weight: 147
-            status: true
-            host_header: host_header
-        created_at: 2000-01-23T04:56:07.000+00:00
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        status: true
-      properties:
-        id:
-          format: uuid
-          readOnly: true
-          type: string
-        name:
-          example: lb1
-          pattern: "^[A-Za-z0-9-]+$"
-          type: string
-        description:
-          type: string
-        status:
-          type: boolean
-        method:
-          enum:
-          - failover
-          - cluster_rr
-          - cluster_chash
-          type: string
-        time_slice:
-          default: 0s
-          description: "Human friendly time duration for which a pool will uninterruptedly\
-            \ be selected in cluster_rr strategy, i.e. pools will switch once every\
-            \ time slice."
-          type: string
-        pools:
-          items:
-            $ref: '#/components/schemas/LoadBalancerUpdate_pools_inner'
-          type: array
-        created_at:
-          format: date-time
-          readOnly: true
-          type: string
-        updated_at:
-          format: date-time
-          readOnly: true
-          type: string
-      type: object
     LoadBalancerResponse:
       allOf:
       - $ref: '#/components/schemas/DataWithMessageResponse'
@@ -22040,31 +21961,6 @@ components:
           nullable: true
           type: string
       type: object
-    LoadBalancerUpdate_pools_inner:
-      allOf:
-      - $ref: '#/components/schemas/LoadBalancerPool'
-      example:
-        origins:
-        - protocol: auto
-          address: address
-          port: 39500
-          name: name
-          weight: 147
-          status: true
-          host_header: host_header
-        - protocol: auto
-          address: address
-          port: 39500
-          name: name
-          weight: 147
-          status: true
-          host_header: host_header
-      properties:
-        origins:
-          items:
-            $ref: '#/components/schemas/LoadBalancerOriginStore'
-          readOnly: false
-          type: array
     Troubleshoot_details_inner:
       example:
         details: details

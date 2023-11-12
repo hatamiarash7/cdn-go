@@ -1480,7 +1480,7 @@ Name | Type | Description  | Notes
 
 ## LoadBalancersUpdateWithPools
 
-> LoadBalancerResponse LoadBalancersUpdateWithPools(ctx, domain, loadBalancerId).LoadBalancerUpdate(loadBalancerUpdate).Execute()
+> LoadBalancerResponse LoadBalancersUpdateWithPools(ctx, domain, loadBalancerId).LoadBalancerStore(loadBalancerStore).Execute()
 
 Update a load balancer
 
@@ -1499,11 +1499,11 @@ import (
 func main() {
     domain := "example.com" // string | Domain name
     loadBalancerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the load balancer
-    loadBalancerUpdate := *openapiclient.NewLoadBalancerUpdate() // LoadBalancerUpdate |  (optional)
+    loadBalancerStore := *openapiclient.NewLoadBalancerStore("lb1", false, "Method_example") // LoadBalancerStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LoadBalancingApi.LoadBalancersUpdateWithPools(context.Background(), domain, loadBalancerId).LoadBalancerUpdate(loadBalancerUpdate).Execute()
+    resp, r, err := apiClient.LoadBalancingApi.LoadBalancersUpdateWithPools(context.Background(), domain, loadBalancerId).LoadBalancerStore(loadBalancerStore).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LoadBalancingApi.LoadBalancersUpdateWithPools``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1531,7 +1531,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **loadBalancerUpdate** | [**LoadBalancerUpdate**](LoadBalancerUpdate.md) |  | 
+ **loadBalancerStore** | [**LoadBalancerStore**](LoadBalancerStore.md) |  | 
 
 ### Return type
 

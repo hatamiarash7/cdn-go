@@ -484,8 +484,6 @@ Class | Method | HTTP request | Description
  - [LoadBalancerSetting](LoadBalancerSetting.md)
  - [LoadBalancerSettingsData](LoadBalancerSettingsData.md)
  - [LoadBalancerStore](LoadBalancerStore.md)
- - [LoadBalancerUpdate](LoadBalancerUpdate.md)
- - [LoadBalancerUpdatePoolsInner](LoadBalancerUpdatePoolsInner.md)
  - [LoadBalancersIndex200Response](LoadBalancersIndex200Response.md)
  - [LoadBalancersPoolsIndex200Response](LoadBalancersPoolsIndex200Response.md)
  - [LoadBalancersPoolsOriginsIndex200Response](LoadBalancersPoolsOriginsIndex200Response.md)

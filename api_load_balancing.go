@@ -2993,11 +2993,11 @@ type ApiLoadBalancersUpdateWithPoolsRequest struct {
 	ApiService *LoadBalancingApiService
 	domain string
 	loadBalancerId string
-	loadBalancerUpdate *LoadBalancerUpdate
+	loadBalancerStore *LoadBalancerStore
 }
 
-func (r ApiLoadBalancersUpdateWithPoolsRequest) LoadBalancerUpdate(loadBalancerUpdate LoadBalancerUpdate) ApiLoadBalancersUpdateWithPoolsRequest {
-	r.loadBalancerUpdate = &loadBalancerUpdate
+func (r ApiLoadBalancersUpdateWithPoolsRequest) LoadBalancerStore(loadBalancerStore LoadBalancerStore) ApiLoadBalancersUpdateWithPoolsRequest {
+	r.loadBalancerStore = &loadBalancerStore
 	return r
 }
 
@@ -3063,7 +3063,7 @@ func (a *LoadBalancingApiService) LoadBalancersUpdateWithPoolsExecute(r ApiLoadB
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.loadBalancerUpdate
+	localVarPostBody = r.loadBalancerStore
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
