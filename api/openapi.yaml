@@ -13871,70 +13871,7 @@ components:
       - $ref: '#/components/schemas/DataWithMessageResponse'
       example:
         data:
-        - regions:
-          - name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            region: LAH
-          - name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            region: LAH
-          method: cluster_rr
-          monitoring_status: null
-          keepalive: "off"
-          next_upstream_tcp: "off"
-          description: description
-          created_at: 2000-01-23T04:56:07.000+00:00
-          priority: 0
-          next_upstream_tcp_codes:
-            head:
-            - 0.8008281904610115
-            - 0.8008281904610115
-            patch:
-            - 7.061401241503109
-            - 7.061401241503109
-            post:
-            - 1.4658129805029452
-            - 1.4658129805029452
-            get:
-            - 6.027456183070403
-            - 6.027456183070403
-            options:
-            - 2.3021358869347655
-            - 2.3021358869347655
-            delete:
-            - 5.637376656633329
-            - 5.637376656633329
-            put:
-            - 5.962133916683182
-            - 5.962133916683182
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
-          origins:
-          - protocol: auto
-            address: address
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            health_check_status: "off"
-            port: 39500
-            name: name
-            weight: 147
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: true
-            host_header: host_header
-          - protocol: auto
-            address: address
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            health_check_status: "off"
-            port: 39500
-            name: name
-            weight: 147
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: true
-            host_header: host_header
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          status: true
-        - regions:
+          regions:
           - name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             region: LAH
@@ -13999,9 +13936,7 @@ components:
           status: true
       properties:
         data:
-          items:
-            $ref: '#/components/schemas/LoadBalancerPool'
-          type: array
+          $ref: '#/components/schemas/LoadBalancerPool'
     LoadBalancerOrigin:
       example:
         protocol: auto

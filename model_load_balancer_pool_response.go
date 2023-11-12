@@ -19,7 +19,7 @@ var _ MappedNullable = &LoadBalancerPoolResponse{}
 
 // LoadBalancerPoolResponse struct for LoadBalancerPoolResponse
 type LoadBalancerPoolResponse struct {
-	Data []LoadBalancerPool `json:"data,omitempty"`
+	Data *LoadBalancerPool `json:"data,omitempty"`
 	Message NullableString `json:"message,omitempty"`
 }
 
@@ -41,17 +41,17 @@ func NewLoadBalancerPoolResponseWithDefaults() *LoadBalancerPoolResponse {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *LoadBalancerPoolResponse) GetData() []LoadBalancerPool {
+func (o *LoadBalancerPoolResponse) GetData() LoadBalancerPool {
 	if o == nil || IsNil(o.Data) {
-		var ret []LoadBalancerPool
+		var ret LoadBalancerPool
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerPoolResponse) GetDataOk() ([]LoadBalancerPool, bool) {
+func (o *LoadBalancerPoolResponse) GetDataOk() (*LoadBalancerPool, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -67,9 +67,9 @@ func (o *LoadBalancerPoolResponse) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []LoadBalancerPool and assigns it to the Data field.
-func (o *LoadBalancerPoolResponse) SetData(v []LoadBalancerPool) {
-	o.Data = v
+// SetData gets a reference to the given LoadBalancerPool and assigns it to the Data field.
+func (o *LoadBalancerPoolResponse) SetData(v LoadBalancerPool) {
+	o.Data = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
