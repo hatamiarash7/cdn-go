@@ -40,7 +40,7 @@ jobs:
           generator: go
           generator-tag: v6.6.0
           config-file: .github/generator/config.yml
-          openapi-url: https://cdn-docs.s3.ir-thr-at1.arvanstorage.ir/v4.openapi.yml?versionId=
+          openapi-url: https://cdn-docs.s3.ir-thr-at1.arvanstorage.ir/v4.openapi.yml
           command-args: "--http-user-agent r1c-cdn-sdk"
           output-dir: "/github/workspace"
           template-dir: .github/generator/template/
@@ -91,26 +91,3 @@ jobs:
           commit_user_name: "ArvanCloud"
           commit_user_email: "cdn.sre@arvancloud.ir"
           commit_author: Arash <arash.r1c@gmail.com>
-
-      - name: Gitlab - Commit & Push changes
-        run: |
-          git config user.name "Arash Hatami"
-          git config user.email "arash.hatami@arvancloud.ir"
-          git remote add gitlab "https://oauth2:${{ secrets.GLPAT }}@git.arvancloud.ir/arvancloud/cdn/cdn-go-sdk.git"
-          git fetch --depth=10000
-          git checkout main
-          git pull origin main
-          git commit --allow-empty -a -m "SDK ${{ env.APP_VERSION }} - API v${{ steps.version.outputs.data }}"
-          git push --set-upstream gitlab main -f --tag
-
-      - name: Gitlab - Create release
-        uses: indiesdev/curl@v1.1
-        with:
-          url: https://git.arvancloud.ir/api/v4/projects/117/releases
-          method: "POST"
-          accept: 201
-          headers: '{"PRIVATE-TOKEN": "${{ secrets.GLPAT }}"}'
-          body: '{"name": "${{ github.event.release.name }}", "tag_name": "${{ env.APP_VERSION }}", "description": "${{ github.event.release.body }}"}'
-          timeout: 2000
-          log-response: true
-          retries: 2
